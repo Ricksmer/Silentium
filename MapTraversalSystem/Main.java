@@ -10,6 +10,7 @@ public class Main{
     public static void lowerFrame(){
         System.out.println("==============================================================================");
     }
+    
     public static void main(String[] args){
         boolean exploring = true;
         int x_Coordinate = 0;
@@ -104,3 +105,4 @@ public class Main{
         scanner.close();
     }
 }
+
