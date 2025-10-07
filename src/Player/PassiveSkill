@@ -1,0 +1,19 @@
+package Player;
+
+public class PassiveSkill {
+    public String skillName;
+    public String skillDescription;
+    public int skillEffect;
+
+    public void calculateSonaraEffect(int receivedDamage){
+        skillEffect = (int)(receivedDamage * 0.1); // reduce monster's health
+    }
+
+    public void calculateAureliusEffect(int maxHp){
+        skillEffect = (int)(maxHp * 0.05);
+    }
+
+    public void calculateLyronEffect(int finalDamage){
+        skillEffect = (int)(finalDamage * 0.25);
+    }
+}
