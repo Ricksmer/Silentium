@@ -4,6 +4,7 @@ import java.util.Random;
 
 public abstract class Map{
     Random random = new Random();
+    String name;
     private int row;
     private int col;
     private int totalEnemies;
@@ -16,7 +17,8 @@ public abstract class Map{
     private int[][] map;
     private boolean placingEnemies;
 
-    public Map(int row, int col, int totalEnemies){
+    public Map(int row, int col, int totalEnemies, String name){
+        this.name = name;
         this.row = row;
         this.col = col;
         this.totalEnemies = totalEnemies;
@@ -25,6 +27,9 @@ public abstract class Map{
         this.endPos = random.nextInt(0,col);
     }
 
+    public String getName(){
+        return name;
+    }
     public void setMap(){
         for(i=0;i<row;i++){
             for(j=0;j<col;j++){
