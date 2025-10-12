@@ -25,7 +25,13 @@ public class GameMenu {
                 try{
                     charSelect = sc.nextInt();
                     System.out.println();
-                    isEnabled = false;
+                    if(charSelect <= 0 || charSelect > 3){
+                        System.out.println("\t Invalid Input!!! Try again... ");
+                        System.out.print("\t Select: ");
+                    }
+                    else {
+                        isEnabled = false;
+                    }
                 }
                 catch(Exception e){
                     System.out.println("\t Invalid Input!!! Try again... ");
@@ -43,10 +49,7 @@ public class GameMenu {
                 case 3:
                     return lyron;
                 default:
-                    System.out.println();
-                    System.out.println("\t --- Invalid Input ---");
-                    System.out.println();
-                    continue;
+                    break;
             }
 
 
