@@ -343,20 +343,4 @@ class GameNarrative implements GameNarrator, Storyteller {
         printSystemMessage("ITEM ACQUIRED: MAJOR’S BLESSING");
         printNarration("The enemy dropped an item, MAJOR’S BLESSING. Start battle with +1 free use of any Major chord.");
     }
-
-    // --- Demonstration Main Method ---
-    public static void main(String[] args) {
-        GameNarrative narrator = new GameNarrative();
-
-        narrator.printSeparator();
-        narrator.printSystemMessage("DEMONSTRATING NEW DIALOGUE FORMATTING");
-
-        narrator.sonaraThirdLevelUp();
-
-        narrator.printSeparator();
-        narrator.aureliusSecondLevelUp();
-
-        narrator.printSeparator();
-        narrator.lyronFourthLevelUp();
-    }
 }
