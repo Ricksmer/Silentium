@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class Map{
+public abstract class Map{
     Random random = new Random();
     private int row;
     private int col;
