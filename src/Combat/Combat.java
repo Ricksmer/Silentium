@@ -57,6 +57,14 @@ public class Combat {
             inf.noteInput();
             nt.damagePerNote(player);
 
+            //LYRON'S ACTIVE SKILL
+            if(player.name.equals("Lyron")){
+                if(player.as.skillEffect(player) == 1){
+                    System.out.println("Rerolled notes: ");
+                    nt.damagePerNote(player);
+                }
+            }
+
             System.out.print("");
             System.out.print("\t #1:   ");
             note1 = sc.next().charAt(0);
@@ -129,9 +137,16 @@ public class Combat {
         initialDamage += nt.noteDamage(note3);
         System.out.println("\tInitial Damage: " + initialDamage);
 
+        //Sonara's Active Skill
+        if(player.name.equals("Sonara")){
+            if(player.as.skillEffect(player, initialDamage) == 1)
+                initialDamage += 1;
+        }
+
+
         //Metronome
         System.out.println("\tMetronome: " + beat);
-        finalDamage= mt.updateBeat(player, initialDamage);
+        finalDamage = mt.updateBeat(player, initialDamage);
 
         //Final Damage
         System.out.println("\tFinal Damage: " + finalDamage);

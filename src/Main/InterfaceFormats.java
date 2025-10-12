@@ -71,8 +71,8 @@ public class InterfaceFormats implements DisplayFormat{
         System.out.println("\t Instrument: " + player.instrument);
         System.out.println("\t HP: " + player.getHp() + " / " +  player.getMaxHp());
         System.out.println("\t Shield: " + player.getShield() + " / " +  player.getMaxShield());
-        //System.out.println(" Passive Skill: " + player.ps.skillDescription);
-        //System.out.println(" Active Skill: " + player.as.skillDescription);
+        System.out.println(" Passive Skill: " + player.ps.skillDescription);
+        System.out.println(" Active Skill: " + player.as.skillDescription);
         System.out.println();
         System.out.println("\t ------------------------- ");
     }

@@ -8,6 +8,8 @@ public class Sonara extends Character implements Dialogue{
         instrument = "The Scrouge of Echoes";
         ps.skillName = "Body of Thorns";
         ps.skillDescription = "Upon receiving damage, The enemy receives 25% of shared true damage from the enemy’s inflicted damage.";
+        as.skillName = "Melodic Impromptu";
+        as.skillDescription = "Every turn Sonara can choose to add +1 damage to the damage output of the notes.\n";
         setMaxHp(150);
         setHp(getMaxHp());
         setMaxShield(35);

@@ -4,7 +4,7 @@ public class Character {
     public String name;
     public String instrument;
     public PassiveSkill ps = new PassiveSkill();
-    //ActiveSkill as = new ActiveSkill();
+    public ActiveSkill as = new ActiveSkill();
     private int hp;
     private int maxHp;
     private int maxShield;
