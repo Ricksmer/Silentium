@@ -8,7 +8,8 @@ import java.util.Scanner;
 
 public class GameMenu {
     public Player.Character CharacterSelect(){
-        int charSelect;
+        int charSelect = 1;
+        boolean isEnabled;
         Player.Character sonara = new Sonara();
         Player.Character aurelius = new Aurelius();
         Character lyron = new Lyron();
@@ -18,8 +19,21 @@ public class GameMenu {
         System.out.println();
         do{
             inf.CharacterSelect();
-            charSelect = sc.nextInt();
-            System.out.println();
+
+            isEnabled = true;
+            while(isEnabled){
+                try{
+                    charSelect = sc.nextInt();
+                    System.out.println();
+                    isEnabled = false;
+                }
+                catch(Exception e){
+                    System.out.println("\t Invalid Input!!! Try again... ");
+                    System.out.print("\t Select: ");
+                    sc.next();
+                }
+            }
+
 
             switch (charSelect){
                 case 1:
