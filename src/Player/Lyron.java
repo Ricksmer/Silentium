@@ -14,4 +14,5 @@ public class Lyron extends Character{
         //this.as.Lyron();
         setLevel(1);
     }
+
 }

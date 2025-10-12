@@ -1,6 +1,6 @@
 package Player;
 
-public class Character {
+public abstract class Character {
     public String name;
     public String instrument;
     public PassiveSkill ps = new PassiveSkill();

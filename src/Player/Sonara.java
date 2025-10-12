@@ -19,4 +19,5 @@ public class Sonara extends Character implements Dialogue{
     public void introDialogue(){
         System.out.println("HELLO! ");
     }
+
 }
