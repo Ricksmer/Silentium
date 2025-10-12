@@ -170,13 +170,31 @@ public class Combat {
 
     public void turnAction(Character player, Monster enemy, int beat) {
         boolean isTurnOver;
-        int action;
-
+        int action = 0;
+        boolean isEnabled;
         do {
             isTurnOver = false;
             inf.turnAction();
-            action = sc.nextInt();
-            System.out.println();
+            isEnabled = true;
+            while(isEnabled){
+                try{
+                    action = sc.nextInt();
+                    System.out.println();
+                    if(action <= 0 || action >6){
+                        System.out.println("\t Invalid Action!!!");
+                        System.out.print("\t Select: ");
+                    }
+                    else{
+                        isEnabled = false;
+                    }
+                }
+                catch(Exception e){
+                    System.out.println("\t Invalid Action!!!");
+                    System.out.print("\t Select: ");
+                    sc.next();
+                }
+            }
+
 
             switch (action) {
                 case 1:
@@ -201,7 +219,7 @@ public class Combat {
                     System.out.println("No content available.");
                     break;
                 default:
-                    System.out.println("Invalid action. Please choose again.");
+                    break;
             }
         } while (!isTurnOver);
     }
