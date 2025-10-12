@@ -1,5 +1,0 @@
-public class TownOfEchoes extends Map{
-    public TownOfEchoes(){
-        super(4,4,6);
-    }
-}
