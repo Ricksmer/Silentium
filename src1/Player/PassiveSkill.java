@@ -11,11 +11,13 @@ public class PassiveSkill {
     public String skillDescription;
 
     //SONARA SKILL EFFECT
-    public void skillEffect(Monster enemy){
-        int thorn = (int) (combat.enemyAttack(enemy) *  0.50);
+    public int skillEffect(Monster enemy){
+        int damage = (combat.enemyAttack(enemy));;
+        int thorn = (int) (damage * 0.50);
 
         enemy.takeDamage(thorn);
         combDisplay.enemyStatsSummary(enemy);
+        return damage;
     }
 
     //AURELIUS SKILL EFFECT

@@ -17,13 +17,16 @@ public class Combat {
     Scanner sc = new Scanner(System.in);
     ChordSystem chordSystem = new ChordSystem();
 
-    private boolean isGameOver = false;
+    private boolean isGameOver;
 
     public void battle(Character player,Monster enemy) {
         combDisplay.battleStart();
         int beat;
+        int damage;
+        isGameOver = false;
 
         while (!isGameOver) {
+            player.setHp(player.getMaxHp());
             beat = mt.getBeat();
 
             turnAction(player, enemy, beat);
@@ -31,15 +34,19 @@ public class Combat {
             //Game Check
             isGameOver = isEnemyDefeated(enemy);
             if (isGameOver) {
-                player.setLevel(player.getLevel() + 1, player.getMap());
+                player.levelUp();
                 break;
             }
 
             //Enemy Attack
             // SONARA PASSIVE
             if (player.name.equals("Sonara")) {
-                player.ps.skillEffect(enemy);
-            } else player.takeDamage(enemyAttack(enemy));
+                damage = player.ps.skillEffect(enemy);
+            } else {
+                damage = enemyAttack(enemy);
+            }
+
+            player.takeDamage(damage);
 
             combDisplay.playerStatsSummary(player);
 

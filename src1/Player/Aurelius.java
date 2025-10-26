@@ -20,7 +20,7 @@ public class Aurelius extends Character{
         setHp(getMaxHp());
         setMaxShield(40);
         setMap(1);
-        setLevel(1, getMap());
+        setLevel(1);
 
         narrative.setQuotes(quotes);
     }

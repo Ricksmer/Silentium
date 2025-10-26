@@ -14,7 +14,7 @@ public class Main {
     static CombatDisplay combDisplay = new CombatDisplay();
     static GameMenu game = new GameMenu();
     static Combat combat = new Combat();
-    static Map map = new TownOfEchoes();
+    static Map map;
     static MapCharacter mapChar = new MapCharacter();
 
     public static void main(String[] args) {
@@ -22,11 +22,17 @@ public class Main {
         player = game.CharacterSelect();
         combDisplay.characterDisplay(player);
 
+        map = new TownOfEchoes();
         map.setMap();
-
         mapChar.explore(map,player);
-        mapChar.explore(map, player);
-        mapChar.explore(map, player);
+
+        map = new SilentCaverns();
+        map.setMap();
+        mapChar.explore(map,player);
+
+        map = new AbyssOfDissonance();
+        map.setMap();
+        mapChar.explore(map,player);
 
 
         enemy = map.MonsterSpawn(1);

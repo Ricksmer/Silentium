@@ -3,9 +3,12 @@ package Map;
 import Enemy.*;
 
 import java.util.Random;
+import Display.*;
+import org.w3c.dom.Text;
 
 public abstract class Map {
     Random random = new Random();
+    TextDisplay text = new TextDisplay();
     public String name;
     private int row;
     private int col;
@@ -89,7 +92,7 @@ public abstract class Map {
     public void viewMap(){
         for(i=0;i<row;i++){
             for(j=0;j<col;j++){
-                System.out.print(map[i][j] + " ");
+                text.printMap(map[i][j] + " ");
             }
             System.out.println();
         }

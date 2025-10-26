@@ -1,8 +1,10 @@
 package Player;
 
-import Display.Dialogue;
+import Display.*;
+import org.w3c.dom.Text;
 
 public abstract class Character {
+    TextDisplay text = new TextDisplay();
     public String name;
     public String instrument;
     public PassiveSkill ps = new PassiveSkill();
@@ -26,14 +28,17 @@ public abstract class Character {
     public void setShield(int shield) { this.shield = shield; }
 
     public int getLevel() { return level; }
-    public void setLevel(int level, int map) {
+    public void setLevel(int level) { this.level = level; }
+    public void levelUp(){
         if(map==1){
-            if(this.level < 3){
-                this.level = level;
+            if(level < 3){
+                level++;
+                text.printSystemMessage("Player leveled up!");
             }
         }else if(map==2){
-            if(this.level < 5){
-                this.level = level;
+            if(level < 5){
+                level++;
+                text.printSystemMessage("Player leveled up!");
             }
         }
     }

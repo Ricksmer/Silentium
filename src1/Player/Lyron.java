@@ -20,7 +20,7 @@ public class Lyron extends Character{
         setHp(getMaxHp());
         setMaxShield(50);
         setMap(1);
-        setLevel(1, 1);
+        setLevel(1);
 
         narrative.setQuotes(quotes);
     }

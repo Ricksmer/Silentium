@@ -61,16 +61,14 @@ public class MapCharacter {
     public void explore(Map map, Character player){
 
         Monster enemy;
-        Scanner scanner = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         int movement = 0;
         boolean isExploring = true;
         boolean isEnabled;
 
         //Disposeable
         text.printSystemMessage("Test Map:");
-        map.viewMap();
-        System.out.println();
-        System.out.println();
+
         //END
 
         text.printSystemMessage("Exploring: " + player.name);
@@ -79,11 +77,14 @@ public class MapCharacter {
         setCol(map.getStartingCol());
         while(isExploring){
             isEnabled = true;
+            map.viewMap();
+            System.out.println();
+            System.out.println();
             while(isEnabled){
                 try{
                     displayDirections();
                     System.out.print("\t Select: ");
-                    movement = scanner.nextInt();
+                    movement = sc.nextInt();
                     if(movement <= 0 || movement > 4){
                         mapNar.displayMapConfused(player);
                     }
@@ -92,7 +93,7 @@ public class MapCharacter {
                     }
                 }catch(Exception e){
                     mapNar.displayMapConfused(player);
-                    scanner.next();
+                    sc.next();
                 }
             }
 
@@ -155,9 +156,41 @@ public class MapCharacter {
                     break;
                 case 3:
                     mapNar.displayExit(player);
-                    text.printSystemMessage("--Assuming they met the conditions--");
-                    isExploring = false;
-                    player.setMap(player.getMap() + 1);
+                    text.printSystemInput("Enter? [ Y / N ]: ");
+                    char tempOp = sc.next().charAt(0);
+                    java.lang.Character.toUpperCase(tempOp);
+                    if(tempOp == 'Y'){
+                        if(player.getMap() == 1){
+                            text.printSystemMessage("Player level: " + player.getLevel());
+
+                            if(player.getLevel() < 3){
+                                text.printSystemMessage("You are not strong enough! You need to level up!");
+                            }
+                            else{
+                                text.printSystemMessage("Travelling towards the next map!");
+                                player.setMap(player.getMap() + 1);
+                                return;
+                            }
+                        }
+                        else if (player.getMap() == 2){
+                            if(player.getLevel() < 5){
+                                text.printSystemMessage("You are not strong enough! You need to level up!");
+                            }
+                            else {
+                                text.printSystemMessage("Travelling towards the next map!");
+                                player.setMap(player.getMap() + 1);
+                                return;
+                            }
+                        }
+                        else{
+                            text.printSystemMessage("Travelling towards the next map!");
+                            isExploring = false;
+                            player.setMap(player.getMap() + 1);
+                            return;
+                        }
+                    }else if(tempOp == 'N'){
+                        text.printSystemMessage("Travelling continues...");
+                    }
                     break;
                 default: break;
             }

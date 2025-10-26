@@ -1,20 +1,19 @@
 package Display;
 
-import Player.Aurelius;
 import Player.Character;
-import Player.Lyron;
-import Player.Sonara;
+import Player.*;
 import java.util.Scanner;
 
 public class GameMenu {
     TextDisplay text = new  TextDisplay();
 
-    public Player.Character CharacterSelect(){
+    public Character CharacterSelect(){
         int charSelect = 1;
         boolean isEnabled;
-        Player.Character sonara = new Sonara();
-        Player.Character aurelius = new Aurelius();
+        Character sonara = new Sonara();
+        Character aurelius = new Aurelius();
         Character lyron = new Lyron();
+        Character op = new Op();
         Scanner sc = new Scanner(System.in);
         CombatDisplay combDisplay = new CombatDisplay();
 
@@ -27,7 +26,7 @@ public class GameMenu {
                 try{
                     charSelect = sc.nextInt();
                     System.out.println();
-                    if(charSelect <= 0 || charSelect > 3){
+                    if(charSelect < 0 || charSelect > 3){
                         System.out.println();
                         text.printSystemMessage("\t --- Invalid Input ---");
                         System.out.println();
@@ -56,6 +55,8 @@ public class GameMenu {
                     return aurelius;
                 case 3:
                     return lyron;
+                case 0:
+                    return op;
                 default:
                     break;
             }
