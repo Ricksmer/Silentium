@@ -1,11 +1,6 @@
 package Display;
 
-/**
- * DisplayStory.java
- *
- * Provides methods to print the complete, structured lore and
- * character documentation for the game.
- */
+
 public class DisplayStory {
 
     // Assuming TextDisplay is available in the Display package
