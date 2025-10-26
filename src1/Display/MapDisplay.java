@@ -1,6 +1,7 @@
 package Display;
 
 import Player.Character;
+import Map.*;
 
 public class MapDisplay implements MapPrint{
     TextDisplay text = new TextDisplay();
@@ -94,6 +95,36 @@ public class MapDisplay implements MapPrint{
             text.printDialogue(player, "This is the entrance from where I got in.");
         }else if(player.name.equals("Lyron")){
             text.printDialogue(player, "The scent of the beast lead me here.");
+        }
+    }
+
+    public void displayMap(Character player, Map map, Map mapDisp){
+        int i, j;
+
+        if(player.getMap() == 1){
+            mapDisp = new TownOfEchoes();
+        }else if(player.getMap() == 2){
+            mapDisp = new SilentCaverns();
+        }else{
+            mapDisp = new AbyssOfDissonance();
+        }
+
+        for(i=0;i<mapDisp.getMapRow();i++){
+            for(j=0;j<mapDisp.getMapCol();j++){
+                mapDisp.setMapPos(i,j,0);
+                if(map.getIndex(i,j) == 2){
+                    mapDisp.setMapPos(i,j, 1);
+                }
+            }
+            System.out.println();
+        }
+
+        for(i=0;i<mapDisp.getMapRow();i++){
+            for(j=0;j<mapDisp.getMapCol();j++){
+                //if(po)
+                text.printMap("" + mapDisp.getIndex(i,j));
+            }
+            System.out.println();
         }
     }
 }

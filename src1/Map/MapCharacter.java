@@ -59,6 +59,13 @@ public class MapCharacter {
         System.out.println();
     }
     public void explore(Map map, Character player){
+        Map mapDisp = null;
+        if(player.getMap() == 1){ mapDisp = new TownOfEchoes(); }
+        else if(player.getMap() == 2){ mapDisp = new SilentCaverns(); }
+        else{ mapDisp = new AbyssOfDissonance(); };
+
+        mapDisp.initDisplayMap(map);
+
 
         Monster enemy;
         Scanner sc = new Scanner(System.in);
@@ -78,6 +85,10 @@ public class MapCharacter {
         while(isExploring){
             isEnabled = true;
             map.viewMap();
+            System.out.println();
+            System.out.println();
+            mapDisp.setMapPos(row, col, 2);
+            mapDisp.viewDisplayMap();
             System.out.println();
             System.out.println();
             while(isEnabled){
@@ -107,7 +118,9 @@ public class MapCharacter {
                         mapNar.displayMapBlocked(player);
                     }
                     else{
+                        mapDisp.setTravelled(map, row,col);
                         up();
+                        mapDisp.updateMapTravel(map, row,col);
                     }
                     break;
                 case 2:
@@ -115,7 +128,9 @@ public class MapCharacter {
                         mapNar.displayMapBlocked(player);
                     }
                     else{
+                        mapDisp.setTravelled(map, row,col);
                         down();
+                        mapDisp.updateMapTravel(map, row,col);
                     }
                     break;
                 case 3:
@@ -123,7 +138,9 @@ public class MapCharacter {
                         mapNar.displayMapBlocked(player);
                     }
                     else{
+                        mapDisp.setTravelled(map, row,col);
                         left();
+                        mapDisp.updateMapTravel(map, row,col);
                     }
                     break;
                 case 4:
@@ -131,7 +148,9 @@ public class MapCharacter {
                         mapNar.displayMapBlocked(player);
                     }
                     else{
+                        mapDisp.setTravelled(map, row,col);
                         right();
+                        mapDisp.updateMapTravel(map, row,col);
                     }
                     break;
                 default:
@@ -149,6 +168,7 @@ public class MapCharacter {
                     combDisplay.enemyStatsSummary(enemy);
 
                     combat.battle(player, enemy);
+                    map.setMapPos(row,col, 4);
                     break;
                 case 2:
                     mapNar.displayEntrance(player);

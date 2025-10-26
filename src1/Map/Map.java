@@ -4,6 +4,7 @@ import Enemy.*;
 
 import java.util.Random;
 import Display.*;
+import Player.*;
 import org.w3c.dom.Text;
 
 public abstract class Map {
@@ -89,12 +90,75 @@ public abstract class Map {
         return col;
     }
 
+    public void setMapPos(int x, int y, int pos){
+        map[x][y] = pos;
+    }
+
     public void viewMap(){
         for(i=0;i<row;i++){
             for(j=0;j<col;j++){
                 text.printMap(map[i][j] + " ");
             }
             System.out.println();
+        }
+    }
+
+    public void viewDisplayMap(){
+        char untravelled =  '\u25A1';
+        char travelled =  '\u2022';
+        char playerPos = '\u2b24';
+        char nextMap = '\u2605';
+        char onNextMap = '\u2606';
+        char killedEnemy = '\u2715';
+
+        for(i=0;i<row;i++){
+            for(j=0;j<col;j++){
+                if(map[i][j] == 0){
+                    text.printMap("" + untravelled);
+                }else if(map[i][j] == 1){
+                    text.printMap("" + travelled);
+                }else if(map[i][j] == 2){
+                    text.printMap("" + playerPos);
+                }else if(map[i][j] == 3){
+                    text.printMap("" + nextMap);
+                }else if(map[i][j] == 4){
+                    text.printMap("" + onNextMap);
+                }else if(map[i][j] == 5){
+                    text.printMap("" + killedEnemy);
+                }
+
+            }
+            System.out.println();
+        }
+    }
+
+    public void initDisplayMap(Map map){
+        for(i=0;i<row;i++){
+            for(j=0;j<col;j++){
+                this.map[i][j] = 0;
+                if(map.getIndex(i,j) == 2){
+                    this.map[i][j] = 1;
+                }
+            }
+            System.out.println();
+        }
+    }
+
+    public void updateMapTravel(Map map,int row,int col){
+        if(map.getIndex(row,col) == 3){
+            this.map[row][col] = 3;
+        }else{
+            this.map[row][col] = 2;
+        }
+    }
+
+    public void setTravelled(Map map, int row,int col){
+        if(map.getIndex(row,col) == 3){
+            this.map[row][col] = 4;
+        }else if(map.getIndex(row,col) == 4){
+            this.map[row][col] = 5;
+        }else{
+            this.map[row][col] = 1;
         }
     }
 
@@ -115,4 +179,5 @@ public abstract class Map {
         }
         return new Abarquez();
     }
+
 }
