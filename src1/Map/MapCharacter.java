@@ -1,10 +1,18 @@
 package Map;
 
+import Combat.Combat;
+import Display.*;
+import Enemy.Monster;
+import Player.Character;
+
 import java.util.Scanner;
-import Display.MapNarrative;
-import Map.Map;
 
 public class MapCharacter {
+    MapDisplay mapNar =  new MapDisplay();
+    Combat combat = new Combat();
+    CombatDisplay combDisplay = new CombatDisplay();
+    TextDisplay text = new TextDisplay();
+
     private int row;
     private int col;
 
@@ -42,28 +50,30 @@ public class MapCharacter {
     }
 
     public void displayDirections(){
-        System.out.println("Which way are you moving?");
-        System.out.println("1: North");
-        System.out.println("2: South");
-        System.out.println("3: West");
-        System.out.println("4: East");
-        System.out.println("--------------------------");
+        text.printSystemMessage("Which way are you moving?");
+        text.printSystemMessage("1: North");
+        text.printSystemMessage("2: South");
+        text.printSystemMessage("3: West");
+        text.printSystemMessage("4: East");
+        text.lineBreak();
         System.out.println();
     }
-    public void explore(Map map, MapNarrative charMonologue){
+    public void explore(Map map, Character player){
+
+        Monster enemy;
         Scanner scanner = new Scanner(System.in);
         int movement = 0;
         boolean isExploring = true;
         boolean isEnabled;
 
         //Disposeable
-        System.out.println("Test Map:");
+        text.printSystemMessage("Test Map:");
         map.viewMap();
         System.out.println();
         System.out.println();
         //END
 
-        System.out.println("Exploring: " + map.name);
+        text.printSystemMessage("Exploring: " + player.name);
 
         setRow(map.getStartingRow());
         setCol(map.getStartingCol());
@@ -75,25 +85,25 @@ public class MapCharacter {
                     System.out.print("\t Select: ");
                     movement = scanner.nextInt();
                     if(movement <= 0 || movement > 4){
-
+                        mapNar.displayMapConfused(player);
                     }
                     else{
                         isEnabled = false;
                     }
                 }catch(Exception e){
-
+                    mapNar.displayMapConfused(player);
                     scanner.next();
                 }
             }
 
             System.out.println();
             System.out.println("========================");
-            System.out.println(":");
+            System.out.println(player.name + ":");
 
             switch(movement){
                 case 1:
                     if(getRow() == 0){
-
+                        mapNar.displayMapBlocked(player);
                     }
                     else{
                         up();
@@ -101,7 +111,7 @@ public class MapCharacter {
                     break;
                 case 2:
                     if(getRow() >= map.getMapRow() - 1){
-                        //charMonologue.displayMapBlocked();
+                        mapNar.displayMapBlocked(player);
                     }
                     else{
                         down();
@@ -109,7 +119,7 @@ public class MapCharacter {
                     break;
                 case 3:
                     if(getCol() == 0){
-                        //charMonologue.displayMapBlocked();
+                        mapNar.displayMapBlocked(player);
                     }
                     else{
                         left();
@@ -117,7 +127,7 @@ public class MapCharacter {
                     break;
                 case 4:
                     if(getCol() >= map.getMapCol() - 1){
-                        //charMonologue.displayMapBlocked();
+                        mapNar.displayMapBlocked(player);
                     }
                     else{
                         right();
@@ -130,19 +140,24 @@ public class MapCharacter {
 
             switch(map.getIndex(getRow(),getCol())){
                 case 0:
-                    //charMonologue.displayEmptySpot();
+                    mapNar.displayEmptySpot(player);
                     break;
                 case 1:
-                    //charMonologue.displayEnemyEncounter();
+                    mapNar.displayEnemyEncounter(player);
+                    enemy = map.MonsterSpawn(player.getMap());
+                    combDisplay.enemyStatsSummary(enemy);
+
+                    combat.battle(player, enemy);
                     break;
                 case 2:
-                    //charMonologue.displayEntrance();
-                    System.out.println("This is where I started");
+                    mapNar.displayEntrance(player);
+                    text.printDialogue(player, "This is where I started");
                     break;
                 case 3:
-                    //charMonologue.displayExit();
-                    System.out.println("--Assuming they met the conditions--");
+                    mapNar.displayExit(player);
+                    text.printSystemMessage("--Assuming they met the conditions--");
                     isExploring = false;
+                    player.setMap(player.getMap() + 1);
                     break;
                 default: break;
             }

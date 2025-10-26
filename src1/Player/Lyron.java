@@ -19,9 +19,8 @@ public class Lyron extends Character{
         setMaxHp(250);
         setHp(getMaxHp());
         setMaxShield(50);
-        //this.ps.Lyron();
-        //this.as.Lyron();
-        setLevel(5);
+        setMap(1);
+        setLevel(1, 1);
 
         narrative.setQuotes(quotes);
     }

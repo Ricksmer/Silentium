@@ -19,7 +19,7 @@ public class Combat {
 
     private boolean isGameOver = false;
 
-    public void battle(Character player, Monster enemy) {
+    public void battle(Character player,Monster enemy) {
         combDisplay.battleStart();
         int beat;
 
@@ -30,7 +30,10 @@ public class Combat {
 
             //Game Check
             isGameOver = isEnemyDefeated(enemy);
-            if (isGameOver) break;
+            if (isGameOver) {
+                player.setLevel(player.getLevel() + 1, player.getMap());
+                break;
+            }
 
             //Enemy Attack
             // SONARA PASSIVE

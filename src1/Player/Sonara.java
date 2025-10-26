@@ -19,9 +19,8 @@ public class Sonara extends Character{
         setMaxHp(150);
         setHp(getMaxHp());
         setMaxShield(35);
-        //this.ps.Sonara();
-        //this.as.Sonara();
-        setLevel(5);
+        setMap(1);
+        setLevel(1, getMap());
 
         narrative.setQuotes(quotes);
     }

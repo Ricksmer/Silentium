@@ -14,6 +14,7 @@ public abstract class Character {
     private int level;
     private double damageBuff;
     private int monstersDefeated = 0;
+    private int map;
 
     public Dialogue narrative = new Dialogue();
 
@@ -25,8 +26,23 @@ public abstract class Character {
     public void setShield(int shield) { this.shield = shield; }
 
     public int getLevel() { return level; }
-    public void setLevel(int level) {
-        this.level = level;
+    public void setLevel(int level, int map) {
+        if(map==1){
+            if(this.level < 3){
+                this.level = level;
+            }
+        }else if(map==2){
+            if(this.level < 5){
+                this.level = level;
+            }
+        }
+    }
+
+    public int getMap() { return map; }
+    public void setMap(int map) {
+        if(this.map < 3){
+            this.map = map;
+        }
     }
 
     public int getMaxHp() { return maxHp; }
