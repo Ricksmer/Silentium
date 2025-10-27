@@ -12,8 +12,7 @@ public class Lyron extends Character{
         name = "Lyron";
         instrument = "The Shattered Harmony";
         ps.skillName = "The winner takes it all";
-        ps.skillDescription = "In a successful metronome synchronization Reduces the final damage output by 25%. \n" +
-                "Lyron gains 25% of the final damage points as shielding points";
+        ps.skillDescription = "In a successful metronome synchronization Reduces the final damage output by 25%. Lyron gains 25% of the final damage points as shielding points";
         as.skillName = "Musical Roulette";
         as.skillDescription = "Lyron can reroll the notes to reset their damage output.";
         setMaxHp(250);

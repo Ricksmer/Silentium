@@ -13,6 +13,7 @@ public class MapCharacter {
     CombatDisplay combDisplay = new CombatDisplay();
     TextDisplay text = new TextDisplay();
 
+    private int mapIdNum;
     private int row;
     private int col;
 
@@ -51,10 +52,10 @@ public class MapCharacter {
 
     public void displayDirections(){
         text.printSystemMessage("Which way are you moving?");
-        text.printSystemMessage("1: North");
-        text.printSystemMessage("2: South");
-        text.printSystemMessage("3: West");
-        text.printSystemMessage("4: East");
+        text.printSystemMessage("[ 1 ] \t---> \tNorth");
+        text.printSystemMessage("[ 2 ] \t---> \tSouth");
+        text.printSystemMessage("[ 3 ] \t---> \tWest");
+        text.printSystemMessage("[ 4 ] \t---> \tEast");
         text.lineBreak();
         System.out.println();
     }

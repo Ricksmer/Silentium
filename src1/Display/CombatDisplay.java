@@ -63,19 +63,18 @@ public class CombatDisplay implements CombatPrint, InputPrint{
     }
 
     public void playerStatsSummary(Character player){
-        text.printSystemMessage("---     " + player.name + "     ---");
-        text.printSystemMessage("---    ( Player )     ---");
+        text.printSystemMessage("=====    \t\t" + player.name + "\t(Player) \t\t     =====");
         System.out.println();
-        text.printSystemMessage("Level: " + player.getLevel());
-        text.printSystemMessage("Instrument: " + player.instrument);
-        text.printSystemMessage("HP: " + player.getHp() + " / " +  player.getMaxHp());
-        text.printSystemMessage("Shield: " + player.getShield() + " / " +  player.getMaxShield());
+        text.printSystemMessage("Level: \t\t\t" + player.getLevel());
+        text.printSystemMessage("Instrument: \t\t" + player.instrument);
+        text.printSystemMessage("HP: \t\t\t\t" + player.getHp() + " / " +  player.getMaxHp());
+        text.printSystemMessage("Shield: \t\t\t" + player.getShield() + " / " +  player.getMaxShield());
         System.out.println();
     }
 
     public void enemyStatsSummary(Monster enemy){
-        text.printSystemMessage("---     " + enemy.name + "     ---");
-        text.printSystemMessage("---    ( Monster )     ---");
+        text.printSystemMessage("=====    \t\t" + enemy.name + "\t(Monster) \t\t     =====");
+
         System.out.println();
         text.printSystemMessage("HP: " + enemy.getHp() + " / " +  enemy.getMaxHp());
         System.out.println();
@@ -95,7 +94,7 @@ public class CombatDisplay implements CombatPrint, InputPrint{
             text.printSystemMessage("[ E ] --->  \t{ 16 - 21 }");
         }
 
-        if(player.getHp() <= 4){
+        if(player.getHp() >= 3){
             text.printSystemMessage("[ F ] --->  \t{ 19 - 23 }");
             text.printSystemMessage("[ G ] --->  \t{ 21 - 24 }");
         }
