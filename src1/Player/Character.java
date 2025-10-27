@@ -4,6 +4,7 @@ import Display.*;
 import org.w3c.dom.Text;
 
 public abstract class Character {
+    Dialogue dialogue = new Dialogue();
     TextDisplay text = new TextDisplay();
     public String name;
     public String instrument;
@@ -29,16 +30,20 @@ public abstract class Character {
 
     public int getLevel() { return level; }
     public void setLevel(int level) { this.level = level; }
-    public void levelUp(){
+    public void levelUp(Character player){
         if(map==1){
             if(level < 3){
                 level++;
+                if(level==2) dialogue.firstLevelUp(player);
+                if(level==3) dialogue.secondLevelUp(player);
                 maxHp += 50;
                 text.printSystemMessage("Player leveled up!");
             }
         }else if(map==2){
             if(level < 5){
                 level++;
+                if(level==4) dialogue.thirdLevelUp(player);
+                if(level==5) dialogue.fourthLevelUp(player);
                 maxHp += 50;
                 text.printSystemMessage("Player leveled up!");
             }

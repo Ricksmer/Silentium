@@ -37,7 +37,7 @@ public class Combat {
             //Game Check
             isGameOver = isEnemyDefeated(enemy);
             if (isGameOver) {
-                player.levelUp();
+                player.levelUp(player);
                 break;
             }
 
@@ -47,7 +47,7 @@ public class Combat {
                 damage = player.ps.skillEffect(enemy);
                 isGameOver = isEnemyDefeated(enemy);
                 if (isGameOver) {
-                    player.levelUp();
+                    player.levelUp(player);
                     break;
                 }
             } else {
