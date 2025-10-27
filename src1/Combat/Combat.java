@@ -177,14 +177,6 @@ public class Combat {
             enemy.setHp(0);
             isGameOver = true;
 
-            System.out.println("You win!");
-            System.out.println("Victory Bonus: Checking for item drop...");
-
-            // Try to drop item based on battle number
-            inventory.tryDrop();
-
-            // Show updated inventory
-            inventory.showInventory();
             return true;
         }
         return false;

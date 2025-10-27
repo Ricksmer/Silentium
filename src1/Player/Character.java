@@ -1,11 +1,13 @@
 package Player;
 
 import Display.*;
+import Inventory.Inventory;
 import org.w3c.dom.Text;
 
 public abstract class Character {
     Dialogue dialogue = new Dialogue();
     TextDisplay text = new TextDisplay();
+    Inventory inventory = new Inventory();
     public String name;
     public String instrument;
     public PassiveSkill ps = new PassiveSkill();
@@ -38,6 +40,13 @@ public abstract class Character {
                 if(level==3) dialogue.secondLevelUp(player);
                 maxHp += 50;
                 text.printSystemMessage("Player leveled up!");
+            } else{
+                System.out.println("You win!");
+                System.out.println("Victory Bonus: Checking for item drop...");
+                // Try to drop item based on battle number
+                inventory.tryDrop();
+                // Show updated inventory
+                inventory.showInventory();
             }
         }else if(map==2){
             if(level < 5){
@@ -46,6 +55,13 @@ public abstract class Character {
                 if(level==5) dialogue.fourthLevelUp(player);
                 maxHp += 50;
                 text.printSystemMessage("Player leveled up!");
+            } else{
+                System.out.println("You win!");
+                System.out.println("Victory Bonus: Checking for item drop...");
+                // Try to drop item based on battle number
+                inventory.tryDrop();
+                // Show updated inventory
+                inventory.showInventory();
             }
         }
     }
