@@ -86,6 +86,9 @@ public class CombatDisplay implements CombatPrint, InputPrint{
         text.printSystemMessage("=====    \t\t" + enemy.name + "\t(Monster) \t\t     =====");
 
         System.out.println();
+        if(enemy.getHp() <= 0)
+            enemy.setHp(0);
+
         text.printSystemMessage("HP: " + enemy.getHp() + " / " +  enemy.getMaxHp());
         System.out.println();
 

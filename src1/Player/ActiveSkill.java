@@ -11,6 +11,7 @@ public class ActiveSkill {
     public String skillName;
     public String skillDescription;
     public boolean skillActive = false;
+    public boolean isUsed = false;
 
     public void useSkill(Character player){
         System.out.println();
@@ -20,31 +21,36 @@ public class ActiveSkill {
         text.printSystemMessage(player.as.skillDescription);
         System.out.println();
 
-        do{
-            text.printSystemInput("Activate Skill? [ Y / N ]: ");
+        if(isUsed){
+            System.out.println("You already used this skill!");
+        } else{
+            do{
+                text.printSystemInput("Activate Skill? [ Y / N ]: ");
 
-            try{
-                char ans = sc.next().toUpperCase().charAt(0);
-                if(ans == 'Y'){
-                    player.as.skillActive = true;
-                }else  if(ans == 'N'){
-                    player.as.skillActive = false;
-                }else{
+                try{
+                    char ans = sc.next().toUpperCase().charAt(0);
+                    if(ans == 'Y'){
+                        player.as.skillActive = true;
+                        isUsed = true;
+                    }else  if(ans == 'N'){
+                        player.as.skillActive = false;
+                    }else{
+                        System.out.println();
+                        text.printSystemMessage("--- Invalid Input --- ");
+                        System.out.println();
+                        continue;
+                    }
+
+                    text.lineBreak();
+                    break;
+                }catch(InputMismatchException e){
                     System.out.println();
                     text.printSystemMessage("--- Invalid Input --- ");
                     System.out.println();
-                    continue;
                 }
 
-                text.lineBreak();
-                break;
-            }catch(InputMismatchException e){
-                System.out.println();
-                text.printSystemMessage("--- Invalid Input --- ");
-                System.out.println();
-            }
-
-        }while(true);
+            }while(true);
+        }
 
 
     }
