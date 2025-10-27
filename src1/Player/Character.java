@@ -33,11 +33,13 @@ public abstract class Character {
         if(map==1){
             if(level < 3){
                 level++;
+                maxHp += 50;
                 text.printSystemMessage("Player leveled up!");
             }
         }else if(map==2){
             if(level < 5){
                 level++;
+                maxHp += 50;
                 text.printSystemMessage("Player leveled up!");
             }
         }

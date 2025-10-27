@@ -83,17 +83,22 @@ public class CombatDisplay implements CombatPrint, InputPrint{
 
     }
 
-    public void displayValidNotes(){
+    public void displayValidNotes(Character player){
         text.printSystemMessage("\t\t--- Valid Notes ---");
         text.printSystemMessage("\tNOTE \tDAMAGE RANGE");
         System.out.println();
         text.printSystemMessage("\t [ A ] --->  \t { 1 - 10 } ");
         text.printSystemMessage("\t [ B ] --->  \t { 5 - 13 } ");
         text.printSystemMessage("\t [ C ] --->  \t { 9 - 16 } ");
-        text.printSystemMessage("\t [ D ] --->  \t{ 12 - 18 }");
-        text.printSystemMessage("\t [ E ] --->  \t{ 16 - 21 }");
-        text.printSystemMessage("\t [ F ] --->  \t{ 19 - 23 }");
-        text.printSystemMessage("\t [ G ] --->  \t{ 21 - 24 }");
+        if(player.getLevel() >= 2){
+            text.printSystemMessage("\t [ D ] --->  \t{ 12 - 18 }");
+            text.printSystemMessage("\t [ E ] --->  \t{ 16 - 21 }");
+        }
+
+        if(player.getHp() <= 4){
+            text.printSystemMessage("\t [ F ] --->  \t{ 19 - 23 }");
+            text.printSystemMessage("\t [ G ] --->  \t{ 21 - 24 }");
+        }
         System.out.println();
     }
 

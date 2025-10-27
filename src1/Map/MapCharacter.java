@@ -109,7 +109,7 @@ public class MapCharacter {
             }
 
             System.out.println();
-            System.out.println("========================");
+            text.printSystemMessage("========================");
             System.out.println(player.name + ":");
 
             switch(movement){

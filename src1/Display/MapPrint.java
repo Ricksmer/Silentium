@@ -12,4 +12,5 @@ public interface MapPrint {
     public abstract void displayEntrance(Character player);
 
     public abstract void displayMap(Character player, Map map, Map mapDisp);
+
 }

@@ -22,6 +22,7 @@ public class Combat {
     public void battle(Character player,Monster enemy) {
         combDisplay.battleStart();
         int beat;
+        mt.reset();
         int damage;
         isGameOver = false;
 
@@ -42,6 +43,11 @@ public class Combat {
             // SONARA PASSIVE
             if (player.name.equals("Sonara")) {
                 damage = player.ps.skillEffect(enemy);
+                isGameOver = isEnemyDefeated(enemy);
+                if (isGameOver) {
+                    player.levelUp();
+                    break;
+                }
             } else {
                 damage = enemyAttack(enemy);
             }
@@ -104,12 +110,12 @@ public class Combat {
         if (nt.isValidNote(n1, player) && nt.isValidNote(n2, player) && nt.isValidNote(n3, player)) {
             if (n1 == n2 || n1 == n3 || n2 == n3) {
                 text.printSystemMessage(" --- Duplicate notes detected! Please enter different notes. ---\n");
-                combDisplay.displayValidNotes();
+                combDisplay.displayValidNotes(player);
             }else{
                 return true;
             }
         } else {
-            combDisplay.displayValidNotes();
+            combDisplay.displayValidNotes(player);
         }
         return false;
     }
@@ -140,21 +146,18 @@ public class Combat {
         //SONARA'S ACTIVE SKILL
         if(player.name.equals("Sonara")) { initialDamage = player.as.skillEffect(player, initialDamage); }
 
-        //Metronome
-        text.printSystemMessage("Metronome: " + beat);
-        int finalDamage= mt.updateBeat(player, initialDamage);
+        if(player.getLevel() > 1){
+            //Metronome
+            text.printSystemMessage("Metronome: " + beat);
+            int finalDamage= mt.updateBeat(player, initialDamage);
 
-        //Final Damage
-        text.printSystemMessage("Final Damage: " + finalDamage);
+            //Final Damage
+            text.printSystemMessage("Final Damage: " + finalDamage);
 
-
-        return finalDamage;
+            return finalDamage;
+        }
+        return initialDamage;
     }
-
-    /*
-    public void printStats(Character player, Character enemy){
-    }
-    */
 
     public boolean isPlayerDefeated(Character player){
         if(player.getHp()<=0) {
@@ -182,7 +185,7 @@ public class Combat {
         boolean isTurnOver;
         int action = 0;
         boolean isEnabled;
-        text.printSystemMessage("Metronome: " + beat);
+        if(player.getLevel() > 1) text.printSystemMessage("Metronome: " + beat);
         nt.generateNotes();
 
         do {
