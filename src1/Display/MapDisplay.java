@@ -37,6 +37,7 @@ public class MapDisplay implements MapPrint{
                     "\t\tThe air is heavy, crushing, as if even breath is forbidden. Within this abyss, the hero makes their final stand.");
             text.lineBreak();
         }
+
     }
 
     public void displayMapConfused(Character player){
@@ -109,6 +110,7 @@ public class MapDisplay implements MapPrint{
         }else{
             mapDisp = new AbyssOfDissonance();
         }
+
 
         for(i=0;i<mapDisp.getMapRow();i++){
             for(j=0;j<mapDisp.getMapCol();j++){

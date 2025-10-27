@@ -16,11 +16,11 @@ public class TextDisplay{
     }
 
     public void printDialogue(Character player, String dialogue) {
-        System.out.println(BLUE + "[" + player.name + "]: " + RESET + dialogue);
+        System.out.println(BLUE + "\t[" + player.name + "]: " + RESET + "\t" + dialogue);
     }
 
     public void printDialogue(Monster enemy,String dialogue) {
-        System.out.println(RED + "[" + enemy.name+ "]: " + RESET + dialogue);
+        System.out.println(RED + "\t[" + enemy.name+ "]: " + RESET + "\t" + dialogue);
     }
 
     public void printSystemMessage(String message) {
