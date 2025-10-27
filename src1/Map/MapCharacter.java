@@ -56,7 +56,6 @@ public class MapCharacter {
         text.printSystemMessage("[ 2 ] \t---> \tSouth");
         text.printSystemMessage("[ 3 ] \t---> \tWest");
         text.printSystemMessage("[ 4 ] \t---> \tEast");
-        text.lineBreak();
         System.out.println();
     }
 
@@ -104,6 +103,8 @@ public class MapCharacter {
                     displayDirections();
                     text.printSystemInput("Select: ");
                     movement = sc.nextInt();
+                    System.out.println();
+                    text.lineBreak();;
                     if(movement <= 0 || movement > 4){
                         mapNar.displayMapConfused(player);
                     }
@@ -116,14 +117,12 @@ public class MapCharacter {
                 }
             }
 
-            System.out.println();
-            text.printSystemMessage("========================");
-            System.out.println(player.name + ":");
 
             switch(movement){
                 case 1:
                     if(getRow() == 0){
                         mapNar.displayMapBlocked(player);
+                        System.out.println();
                     }
                     else{
                         mapDisp.setTravelled(map, row,col);
@@ -165,13 +164,14 @@ public class MapCharacter {
                     break;
             }
 
-
             switch(map.getIndex(getRow(),getCol())){
                 case 0:
                     mapNar.displayEmptySpot(player);
+                    text.lineBreak();
                     break;
                 case 1:
                     mapNar.displayEnemyEncounter(player);
+                    text.lineBreak();
                     enemy = map.MonsterSpawn(player.getMap());
                     combDisplay.enemyStatsSummary(enemy);
 
@@ -180,10 +180,11 @@ public class MapCharacter {
                     break;
                 case 2:
                     mapNar.displayEntrance(player);
-                    text.printDialogue(player, "This is where I started");
+                    text.lineBreak();
                     break;
                 case 3:
                     mapNar.displayExit(player);
+                    System.out.println();
                     text.printSystemInput("Enter? [ Y / N ]: ");
                     char tempOp = sc.next().charAt(0);
                     java.lang.Character.toUpperCase(tempOp);
@@ -219,11 +220,10 @@ public class MapCharacter {
                     }else if(tempOp == 'N'){
                         text.printSystemMessage("Travelling continues...");
                     }
+                    text.lineBreak();
                     break;
                 default: break;
             }
-
-            System.out.println("========================");
             System.out.println();
         }
     }
