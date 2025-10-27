@@ -28,7 +28,7 @@ public class GameMenu {
                     System.out.println();
                     if(charSelect < 0 || charSelect > 3){
                         System.out.println();
-                        text.printSystemMessage("\t --- Invalid Input ---");
+                        text.printSystemError("\t --- Invalid Input ---");
                         System.out.println();
 
                         text.printSystemInput("\t Select: ");

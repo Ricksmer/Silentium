@@ -11,6 +11,6 @@ public interface CombatPrint {
     void playerStatsSummary(Character player);
     void enemyStatsSummary(Monster enemy);
 
-    void displayValidNotes();
+    void displayValidNotes(Character player);
     void chordChart(ChordSystem chordSystem);
 }

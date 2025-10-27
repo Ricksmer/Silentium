@@ -85,7 +85,7 @@ public class Combat {
 
             isValidAttack = checkNotes(player, note1, note2, note3);
             if(!isValidAttack){
-                text.printSystemMessage("Please re-enter your notes.");
+                text.printSystemError("Please re-enter your notes.");
             }
         }
         //Note Input
@@ -111,7 +111,7 @@ public class Combat {
     public boolean checkNotes(Character player,char n1, char n2, char n3) {
         if (nt.isValidNote(n1, player) && nt.isValidNote(n2, player) && nt.isValidNote(n3, player)) {
             if (n1 == n2 || n1 == n3 || n2 == n3) {
-                text.printSystemMessage(" --- Duplicate notes detected! Please enter different notes. ---\n");
+                text.printSystemError(" --- Duplicate notes detected! Please enter different notes. ---\n");
                 combDisplay.displayValidNotes(player);
             }else{
                 return true;
@@ -211,7 +211,7 @@ public class Combat {
                     System.out.println();
                     if(action <= 0 || action >6){
                         System.out.println();
-                        text.printSystemMessage("--- Invalid Input ---");
+                        text.printSystemError("--- Invalid Input ---");
                         System.out.println();
                         text.printSystemInput("Select: ");
                     }
@@ -221,7 +221,7 @@ public class Combat {
                 }
                 catch(Exception e){
                     System.out.println();
-                    text.printSystemMessage("--- Invalid Input ---");
+                    text.printSystemError("--- Invalid Input ---");
                     System.out.println();
                     text.printSystemInput("Select: ");
                     sc.next();

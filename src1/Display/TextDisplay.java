@@ -27,6 +27,10 @@ public class TextDisplay{
         System.out.println(GREEN + "\t\t " + message.toUpperCase() + RESET);
     }
 
+    public void printSystemError(String message) {
+        System.out.println(RED + "\t\t" + message.toUpperCase() + RESET);
+    }
+
     public void printMap(String message) {
         System.out.print(GREEN + "\t\t " + message.toUpperCase() + RESET);
     }

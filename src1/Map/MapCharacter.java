@@ -73,12 +73,10 @@ public class MapCharacter {
         boolean isExploring = true;
         boolean isEnabled;
 
-        //Disposeable
-        text.printSystemMessage("Test Map:");
-
         //END
 
         text.printSystemMessage("Exploring: " + player.name);
+        System.out.println();
 
         setRow(map.getStartingRow());
         setCol(map.getStartingCol());
@@ -94,7 +92,7 @@ public class MapCharacter {
             while(isEnabled){
                 try{
                     displayDirections();
-                    System.out.print("\t Select: ");
+                    text.printSystemInput("Select: ");
                     movement = sc.nextInt();
                     if(movement <= 0 || movement > 4){
                         mapNar.displayMapConfused(player);
