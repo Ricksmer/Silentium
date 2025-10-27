@@ -234,6 +234,7 @@ public class Combat {
                     player.as.useSkill(player);
                     break;
                 case 3:
+                    //inventory.showInventory();
                     text.printSystemMessage("Inventory is currently empty.");
                     break;
                 case 4:
