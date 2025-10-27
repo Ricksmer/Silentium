@@ -16,8 +16,13 @@ public class Main {
     static Combat combat = new Combat();
     static Map map;
     static MapCharacter mapChar = new MapCharacter();
-
+    static AsciiArt art = new AsciiArt();
     public static void main(String[] args) {
+
+        art.displayTitle();
+        art.sonaraAscii();
+        art.lyronAscii();
+        art.aureliusAscii();
 
         player = game.CharacterSelect();
         combDisplay.characterDisplay(player);
