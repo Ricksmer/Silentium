@@ -1,0 +1,80 @@
+package Inventory;
+
+import java.util.ArrayList;
+import java.util.Random;
+
+public class Inventory {
+    private ArrayList<Item> items = new ArrayList<>();
+    private Random rd = new Random();
+
+    // total battles fought (for drop loot progression)
+    private int battleCount = 0;
+
+    // Add item to inventory
+    public void addItem(Item item) {
+        items.add(item);
+        System.out.println("\nItem obtained: " + item.getName() + " - " + item.getDescription());
+    }
+
+    public void tryDrop() {
+        battleCount++;
+        double dropChance;
+
+        // Progressive drop chance
+        if (battleCount <= 2) {
+            dropChance = 0.25; // 25% drop rate early game
+        } else if (battleCount <= 4) {
+            dropChance = 0.50; // 50% drop rate mid game
+        } else {
+            dropChance = 0.75; // 75% drop rate later battles
+        }
+
+        double roll = rd.nextDouble();
+
+        if (roll < dropChance) {
+            randomDrop();
+        } else {
+            System.out.println("No items dropped this time...");
+        }
+    }
+
+    // Random drop selector
+    private void randomDrop() {
+        int roll = rd.nextInt(5);
+        Item dropped = null;
+
+        switch (roll) {
+            case 0:
+                dropped = new Item("Crimson Chorus", "Enemies take 5–10% more damage for 2–3 turns.");
+                break;
+            case 1:
+                dropped = new Item("Silent Barrier", "1 turn of full immunity.");
+                break;
+            case 2:
+                dropped = new Item("Resolved Dissonance", "Next B Dim doesn’t cost HP.");
+                break;
+            case 3:
+                dropped = new Item("Minor’s Grace", "+1 free Minor chord use.");
+                break;
+            case 4:
+                dropped = new Item("Major’s Blessing", "+1 free Major chord use.");
+                break;
+        }
+
+        if (dropped != null) {
+            addItem(dropped);
+        }
+    }
+
+    // View inventory
+    public void showInventory() {
+        if (items.isEmpty()) {
+            System.out.println("Inventory is empty.");
+            return;
+        }
+        System.out.println("\n=== Inventory ===");
+        for (Item i : items) {
+            System.out.println("- " + i.getName() + ": " + i.getDescription());
+        }
+    }
+}

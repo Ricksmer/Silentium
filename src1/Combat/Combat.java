@@ -4,6 +4,7 @@ import java.util.Scanner;
 import java.util.Random;
 
 import Display.TextDisplay;
+import Inventory.Inventory;
 import Player.Character;
 import Enemy.Monster;
 import Display.CombatDisplay;
@@ -16,6 +17,7 @@ public class Combat {
     Random rd = new Random();
     Scanner sc = new Scanner(System.in);
     ChordSystem chordSystem = new ChordSystem();
+    Inventory inventory = new Inventory();
 
     private boolean isGameOver;
 
@@ -171,11 +173,18 @@ public class Combat {
     }
 
     public boolean isEnemyDefeated(Monster enemy){
-        if(enemy.getHp()<=0){
+        if(enemy.getHp() <= 0){
             enemy.setHp(0);
             isGameOver = true;
 
-            combDisplay.battleEnd(true);
+            System.out.println("You win!");
+            System.out.println("Victory Bonus: Checking for item drop...");
+
+            // Try to drop item based on battle number
+            inventory.tryDrop();
+
+            // Show updated inventory
+            inventory.showInventory();
             return true;
         }
         return false;
