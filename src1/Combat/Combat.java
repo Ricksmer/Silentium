@@ -198,7 +198,7 @@ public class Combat {
 
             nt.damagePerNote(player);
             isTurnOver = false;
-            combDisplay.turnAction();
+            combDisplay.turnAction(player);
             isEnabled = true;
             while(isEnabled){
                 try{

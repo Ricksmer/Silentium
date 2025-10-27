@@ -19,11 +19,6 @@ public class Main {
     static AsciiArt art = new AsciiArt();
     public static void main(String[] args) {
 
-        art.displayTitle();
-        art.lyronAscii();
-        art.sonaraAscii();
-        art.aureliusAscii();
-
         player = game.CharacterSelect();
         combDisplay.characterDisplay(player);
 

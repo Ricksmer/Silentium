@@ -163,6 +163,7 @@ public abstract class Map {
     }
 
     public Monster MonsterSpawn(int map){
+        text.printSystemMessage("\t\tMONSTER FOUND!");
         Random rd = new Random();
         int op = 1;
 
