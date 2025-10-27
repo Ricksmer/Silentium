@@ -77,10 +77,13 @@ public class Combat {
 
             text.printSystemInput("#1:   ");
             note1 = sc.next().charAt(0);
+            java.lang.Character.toUpperCase(note1);
             text.printSystemInput("#2:   ");
             note2 = sc.next().charAt(0);
+            java.lang.Character.toUpperCase(note2);
             text.printSystemInput("#3:   ");
             note3 = sc.next().charAt(0);
+            java.lang.Character.toUpperCase(note3);
             System.out.println();
 
             isValidAttack = checkNotes(player, note1, note2, note3);
@@ -231,6 +234,7 @@ public class Combat {
                     player.as.useSkill(player);
                     break;
                 case 3:
+                    //inventory.showInventory();
                     text.printSystemMessage("Inventory is currently empty.");
                     break;
                 case 4:

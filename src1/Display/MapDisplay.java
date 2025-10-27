@@ -10,11 +10,12 @@ public class MapDisplay implements MapPrint{
         if(map == 1){
             text.lineBreak();
             text.printSystemMessage("ENTERING: RUINED TOWN OF ECHOES");
+            System.out.println();
             text.printNarration("The Ruined Town stands as a skeleton of what once was, its walls cracked and leaning, roofs caved in, and windows nothing more than gaping holes.\n" +
-                    "Dust settles thick on streets where no footsteps fall, and weeds grow wild between the stones, claiming what the people left behind.\n" +
-                    "The air feels heavy, as if the place itself remembers the weight of life that once filled it.\n" +
-                    "Every corner, every broken doorway, suggests a story cut short—homes abandoned, lives forgotten, yet the stillness keeps it all locked away.\n" +
-                    "It is a place where time lingers, unmoving, waiting for something to stir it again..");
+                    "\t\tDust settles thick on streets where no footsteps fall, and weeds grow wild between the stones, claiming what the people left behind.\n" +
+                    "\t\tThe air feels heavy, as if the place itself remembers the weight of life that once filled it.\n" +
+                    "\t\tEvery corner, every broken doorway, suggests a story cut short—homes abandoned, lives forgotten, yet the stillness keeps it all locked away.\n" +
+                    "\t\tIt is a place where time lingers, unmoving, waiting for something to stir it again..");
             text.lineBreak();
         }
 
@@ -22,9 +23,9 @@ public class MapDisplay implements MapPrint{
             text.lineBreak();
             text.printSystemMessage("ENTERING: SILENT CAVERNS");
             text.printNarration("Beneath the shattered town lies a cave swallowed in darkness, where silence is absolute and every sound is hunted.\n" +
-                    "The monsters here are born from broken echoes, feeding on any stray note that dares to exist.\n" +
-                    "In this suffocating void, the hero presses forward, wielding their instruments not as fragile relics but as powerful weapons that defy the silence itself.\n" +
-                    "Every melody played is a strike against the creeping stillness, a prelude to the final confrontation with the one who seeks to erase all sound.");
+                    "\t\tThe monsters here are born from broken echoes, feeding on any stray note that dares to exist.\n" +
+                    "\t\tIn this suffocating void, the hero presses forward, wielding their instruments not as fragile relics but as powerful weapons that defy the silence itself.\n" +
+                    "\t\tEvery melody played is a strike against the creeping stillness, a prelude to the final confrontation with the one who seeks to erase all sound.");
             text.lineBreak();
         }
 
@@ -32,8 +33,8 @@ public class MapDisplay implements MapPrint{
             text.lineBreak();
             text.printSystemMessage("ENTERING: ABYSS OF DISSONANCE");
             text.printNarration("At the edge of the world lies the Abyss, a realm where silence is no longer absence but a living hunger.\n" +
-                    "Here dwells the sovereign who loathes sound, a being that devoured every whisper, every song, and twisted them into a void of unending quiet.\n" +
-                    "The air is heavy, crushing, as if even breath is forbidden. Within this abyss, the hero makes their final stand.");
+                    "\t\tHere dwells the sovereign who loathes sound, a being that devoured every whisper, every song, and twisted them into a void of unending quiet.\n" +
+                    "\t\tThe air is heavy, crushing, as if even breath is forbidden. Within this abyss, the hero makes their final stand.");
             text.lineBreak();
         }
     }

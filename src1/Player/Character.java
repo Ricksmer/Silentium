@@ -41,10 +41,9 @@ public abstract class Character {
                 maxHp += 50;
                 text.printSystemMessage("Player leveled up!");
             } else{
-                text.printSystemMessage("Victory Bonus: Checking for item drop...");
-                // Try to drop item based on battle number
+                System.out.println("You win!");
+                System.out.println("Victory Bonus: Checking for item drop...");
                 inventory.tryDrop();
-                // Show updated inventory
                 inventory.showInventory();
             }
         }else if(map==2){
@@ -55,10 +54,9 @@ public abstract class Character {
                 maxHp += 50;
                 text.printSystemMessage("Player leveled up!");
             } else{
-                text.printSystemMessage("Victory Bonus: Checking for item drop...");
-                // Try to drop item based on battle number
+                System.out.println("You win!");
+                System.out.println("Victory Bonus: Checking for item drop...");
                 inventory.tryDrop();
-                // Show updated inventory
                 inventory.showInventory();
             }
         }
@@ -82,9 +80,9 @@ public abstract class Character {
     public int getHp() { return hp; }
 
     public void displayName() {
-        text.printSystemMessage("Name: " + name);
-        text.printSystemMessage("Instrument: " + instrument);
-        text.printSystemMessage("HP: " + hp);
+        System.out.println("Name: " + name);
+        System.out.println("Instrument: " + instrument);
+        System.out.println("HP: " + hp);
     }
 
 

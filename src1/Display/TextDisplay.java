@@ -12,7 +12,7 @@ public class TextDisplay{
 
     // --- Text Display Tools (Standard Output Methods) ---
     public void printNarration(String narration) {
-        System.out.println(YELLOW + ">>> " + narration + RESET);
+        System.out.println(YELLOW + "\t>>> " + narration + RESET);
     }
 
     public void printDialogue(Character player, String dialogue) {
@@ -24,7 +24,7 @@ public class TextDisplay{
     }
 
     public void printSystemMessage(String message) {
-        System.out.println(GREEN + "\t\t " + message.toUpperCase() + RESET);
+        System.out.println(GREEN + "\t\t" + message.toUpperCase() + RESET);
     }
 
     public void printSystemError(String message) {
@@ -45,7 +45,7 @@ public class TextDisplay{
     public void redText(String string) { System.out.println(RED + string + RESET); }
     public void yellowText(String string) { System.out.println(YELLOW + string + RESET); }
     public void lineBreak() {
-        System.out.println("\n\t--------------------------------------------------\n");
+        System.out.println("\n\t------------------------------------------------------------------------------------------------------------------------------------------------------\n");
     }
 }
 
