@@ -56,8 +56,8 @@ public class CombatDisplay implements CombatPrint, InputPrint{
 
     public void characterDisplay(Character player){
         playerStatsSummary(player);
-        text.printSystemMessage(" Passive Skill: " + player.ps.skillName+ "\n" + player.ps.skillDescription);
-        text.printSystemMessage(" Active Skill: " + player.as.skillName+ "\n" + player.as.skillDescription);
+        text.printSystemMessage("Passive Skill: \t" + player.ps.skillName+ "\n\t\t\t\t\t\t\t" + player.ps.skillDescription);
+        text.printSystemMessage("Active Skill: \t\t" + player.as.skillName+ "\n\t\t\t\t\t\t\t" + player.as.skillDescription);
         System.out.println();
         text.printSystemMessage("------------------------- ");
     }

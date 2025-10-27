@@ -15,7 +15,7 @@ public class Sonara extends Character{
         ps.skillName = "Body of Thorns";
         ps.skillDescription = "Upon receiving damage, The enemy receives 25% of shared true damage from the enemy’s inflicted damage.";
         as.skillName = "Melodic Impromptu";
-        as.skillDescription = " Sonara can add one (1) point to the initial damage.";
+        as.skillDescription = "Sonara can add one (1) point to the initial damage.";
         setMaxHp(150);
         setHp(getMaxHp());
         setMaxShield(35);

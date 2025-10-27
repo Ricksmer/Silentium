@@ -15,7 +15,7 @@ public class Aurelius extends Character{
         ps.skillDescription = "Chords heals 5% of Aurelius’ health\n" +
                 "After a chord, grants aurelius an extra turn but is limited to use one note.";
         as.skillName = "Conservatio";
-        as.skillDescription = " Aurelius can choose to preserve the selected notes' current damage for next turn.";
+        as.skillDescription = "Aurelius can choose to preserve the selected notes' current damage for next turn.";
         setMaxHp(150);
         setHp(getMaxHp());
         setMaxShield(40);
