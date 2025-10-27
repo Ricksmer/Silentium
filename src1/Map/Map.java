@@ -24,6 +24,7 @@ public abstract class Map {
     private boolean placingEnemies;
 
 
+
     public Map(int row, int col, int totalEnemies, String name){
         this.name = name;
         this.row = row;
@@ -140,7 +141,6 @@ public abstract class Map {
                     this.map[i][j] = 1;
                 }
             }
-            System.out.println();
         }
     }
 

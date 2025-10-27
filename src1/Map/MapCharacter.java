@@ -59,11 +59,21 @@ public class MapCharacter {
         text.lineBreak();
         System.out.println();
     }
+
     public void explore(Map map, Character player){
         Map mapDisp = null;
-        if(player.getMap() == 1){ mapDisp = new TownOfEchoes(); }
-        else if(player.getMap() == 2){ mapDisp = new SilentCaverns(); }
-        else{ mapDisp = new AbyssOfDissonance(); };
+        if(player.getMap() == 1){
+            mapDisp = new TownOfEchoes();
+            mapNar.mapIntroduction(1);
+        }
+        else if(player.getMap() == 2){
+            mapDisp = new SilentCaverns();
+            mapNar.mapIntroduction(2);
+        }
+        else{
+            mapDisp = new AbyssOfDissonance();
+            mapNar.mapIntroduction(3);
+        };
 
         mapDisp.initDisplayMap(map);
 
@@ -75,7 +85,6 @@ public class MapCharacter {
         boolean isEnabled;
 
         //END
-
         text.printSystemMessage("Exploring: " + player.name);
         System.out.println();
 
