@@ -104,13 +104,17 @@ public abstract class Map {
         }
     }
 
-    public void viewDisplayMap(){
+    public void viewDisplayMap(String mapName){
         char untravelled =  '\u25A1';
         char travelled =  '\u2022';
         char playerPos = '\u2b24';
         char nextMap = '\u2605';
         char onNextMap = '\u2606';
         char killedEnemy = '\u2715';
+
+        text.printSystemMessage("=== \t\t\t" + mapName + "\t\t\t\t===");
+        System.out.println();
+        System.out.print("\t\t\t");
 
         for(i=0;i<row;i++){
             for(j=0;j<col;j++){
@@ -119,7 +123,7 @@ public abstract class Map {
                 }else if(map[i][j] == 1){
                     text.printMap("" + travelled);
                 }else if(map[i][j] == 2){
-                    text.printMap("" + playerPos);
+                    text.printPlayerOnMap("" + playerPos);
                 }else if(map[i][j] == 3){
                     text.printMap("" + nextMap);
                 }else if(map[i][j] == 4){
@@ -130,6 +134,7 @@ public abstract class Map {
 
             }
             System.out.println();
+            System.out.print("\t\t\t");
         }
     }
 
@@ -163,7 +168,9 @@ public abstract class Map {
     }
 
     public Monster MonsterSpawn(int map){
-        text.printSystemMessage("\t\tMONSTER FOUND!");
+        text.redText("\t\t > \t\tMONSTER FOUND! \t\t<");
+        System.out.println();
+        System.out.println();
         Random rd = new Random();
         int op = 1;
 

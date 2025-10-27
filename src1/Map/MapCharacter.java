@@ -83,19 +83,12 @@ public class MapCharacter {
         boolean isExploring = true;
         boolean isEnabled;
 
-        //END
-        text.printSystemMessage("Exploring: " + player.name);
-        System.out.println();
-
         setRow(map.getStartingRow());
         setCol(map.getStartingCol());
         while(isExploring){
             isEnabled = true;
-            map.viewMap();
-            System.out.println();
-            System.out.println();
             mapDisp.setMapPos(row, col, 2);
-            mapDisp.viewDisplayMap();
+            mapDisp.viewDisplayMap(map.name);
             System.out.println();
             System.out.println();
             while(isEnabled){
@@ -107,12 +100,15 @@ public class MapCharacter {
                     text.lineBreak();;
                     if(movement <= 0 || movement > 4){
                         mapNar.displayMapConfused(player);
+                        text.lineBreak();
                     }
                     else{
                         isEnabled = false;
                     }
                 }catch(Exception e){
+                    text.lineBreak();
                     mapNar.displayMapConfused(player);
+                    text.lineBreak();
                     sc.next();
                 }
             }

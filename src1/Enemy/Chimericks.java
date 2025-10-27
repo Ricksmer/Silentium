@@ -12,5 +12,7 @@ public class Chimericks extends Monster {
         sk2Damage = rd.nextInt(15, 45 + 1);
         sk3Name = "Wrap-up";
         sk3Damage = rd.nextInt(30, 50 + 1);
+
+        monsterDescription = "Chimericks";
     }
 }

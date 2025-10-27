@@ -32,7 +32,15 @@ public class TextDisplay{
     }
 
     public void printMap(String message) {
-        System.out.print(GREEN + "\t\t " + message.toUpperCase() + RESET);
+        System.out.print(GREEN + "\t\t" + message.toUpperCase() + RESET);
+    }
+
+    public void printPlayerOnMap(String message) {
+        System.out.print(BLUE + "\t\t" + message.toUpperCase() + RESET);
+    }
+
+    public void printSystemAnnouncement(String message) {
+        System.out.println(YELLOW + "\t\t" + message.toUpperCase() + RESET);
     }
 
     public void printSystemInput(String message) {

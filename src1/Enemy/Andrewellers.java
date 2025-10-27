@@ -12,5 +12,7 @@ public class Andrewellers extends Monster{
         sk2Damage = rd.nextInt(10, 25 + 1);
         sk3Name = "Shatter Cry";
         sk3Damage = rd.nextInt(15, 25 + 1);
+
+        monsterDescription = "Andrewellers";
     }
 }

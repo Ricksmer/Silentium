@@ -12,5 +12,7 @@ public class Abarquez extends Monster {
         sk2Damage = rd.nextInt(25, 55 + 1);
         sk3Name = "Hammer Strike";
         sk3Damage = rd.nextInt(30, 65 + 1);
+
+        monsterDescription = "Abarquez the Abyss Guardian";
     }
 }

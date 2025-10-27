@@ -13,14 +13,14 @@ public class CombatDisplay implements CombatPrint, InputPrint{
 
     @Override
     public void battleStart(){
-        text.printSystemMessage("=============== Battle Start! ===============");
+        text.printSystemAnnouncement("========== \t\t B A T T L E     S T A R T! \t\t==========");
         System.out.println();
     }
 
     @Override
     public void battleEnd(Boolean isWin){
-        if(isWin) { text.printSystemMessage("==========   Y O U     W I N !   ==========\n"); }
-        else { text.printSystemMessage("==========   Y O U     L O S E !   ==========\n"); }
+        if(isWin) { text.printSystemAnnouncement("========== \t\t  Y O U     W I N !   \t\t==========\n"); }
+        else { text.printSystemMessage("========== \t\t  Y O U     L O S E!   \t\t==========\n"); }
     }
 
     public void noteInput(){
@@ -89,7 +89,8 @@ public class CombatDisplay implements CombatPrint, InputPrint{
         if(enemy.getHp() <= 0)
             enemy.setHp(0);
 
-        text.printSystemMessage("HP: " + enemy.getHp() + " / " +  enemy.getMaxHp());
+        text.printSystemMessage("HP: \t\t\t\t" + enemy.getHp() + " / " +  enemy.getMaxHp());
+        text.printSystemMessage("Description: \t\t" + enemy.monsterDescription);
         System.out.println();
 
     }

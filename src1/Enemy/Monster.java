@@ -5,6 +5,7 @@ import java.util.Random;
 
 public class Monster extends MonsterSkill{
     public String name;
+    public String monsterDescription;
     private int hp;
     private int maxHp;
 
@@ -32,10 +33,4 @@ public class Monster extends MonsterSkill{
         hp = 250;
     }
 
-    public void printStats() {
-        System.out.println("Enemy Monster");
-        System.out.println("=========================");
-        System.out.println("HP: " + getHp());
-        System.out.println();
-    }
 }
