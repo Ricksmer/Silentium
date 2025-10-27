@@ -20,8 +20,8 @@ public class Main {
     public static void main(String[] args) {
 
         art.displayTitle();
-        art.sonaraAscii();
         art.lyronAscii();
+        art.sonaraAscii();
         art.aureliusAscii();
 
         player = game.CharacterSelect();
