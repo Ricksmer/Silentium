@@ -19,8 +19,10 @@ public class Main {
     static AsciiArt art = new AsciiArt();
     public static void main(String[] args) {
 
+        art.displayTitle();
         player = game.CharacterSelect();
         combDisplay.characterDisplay(player);
+
 
         map = new TownOfEchoes();
         map.setMap();
