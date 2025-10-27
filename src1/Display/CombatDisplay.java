@@ -20,7 +20,7 @@ public class CombatDisplay implements CombatPrint, InputPrint{
     @Override
     public void battleEnd(Boolean isWin){
         if(isWin) { text.printSystemAnnouncement("========== \t\t  Y O U     W I N !   \t\t==========\n"); }
-        else { text.printSystemMessage("========== \t\t  Y O U     L O S E!   \t\t==========\n"); }
+        else { text.printSystemMessage("========== \t\t  Y O U     L O S E !   \t\t==========\n"); }
     }
 
     public void noteInput(){
