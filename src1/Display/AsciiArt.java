@@ -90,7 +90,6 @@ public class AsciiArt {
         System.out.println(art);
     }
 
-
     public void lyronAscii() {
         String art = """                           
                           .+%@@@@@@@@@%##%%%@@@@@%#-++.                         
@@ -129,8 +128,6 @@ public class AsciiArt {
   """;
         System.out.println(art);
     }
-
-
 
     public void sonaraAscii() {
         String art = """                                                                                                                                                                                     
