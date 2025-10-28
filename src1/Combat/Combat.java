@@ -22,10 +22,6 @@ public class Combat {
 
     private boolean isGameOver;
 
-    public Combat(Inventory sharedInventory) {
-        this.inventory = sharedInventory;
-    }
-
     public void battle(Character player,Monster enemy) {
         combDisplay.battleStart();
         int beat;
