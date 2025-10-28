@@ -28,7 +28,7 @@ public class Inventory {
         } else if (battleCount <= 4) {
             dropChance = 0.70;
         } else {
-            dropChance = 0.85;
+            dropChance = 0.70;
         }
 
         double roll = rd.nextDouble();
