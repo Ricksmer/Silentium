@@ -287,7 +287,6 @@ public class Combat {
                         break;
                     case 3:
                         inventory.showInventory();
-                        //text.printSystemMessage("Inventory is currently empty.");
                         break;
                     case 4:
                         combDisplay.chordChart(chordSystem);
