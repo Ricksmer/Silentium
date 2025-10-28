@@ -32,7 +32,7 @@ public class Item {
                 player.setShield(9999); // temporary full immunity (fake high shield)
                 break;
 
-            case "Resolved Dissonance":
+            case "Resolved Dissonance": // can only be used if lvl > 3 (?)
                 System.out.println("Resolved Dissonance active! No HP loss from next B Dim chord.");
                 player.setDamageBuff(1.0); // we’d track this in ChordSystem if needed
                 break;

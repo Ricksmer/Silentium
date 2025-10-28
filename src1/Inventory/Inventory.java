@@ -2,10 +2,12 @@ package Inventory;
 
 import java.util.ArrayList;
 import java.util.Random;
+import Display.*;
 
 public class Inventory {
     private ArrayList<Item> items = new ArrayList<>();
     private Random rd = new Random();
+    TextDisplay text = new TextDisplay();
 
     // total battles fought (for drop loot progression)
     private int battleCount = 0;
@@ -22,11 +24,11 @@ public class Inventory {
 
         // Progressive drop chance
         if (battleCount <= 2) {
-            dropChance = 0.25; // 25% drop rate early game
+            dropChance = 0.50;
         } else if (battleCount <= 4) {
-            dropChance = 0.50; // 50% drop rate mid game
+            dropChance = 0.70;
         } else {
-            dropChance = 0.75; // 75% drop rate later battles
+            dropChance = 0.85;
         }
 
         double roll = rd.nextDouble();
@@ -69,7 +71,7 @@ public class Inventory {
     // View inventory
     public void showInventory() {
         if (items.isEmpty()) {
-            System.out.println("Inventory is empty.");
+            text.printSystemMessage("Inventory is empty.");
             return;
         }
         System.out.println("\n=== Inventory ===");

@@ -22,7 +22,8 @@ public class ActiveSkill {
         System.out.println();
 
         if(isUsed){
-            System.out.println("You already used this skill!");
+            text.printSystemMessage("You already used this skill!\n");
+
         } else{
             do{
                 text.printSystemInput("Activate Skill? [ Y / N ]: ");
@@ -69,6 +70,9 @@ public class ActiveSkill {
         player.as.skillActive = false;
         return damage;
     }
+
+    //AURELIUS'ACTIVE SKILL
+
 
     //LYRON'S ACTIVE SKILL
     public boolean skillEffect(Character player) {
