@@ -70,10 +70,6 @@ public class Inventory {
 
     // View inventory
     public void showInventory() {
-        if (items.isEmpty()) {
-            text.printSystemMessage("Inventory is empty.");
-            return;
-        }
         System.out.println("\n=== Inventory ===");
         for (Item i : items) {
             System.out.println("- " + i.getName() + ": " + i.getDescription());
