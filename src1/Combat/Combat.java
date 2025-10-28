@@ -17,12 +17,11 @@ public class Combat {
     Random rd = new Random();
     Scanner sc = new Scanner(System.in);
     ChordSystem chordSystem = new ChordSystem();
-
-    private Inventory inventory;
+    public static final Inventory inventory = new Inventory();
 
     private boolean isGameOver;
 
-    public void battle(Character player,Monster enemy) {
+    public void battle(Character player, Monster enemy) {
         combDisplay.battleStart();
         int beat;
         mt.reset();
@@ -30,16 +29,17 @@ public class Combat {
         isGameOver = false;
         player.setHp(player.getMaxHp());
         player.setShield(player.getMaxShield());
+        player.resetTemporaryEffects();
 
         while (!isGameOver) {
             beat = mt.getBeat();
 
             turnAction(player, enemy, beat);
 
-            //Game Check
+            // Game Check - enemy defeated?
             isGameOver = isEnemyDefeated(enemy);
             if (isGameOver) {
-                text.printSystemMessage("\nYou defeated " + enemy.name + "!");
+                text.printSystemMessage("--- You defeated " + enemy.name + "! ---\n");
 
                 inventory.tryDrop();
 
@@ -47,12 +47,15 @@ public class Combat {
                 break;
             }
 
-            //Enemy Attack
-            // SONARA PASSIVE
+            // Enemy Attack
             if (player.name.equals("Sonara")) {
                 damage = player.ps.skillEffect(enemy);
                 isGameOver = isEnemyDefeated(enemy);
                 if (isGameOver) {
+                    text.printSystemMessage("--- You defeated " + enemy.name + "! ---\n");
+
+                    inventory.tryDrop();
+
                     player.levelUp(player);
                     break;
                 }
@@ -61,17 +64,16 @@ public class Combat {
             }
 
             player.takeDamage(damage);
-
             combDisplay.playerStatsSummary(player);
 
-            //Game Check
+            // Game Check - player defeated?
             isGameOver = isPlayerDefeated(player);
             if (isGameOver) break;
 
+            player.updateTurnEffects();
         }
     }
 
-    //Player Attack
     public void playerAttack(Character player, Monster enemy, int beat) {
         boolean isValidAttack = false;
         char note1 = ' ';
@@ -90,36 +92,32 @@ public class Combat {
             System.out.println();
 
             isValidAttack = checkNotes(player, note1, note2, note3);
-            if(!isValidAttack){
+            if (!isValidAttack) {
                 text.printSystemError("Please re-enter your notes.");
             }
         }
-        //Note Input
 
-        //Total Damage
         int damage = computeNoteDamage(player, note1, note2, note3, beat);
 
-        if(player.getLevel() >= 3){
+        if (player.getLevel() >= 3) {
             String chord = chordSystem.checkChord(note1, note2, note3);
             if (chord != null) {
                 damage = chordSystem.applyChord(chord, player, damage);
             }
         }
-        //Chord Check
 
         text.printSystemMessage("\tTotal Damage Dealt: " + damage);
         System.out.println();
 
-        //Enemy Status Update
         enemy.takeDamage(damage);
     }
 
-    public boolean checkNotes(Character player,char n1, char n2, char n3) {
+    public boolean checkNotes(Character player, char n1, char n2, char n3) {
         if (nt.isValidNote(n1, player) && nt.isValidNote(n2, player) && nt.isValidNote(n3, player)) {
             if (n1 == n2 || n1 == n3 || n2 == n3) {
                 text.printSystemError(" --- Duplicate notes detected! Please enter different notes. ---\n");
                 combDisplay.displayValidNotes(player);
-            }else{
+            } else {
                 return true;
             }
         } else {
@@ -127,62 +125,58 @@ public class Combat {
         }
         return false;
     }
-    //Monster Attack
+
     public int enemyAttack(Monster enemy) {
-        int attack = rd.nextInt(1, 3 + 1);
+        int attack = rd.nextInt(1, 4);
         int damage = 0;
 
-        if(attack == 1){
+        if (attack == 1) {
             damage = enemy.sk1Damage;
-        }else if(attack == 2){
+        } else if (attack == 2) {
             damage = enemy.sk2Damage;
-        }else if(attack == 3){
+        } else if (attack == 3) {
             damage = enemy.sk3Damage;
         }
+
         text.printSystemMessage("\tMonster attacks Player and deals " + damage + " damage!");
         System.out.println();
         return damage;
     }
 
-    public int computeNoteDamage(Character player, char note1, char note2, char note3, int beat){
+    public int computeNoteDamage(Character player, char note1, char note2, char note3, int beat) {
         int initialDamage = 0;
         initialDamage += nt.noteDamage(note1);
         initialDamage += nt.noteDamage(note2);
         initialDamage += nt.noteDamage(note3);
         text.printSystemMessage("Initial Damage: " + initialDamage);
 
-        //SONARA'S ACTIVE SKILL
-        if(player.name.equals("Sonara")) { initialDamage = player.as.skillEffect(player, initialDamage); }
+        if (player.name.equals("Sonara")) {
+            initialDamage = player.as.skillEffect(player, initialDamage);
+        }
 
-        if(player.getLevel() > 1){
-            //Metronome
+        if (player.getLevel() > 1) {
             text.printSystemMessage("Metronome: " + beat);
-            int finalDamage= mt.updateBeat(player, initialDamage);
-
-            //Final Damage
+            int finalDamage = mt.updateBeat(player, initialDamage);
             text.printSystemMessage("Final Damage: " + finalDamage);
-
             return finalDamage;
         }
         return initialDamage;
     }
 
-    public boolean isPlayerDefeated(Character player){
-        if(player.getHp()<=0) {
+    public boolean isPlayerDefeated(Character player) {
+        if (player.getHp() <= 0) {
             player.setHp(0);
             isGameOver = true;
-
             combDisplay.battleEnd(false);
             return true;
         }
         return false;
     }
 
-    public boolean isEnemyDefeated(Monster enemy){
-        if(enemy.getHp() <= 0){
+    public boolean isEnemyDefeated(Monster enemy) {
+        if (enemy.getHp() <= 0) {
             enemy.setHp(0);
             isGameOver = true;
-
             return true;
         }
         return false;
@@ -192,41 +186,37 @@ public class Combat {
         boolean isTurnOver;
         int action = 0;
         boolean isEnabled;
-        if(player.getLevel() > 1) text.printSystemMessage("Metronome: " + beat);
+
+        if (player.getLevel() > 1)
+            text.printSystemMessage("Metronome: " + beat);
+
         nt.generateNotes();
 
-        if(player.getLevel() < 3) {
+        if (player.getLevel() < 3) {
             do {
-                //LYRON'S ACTIVE SKILL
-                if(player.name.equals("Lyron")) { if(player.as.skillEffect(player)) nt.generateNotes(); }
+                if (player.name.equals("Lyron")) { if (player.as.skillEffect(player)) nt.generateNotes(); }
 
                 nt.damagePerNote(player);
                 isTurnOver = false;
                 combDisplay.turnAction(player);
                 isEnabled = true;
-                while(isEnabled){
-                    try{
+
+                while (isEnabled) {
+                    try {
                         action = sc.nextInt();
                         System.out.println();
-                        if(action <= 0 || action > 4 ){
-                            System.out.println();
+                        if (action <= 0 || action > 4) {
                             text.printSystemError("--- Invalid Input ---");
-                            System.out.println();
                             text.printSystemInput("Select: ");
-                        }
-                        else{
+                        } else {
                             isEnabled = false;
                         }
-                    }
-                    catch(Exception e){
-                        System.out.println();
+                    } catch (Exception e) {
                         text.printSystemError("--- Invalid Input ---");
-                        System.out.println();
                         text.printSystemInput("Select: ");
                         sc.next();
                     }
                 }
-
 
                 switch (action) {
                     case 1:
@@ -244,42 +234,33 @@ public class Combat {
                     case 4:
                         text.printSystemMessage("No content available...");
                         break;
-                    default:
-                        break;
                 }
             } while (!isTurnOver);
-        }else{
+        } else {
             do {
-                //LYRON'S ACTIVE SKILL
-                if(player.name.equals("Lyron")) { if(player.as.skillEffect(player)) nt.generateNotes(); }
+                if (player.name.equals("Lyron")) { if (player.as.skillEffect(player)) nt.generateNotes(); }
 
                 nt.damagePerNote(player);
                 isTurnOver = false;
                 combDisplay.turnAction(player);
                 isEnabled = true;
-                while(isEnabled){
-                    try{
+
+                while (isEnabled) {
+                    try {
                         action = sc.nextInt();
                         System.out.println();
-                        if(action <= 0 || action >6){
-                            System.out.println();
+                        if (action <= 0 || action > 6) {
                             text.printSystemError("--- Invalid Input ---");
-                            System.out.println();
                             text.printSystemInput("Select: ");
-                        }
-                        else{
+                        } else {
                             isEnabled = false;
                         }
-                    }
-                    catch(Exception e){
-                        System.out.println();
+                    } catch (Exception e) {
                         text.printSystemError("--- Invalid Input ---");
-                        System.out.println();
                         text.printSystemInput("Select: ");
                         sc.next();
                     }
                 }
-
 
                 switch (action) {
                     case 1:
@@ -291,7 +272,7 @@ public class Combat {
                         player.as.useSkill(player);
                         break;
                     case 3:
-                        inventory.showInventory();
+                        inventory.useItem(player);
                         break;
                     case 4:
                         combDisplay.chordChart(chordSystem);
@@ -303,11 +284,8 @@ public class Combat {
                     case 6:
                         text.printSystemMessage("No content available...");
                         break;
-                    default:
-                        break;
                 }
             } while (!isTurnOver);
-
         }
     }
 }
