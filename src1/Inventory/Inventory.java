@@ -68,9 +68,19 @@ public class Inventory {
         }
     }
 
+    public boolean isEmpty() {
+        return items.isEmpty();
+    }
+
     // View inventory
     public void showInventory() {
         text.printSystemMessage("\n=== Inventory ===");
+
+        if (items.isEmpty()) {
+            text.printSystemAnnouncement("Your inventory is empty.");
+            return;
+        }
+
         for (Item i : items) {
             text.printSystemAnnouncement("- " + i.getName() + ": " + i.getDescription());
         }

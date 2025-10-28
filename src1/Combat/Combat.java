@@ -17,9 +17,14 @@ public class Combat {
     Random rd = new Random();
     Scanner sc = new Scanner(System.in);
     ChordSystem chordSystem = new ChordSystem();
-    Inventory inventory = new Inventory();
+
+    private Inventory inventory;
 
     private boolean isGameOver;
+
+    public Combat(Inventory sharedInventory) {
+        this.inventory = sharedInventory;
+    }
 
     public void battle(Character player,Monster enemy) {
         combDisplay.battleStart();
@@ -38,6 +43,10 @@ public class Combat {
             //Game Check
             isGameOver = isEnemyDefeated(enemy);
             if (isGameOver) {
+                text.printSystemMessage("\nYou defeated " + enemy.name + "!");
+
+                inventory.tryDrop();
+
                 player.levelUp(player);
                 break;
             }
