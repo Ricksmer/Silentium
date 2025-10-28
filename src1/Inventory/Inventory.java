@@ -16,17 +16,17 @@ public class Inventory {
         System.out.println("\nItem obtained: " + item.getName() + " - " + item.getDescription());
     }
 
-    public void tryDrop() {
+    public void tryDrop() { //reset per map ???
         battleCount++;
         double dropChance;
 
         // Progressive drop chance
-        if (battleCount <= 2) {
-            dropChance = 0.25; // 25% drop rate early game
-        } else if (battleCount <= 4) {
-            dropChance = 0.50; // 50% drop rate mid game
+        if (battleCount <= 1) {
+            dropChance = 0.50;
+        } else if (battleCount <= 2) {
+            dropChance = 0.75;
         } else {
-            dropChance = 0.75; // 75% drop rate later battles
+            dropChance = 0.85;
         }
 
         double roll = rd.nextDouble();
