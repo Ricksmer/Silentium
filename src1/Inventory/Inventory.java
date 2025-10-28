@@ -16,15 +16,15 @@ public class Inventory {
         System.out.println("\nItem obtained: " + item.getName() + " - " + item.getDescription());
     }
 
-    public void tryDrop() { //reset per map ???
+    public void tryDrop() {
         battleCount++;
         double dropChance;
 
         // Progressive drop chance
-        if (battleCount <= 1) {
+        if (battleCount <= 2) {
             dropChance = 0.50;
-        } else if (battleCount <= 2) {
-            dropChance = 0.75;
+        } else if (battleCount <= 4) {
+            dropChance = 0.70;
         } else {
             dropChance = 0.85;
         }
