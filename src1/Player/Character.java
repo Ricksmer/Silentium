@@ -41,8 +41,7 @@ public abstract class Character {
                 maxHp += 50;
                 text.printSystemMessage("Player leveled up!");
             } else{
-                System.out.println("You win!");
-                System.out.println("Victory Bonus: Checking for item drop...");
+                text.printSystemAnnouncement("Victory Bonus: Checking for item drop...");
                 inventory.tryDrop();
                 inventory.showInventory();
             }
