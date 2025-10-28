@@ -23,6 +23,7 @@ public class ActiveSkill {
 
         if(isUsed){
             text.printSystemMessage("You already used this skill!\n");
+
         } else{
             do{
                 text.printSystemInput("Activate Skill? [ Y / N ]: ");

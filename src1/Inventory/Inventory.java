@@ -2,10 +2,12 @@ package Inventory;
 
 import java.util.ArrayList;
 import java.util.Random;
+import Display.*;
 
 public class Inventory {
     private ArrayList<Item> items = new ArrayList<>();
     private Random rd = new Random();
+    TextDisplay text = new TextDisplay();
 
     // total battles fought (for drop loot progression)
     private int battleCount = 0;
@@ -69,7 +71,7 @@ public class Inventory {
     // View inventory
     public void showInventory() {
         if (items.isEmpty()) {
-            System.out.println("Inventory is empty.");
+            text.printSystemMessage("Inventory is empty.");
             return;
         }
         System.out.println("\n=== Inventory ===");

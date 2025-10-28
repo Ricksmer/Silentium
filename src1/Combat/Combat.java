@@ -27,9 +27,10 @@ public class Combat {
         mt.reset();
         int damage;
         isGameOver = false;
+        player.setHp(player.getMaxHp());
+        player.setShield(player.getMaxShield());
 
         while (!isGameOver) {
-            player.setHp(player.getMaxHp());
             beat = mt.getBeat();
 
             turnAction(player, enemy, beat);
@@ -76,14 +77,11 @@ public class Combat {
             combDisplay.noteInput();
 
             text.printSystemInput("#1:   ");
-            note1 = sc.next().charAt(0);
-            java.lang.Character.toUpperCase(note1);
+            note1 = sc.next().toUpperCase().charAt(0);
             text.printSystemInput("#2:   ");
-            note2 = sc.next().charAt(0);
-            java.lang.Character.toUpperCase(note2);
+            note2 = sc.next().toUpperCase().charAt(0);
             text.printSystemInput("#3:   ");
-            note3 = sc.next().charAt(0);
-            java.lang.Character.toUpperCase(note3);
+            note3 = sc.next().toUpperCase().charAt(0);
             System.out.println();
 
             isValidAttack = checkNotes(player, note1, note2, note3);
@@ -192,64 +190,120 @@ public class Combat {
         if(player.getLevel() > 1) text.printSystemMessage("Metronome: " + beat);
         nt.generateNotes();
 
-        do {
-            //LYRON'S ACTIVE SKILL
-            if(player.name.equals("Lyron")) { if(player.as.skillEffect(player)) nt.generateNotes(); }
+        if(player.getLevel() < 3) {
+            do {
+                //LYRON'S ACTIVE SKILL
+                if(player.name.equals("Lyron")) { if(player.as.skillEffect(player)) nt.generateNotes(); }
 
-            nt.damagePerNote(player);
-            isTurnOver = false;
-            combDisplay.turnAction(player);
-            isEnabled = true;
-            while(isEnabled){
-                try{
-                    action = sc.nextInt();
-                    System.out.println();
-                    if(action <= 0 || action >6){
+                nt.damagePerNote(player);
+                isTurnOver = false;
+                combDisplay.turnAction(player);
+                isEnabled = true;
+                while(isEnabled){
+                    try{
+                        action = sc.nextInt();
+                        System.out.println();
+                        if(action <= 0 || action > 4 ){
+                            System.out.println();
+                            text.printSystemError("--- Invalid Input ---");
+                            System.out.println();
+                            text.printSystemInput("Select: ");
+                        }
+                        else{
+                            isEnabled = false;
+                        }
+                    }
+                    catch(Exception e){
                         System.out.println();
                         text.printSystemError("--- Invalid Input ---");
                         System.out.println();
                         text.printSystemInput("Select: ");
-                    }
-                    else{
-                        isEnabled = false;
+                        sc.next();
                     }
                 }
-                catch(Exception e){
-                    System.out.println();
-                    text.printSystemError("--- Invalid Input ---");
-                    System.out.println();
-                    text.printSystemInput("Select: ");
-                    sc.next();
+
+
+                switch (action) {
+                    case 1:
+                        playerAttack(player, enemy, beat);
+                        combDisplay.enemyStatsSummary(enemy);
+                        isTurnOver = true;
+                        break;
+                    case 2:
+                        player.as.useSkill(player);
+                        break;
+                    case 3:
+                        combDisplay.playerStatsSummary(player);
+                        combDisplay.enemyStatsSummary(enemy);
+                        break;
+                    case 4:
+                        text.printSystemMessage("No content available...");
+                        break;
+                    default:
+                        break;
                 }
-            }
+            } while (!isTurnOver);
+        }else{
+            do {
+                //LYRON'S ACTIVE SKILL
+                if(player.name.equals("Lyron")) { if(player.as.skillEffect(player)) nt.generateNotes(); }
+
+                nt.damagePerNote(player);
+                isTurnOver = false;
+                combDisplay.turnAction(player);
+                isEnabled = true;
+                while(isEnabled){
+                    try{
+                        action = sc.nextInt();
+                        System.out.println();
+                        if(action <= 0 || action >6){
+                            System.out.println();
+                            text.printSystemError("--- Invalid Input ---");
+                            System.out.println();
+                            text.printSystemInput("Select: ");
+                        }
+                        else{
+                            isEnabled = false;
+                        }
+                    }
+                    catch(Exception e){
+                        System.out.println();
+                        text.printSystemError("--- Invalid Input ---");
+                        System.out.println();
+                        text.printSystemInput("Select: ");
+                        sc.next();
+                    }
+                }
 
 
-            switch (action) {
-                case 1:
-                    playerAttack(player, enemy, beat);
-                    combDisplay.enemyStatsSummary(enemy);
-                    isTurnOver = true;
-                    break;
-                case 2:
-                    player.as.useSkill(player);
-                    break;
-                case 3:
-                    //inventory.showInventory();
-                    text.printSystemMessage("Inventory is currently empty.");
-                    break;
-                case 4:
-                    combDisplay.chordChart(chordSystem);
-                    break;
-                case 5:
-                    combDisplay.playerStatsSummary(player);
-                    combDisplay.enemyStatsSummary(enemy);
-                    break;
-                case 6:
-                    text.printSystemMessage("No content available...");
-                    break;
-                default:
-                    break;
-            }
-        } while (!isTurnOver);
+                switch (action) {
+                    case 1:
+                        playerAttack(player, enemy, beat);
+                        combDisplay.enemyStatsSummary(enemy);
+                        isTurnOver = true;
+                        break;
+                    case 2:
+                        player.as.useSkill(player);
+                        break;
+                    case 3:
+                        inventory.showInventory();
+                        //text.printSystemMessage("Inventory is currently empty.");
+                        break;
+                    case 4:
+                        combDisplay.chordChart(chordSystem);
+                        break;
+                    case 5:
+                        combDisplay.playerStatsSummary(player);
+                        combDisplay.enemyStatsSummary(enemy);
+                        break;
+                    case 6:
+                        text.printSystemMessage("No content available...");
+                        break;
+                    default:
+                        break;
+                }
+            } while (!isTurnOver);
+
+        }
     }
 }
