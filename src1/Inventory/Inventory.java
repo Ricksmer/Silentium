@@ -15,7 +15,7 @@ public class Inventory {
     // Add item to inventory
     public void addItem(Item item) {
         items.add(item);
-        System.out.println("\nItem obtained: " + item.getName() + " - " + item.getDescription());
+        text.printSystemMessage("\nItem obtained: " + item.getName() + " - " + item.getDescription());
     }
 
     public void tryDrop() {
@@ -36,7 +36,7 @@ public class Inventory {
         if (roll < dropChance) {
             randomDrop();
         } else {
-            System.out.println("No items dropped this time...");
+            text.printSystemMessage("No items dropped this time...");
         }
     }
 
@@ -71,12 +71,12 @@ public class Inventory {
     // View inventory
     public void showInventory() {
         if (items.isEmpty()) {
-            text.printSystemMessage("Inventory is empty.");
+            text.printSystemMessage("Inventory is empty.\n");
             return;
         }
-        System.out.println("\n=== Inventory ===");
+        text.printSystemMessage("\n=== Inventory ===");
         for (Item i : items) {
-            System.out.println("- " + i.getName() + ": " + i.getDescription());
+            text.printSystemAnnouncement("- " + i.getName() + ": " + i.getDescription());
         }
     }
 }
