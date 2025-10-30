@@ -24,8 +24,8 @@ public class Inventory {
         double dropChance;
 
         if (battleCount <= 2) dropChance = 0.50;
-        else if (battleCount <= 4) dropChance = 0.70;
-        else dropChance = 0.85;
+        else if (battleCount <= 4) dropChance = 0.60;
+        else dropChance = 0.75;
 
         double roll = rd.nextDouble();
 
@@ -44,8 +44,7 @@ public class Inventory {
             case 3 -> dropped = new Item("Minor’s Grace", "+1 free Minor chord use.");
             case 4 -> dropped = new Item("Major’s Blessing", "+1 free Major chord use.");
         }
-
-        if (dropped != null) addItem(dropped);
+        addItem(dropped);
     }
 
     public boolean isEmpty() {

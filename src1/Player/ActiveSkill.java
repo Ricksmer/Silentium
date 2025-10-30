@@ -27,7 +27,7 @@ public class ActiveSkill {
         System.out.println();
 
         if(isUsed){
-            text.printSystemMessage("You already used this skill!\n");
+            text.printSystemAnnouncement("You already used this skill!\n");
 
         } else{
             do{
@@ -42,7 +42,7 @@ public class ActiveSkill {
                         player.as.skillActive = false;
                     }else{
                         System.out.println();
-                        text.printSystemMessage("--- Invalid Input --- ");
+                        text.printSystemError("--- Invalid Input --- ");
                         System.out.println();
                         continue;
                     }
@@ -51,7 +51,7 @@ public class ActiveSkill {
                     break;
                 }catch(InputMismatchException e){
                     System.out.println();
-                    text.printSystemMessage("--- Invalid Input --- ");
+                    text.printSystemError("--- Invalid Input --- ");
                     System.out.println();
                 }
 
