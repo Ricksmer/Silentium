@@ -198,7 +198,7 @@ public class Combat {
                 if (player.name.equals("Lyron")) { if (player.as.skillEffect(player)) nt.generateNotes(); }
                 if (player.name.equals("Aurelius")) {
                     nt.setPreserveNextDamage(player.as.skillActive);
-                    player.as.skillEffectAurelius(player, 0);
+                    player.as.skillEffectAurelius(player);
                 }
 
                 nt.damagePerNote(player);

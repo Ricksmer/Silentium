@@ -77,18 +77,15 @@ public class ActiveSkill {
     }
 
     //AURELIUS' ACTIVE SKILL
-    public int skillEffectAurelius(Character player, int damage) {
-        if(!player.as.skillActive) return damage;
+    public void skillEffectAurelius(Character player) {
+        if(!player.as.skillActive) return;
 
         text.lineBreak();
         text.printSystemMessage("Skill Activated: " + player.as.skillName);
-        text.printSystemMessage("Unique Skill: Preserve current note damage for the next turn.");
+        text.printSystemMessage("Unique Skill: Preserve current notes damage for the next turn.");
         text.lineBreak();
-
         player.as.skillActive = false;
         player.as.isUsed = true;
-
-        return damage;
     }
 
     //LYRON'S ACTIVE SKILL
