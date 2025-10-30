@@ -196,6 +196,10 @@ public class Combat {
         if (player.getLevel() < 3) {
             do {
                 if (player.name.equals("Lyron")) { if (player.as.skillEffect(player)) nt.generateNotes(); }
+                if (player.name.equals("Aurelius")) {
+                    nt.setPreserveNextDamage(player.as.skillActive);
+                    player.as.skillEffectAurelius(player, 0);
+                }
 
                 nt.damagePerNote(player);
                 isTurnOver = false;

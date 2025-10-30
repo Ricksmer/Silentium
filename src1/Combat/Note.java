@@ -49,7 +49,18 @@ public class Note{
     int rangeF = maxF- minF + 1;
     int rangeG = maxG- minG + 1;
 
+    //for Aurelius' active skill
+    private boolean preserveNextDamage = false;
+    public void setPreserveNextDamage(boolean preserve) {
+        preserveNextDamage = preserve;
+    }
+
     public void generateNotes(){
+        if (preserveNextDamage) {
+            preserveNextDamage = false;
+            return;
+        }
+
         A = rd.nextInt(rangeA) + minA;
         B = rd.nextInt(rangeB) + minB;
         C = rd.nextInt(rangeC) + minC;
