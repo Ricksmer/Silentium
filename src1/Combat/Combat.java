@@ -30,6 +30,7 @@ public class Combat {
         player.setHp(player.getMaxHp());
         player.setShield(player.getMaxShield());
         player.resetTemporaryEffects();
+        player.as.resetSkill();
 
         while (!isGameOver) {
             beat = mt.getBeat();

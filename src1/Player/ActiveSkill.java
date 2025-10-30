@@ -13,6 +13,11 @@ public class ActiveSkill {
     public boolean skillActive = false;
     public boolean isUsed = false;
 
+    public void resetSkill(){
+        skillActive = false;
+        isUsed = false;
+    }
+
     public void useSkill(Character player){
         System.out.println();
         text.lineBreak();
