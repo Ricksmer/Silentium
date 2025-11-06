@@ -111,6 +111,15 @@ public class ChordSystem {
                 bonusDamage = 1.3;
                 player.setHp(player.getHp() - (int)(player.getMaxHp() * 0.1));
                 System.out.println("\tChord Activated: B Dim! +30% Damage but lose 10% HP.");
+
+                if (player.canIgnoreBDiminished()) {
+                    System.out.println("\tResolved Dissonance prevented HP loss from B Dim!");
+                    player.setIgnoreBDiminished(false); // consume the effect
+                } else {
+                    int hpLoss = (int)(player.getMaxHp() * 0.1);
+                    player.setHp(player.getHp() - hpLoss);
+                    System.out.println("\tYou lost " + hpLoss + " HP due to B Dim chord!");
+                }
                 break;
         }
 

@@ -3,8 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MapTraversalV2/MapTraversalV2.iml" filepath="$PROJECT_DIR$/MapTraversalV2/MapTraversalV2.iml" />
-      <module fileurl="file://$PROJECT_DIR$/updated.iml" filepath="$PROJECT_DIR$/updated.iml" />
-      <module fileurl="file://$PROJECT_DIR$/src/updated2.iml" filepath="$PROJECT_DIR$/src/updated2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Silentium.iml" filepath="$PROJECT_DIR$/Silentium.iml" />
     </modules>
   </component>
 </project>

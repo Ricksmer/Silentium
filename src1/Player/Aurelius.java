@@ -13,7 +13,7 @@ public class Aurelius extends Character{
         instrument = "The Whispering Bulwark";
         ps.skillName = "Melodic Remedy";
         ps.skillDescription = "Chords heals 5% of Aurelius’ health. After a chord, grants aurelius an extra turn but is limited to use one note.";
-        as.skillName = "Conservatio";
+        as.skillName = "Conservation";
         as.skillDescription = "Aurelius can choose to preserve the selected notes' current damage for next turn.";
         setMaxHp(150);
         setHp(getMaxHp());

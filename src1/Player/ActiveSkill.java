@@ -13,6 +13,11 @@ public class ActiveSkill {
     public boolean skillActive = false;
     public boolean isUsed = false;
 
+    public void resetSkill(){
+        skillActive = false;
+        isUsed = false;
+    }
+
     public void useSkill(Character player){
         System.out.println();
         text.lineBreak();
@@ -22,7 +27,8 @@ public class ActiveSkill {
         System.out.println();
 
         if(isUsed){
-            System.out.println("You already used this skill!");
+            text.printSystemAnnouncement("You already used this skill!\n");
+
         } else{
             do{
                 text.printSystemInput("Activate Skill? [ Y / N ]: ");
@@ -36,7 +42,7 @@ public class ActiveSkill {
                         player.as.skillActive = false;
                     }else{
                         System.out.println();
-                        text.printSystemMessage("--- Invalid Input --- ");
+                        text.printSystemError("--- Invalid Input --- ");
                         System.out.println();
                         continue;
                     }
@@ -45,7 +51,7 @@ public class ActiveSkill {
                     break;
                 }catch(InputMismatchException e){
                     System.out.println();
-                    text.printSystemMessage("--- Invalid Input --- ");
+                    text.printSystemError("--- Invalid Input --- ");
                     System.out.println();
                 }
 
@@ -68,6 +74,18 @@ public class ActiveSkill {
         text.lineBreak();
         player.as.skillActive = false;
         return damage;
+    }
+
+    //AURELIUS' ACTIVE SKILL
+    public void skillEffectAurelius(Character player) {
+        if(!player.as.skillActive) return;
+
+        text.lineBreak();
+        text.printSystemMessage("Skill Activated: " + player.as.skillName);
+        text.printSystemMessage("Unique Skill: Preserve current notes damage for the next turn.");
+        text.lineBreak();
+        player.as.skillActive = false;
+        player.as.isUsed = true;
     }
 
     //LYRON'S ACTIVE SKILL
