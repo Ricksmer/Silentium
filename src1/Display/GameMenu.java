@@ -70,7 +70,8 @@ public class GameMenu {
                     System.out.println(credits());
                     break;
                 case 4: //How to Play
-                    System.out.println("Require: How to Play... Please implement\n-Sangasina");
+                    HowToPlay howToPlay = new HowToPlay();
+                    howToPlay.displayHowToPlay();
                     break;
                 case 5: // Exit
                     System.out.println("Require: Exit Function... Please implement\n-Sangasina");
