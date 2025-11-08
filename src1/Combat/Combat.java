@@ -48,6 +48,8 @@ public class Combat {
                 break;
             }
 
+            text.pause();
+
             // Enemy Attack
             if (player.name.equals("Sonara")) {
                 damage = player.ps.skillEffect(enemy);
@@ -72,6 +74,7 @@ public class Combat {
             if (isGameOver) break;
 
             player.updateTurnEffects();
+            text.pause();
         }
     }
 
