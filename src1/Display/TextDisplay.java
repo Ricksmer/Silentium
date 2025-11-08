@@ -1,5 +1,6 @@
 package Display;
 
+import java.util.Scanner;
 import Enemy.Monster;
 import Player.Character;
 
@@ -10,6 +11,8 @@ public class TextDisplay{
     private static final String GREEN = "\u001B[32m";    // System Messages (Success/Info)
     private static final String RED = "\u001B[31m";      // Maestro Dialogue
     private static final String WHITE = "\u001B[37m";      // Maestro Dialogue
+
+    Scanner sc = new Scanner(System.in);
 
     // --- Text Display Tools (Standard Output Methods) ---
     public void printNarration(String narration) {
@@ -120,6 +123,13 @@ public class TextDisplay{
         
         """;
         System.out.println(art);
+    }
+
+    public void pause() {
+        greenText("\n\t================================================================\n");
+        printSystemInput("\t\tPress [ENTER] to continue...");
+        sc.nextLine();
+        greenText("\n\t================================================================\n");
     }
 }
 
