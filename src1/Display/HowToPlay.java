@@ -19,7 +19,7 @@ public class HowToPlay {
         defenseSystem();     pause();
         itemSystem();        pause();
         text.lineBreak();
-        text.printSystemMessage("END OF HOW TO PLAY");
+        text.printSystemMessage("--- END OF HOW TO PLAY ---");
         text.lineBreak();
     }
 
