@@ -13,6 +13,6 @@ public class FleshFeeders extends Monster{
         sk3Name = "Leap";
         sk3Damage = rd.nextInt(20, 35 + 1);
 
-        monsterDescription = "These are the lowest echoes of despair—lurching figures born from sustained starvation and fear.";
+        monsterDescription = "These are the lowest echoes of despair—lurching figures born from sustained starvation and fear. ";
     }
 }
