@@ -11,13 +11,13 @@ public class HowToPlay {
         text.printSystemMessage("--- HOW TO PLAY SILENTIUM ---");
         text.lineBreak();
 
-        introduction();      pause();
-        combatSystem();      pause();
-        noteSystem();        pause();
-        metronomeSystem();   pause();
-        chordSystem();       pause();
-        defenseSystem();     pause();
-        itemSystem();        pause();
+        introduction();      text.pause();
+        combatSystem();      text.pause();
+        noteSystem();        text.pause();
+        metronomeSystem();   text.pause();
+        chordSystem();       text.pause();
+        defenseSystem();     text.pause();
+        itemSystem();        text.pause();
         text.lineBreak();
         text.printSystemMessage("--- END OF HOW TO PLAY ---");
         text.lineBreak();
@@ -103,8 +103,9 @@ public class HowToPlay {
         text.printNarration("Collecting these can offer temporary advantages or save you from defeat.");
     }
 
+    /*
     private void pause() {
         text.printSystemInput("Press [ENTER] to continue...");
         sc.nextLine();
-    }
+    } */
 }
