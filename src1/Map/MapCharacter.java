@@ -3,6 +3,7 @@ package Map;
 import Combat.Combat;
 import Display.*;
 import Enemy.Monster;
+import Enemy.Syozan;
 import Player.Character;
 
 import java.util.Scanner;
@@ -12,7 +13,7 @@ public class MapCharacter {
     Combat combat = new Combat();
     CombatDisplay combDisplay = new CombatDisplay();
     TextDisplay text = new TextDisplay();
-
+    Syozan syozan = new Syozan();
     private int mapIdNum;
     private int row;
     private int col;
@@ -214,6 +215,10 @@ public class MapCharacter {
                                     isExploring = false;
                                     return;
                                 }
+                            } else if(player.getMap() == 3){
+                                text.printDialogue(syozan,"Hello");
+                                combat.battle(player,syozan);
+                                //eNDINGS ETC..
                             }
                         } else if (tempOp == 'N') {
                             text.printSystemMessage("Travelling continues...");
