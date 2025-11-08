@@ -17,9 +17,13 @@ public class Dialogue implements CharacterDialogue {
 
     public void firstLevelUp(Character character) {
         if (character.name.equals("Sonara")) {
+            text.lineBreak();
             text.printSystemMessage("SONARA LEVEL UP: Vicious, clean force.");
             text.printNarration("Sonara has leveled up. Vicious, clean force. Her Banjo found its edge.");
-            text.printDialogue(character, "The strings are cleaner now. I won't lose this clarity again; this feeling of striking back.\nI won't stop until there's nowhere left for the shadows to hide.");
+            System.out.println();
+            text.printDialogue(character, "The strings are cleaner now. I won't lose this clarity again; this feeling of striking back.\n\tI won't stop until there's nowhere left for the shadows to hide.");
+            text.pause();
+            text.lineBreak();
         }
 
         else if (character.name.equals("Aurelius")) {
