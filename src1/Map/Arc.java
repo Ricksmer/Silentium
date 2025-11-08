@@ -1,6 +1,4 @@
-package ArcSequence;
-
-import Map.*;
+package Map;
 
 import Player.Character;
 

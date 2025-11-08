@@ -71,6 +71,8 @@ public class Note{
     }
 
     public void damagePerNote(Character player){
+        text.printSystemMessage("--- Notes ---");
+        System.out.println();
         text.printSystemMessage("\tA --> \t" + A);
         text.printSystemMessage("\tB --> \t" + B);
         text.printSystemMessage("\tC --> \t" + C);
@@ -84,7 +86,6 @@ public class Note{
             text.printSystemMessage("\tF --> \t" + F);
             text.printSystemMessage("\tG --> \t" + G);
         }
-        System.out.println();
     }
 
     public int noteDamage(char note){

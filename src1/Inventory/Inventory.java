@@ -92,6 +92,7 @@ public class Inventory {
 
             if (choice == 0) {
                 text.printSystemMessage("You closed your inventory.");
+                text.shortbreak();
                 break;
             }
 

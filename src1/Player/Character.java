@@ -100,7 +100,9 @@ public abstract class Character {
             } else{
                 text.printSystemAnnouncement("Victory Bonus: Checking for item drop...");
                 Combat.inventory.tryDrop();
+                text.shortbreak();
                 Combat.inventory.showInventory();
+                text.shortbreak();
             }
         } else if(map==2){
             if(level < 5){
@@ -112,7 +114,9 @@ public abstract class Character {
             } else{
                 text.printSystemAnnouncement("Victory Bonus: Checking for item drop...");
                 Combat.inventory.tryDrop();
+                text.shortbreak();
                 Combat.inventory.showInventory();
+                text.shortbreak();
             }
         }
     }

@@ -114,27 +114,53 @@ public abstract class Map {
 
         text.printSystemMessage("=== \t\t\t" + mapName + "\t\t\t\t===");
         System.out.println();
-        System.out.print("\t\t\t");
 
-        for(i=0;i<row;i++){
-            for(j=0;j<col;j++){
-                if(map[i][j] == 0){
-                    text.printMap("" + untravelled);
-                }else if(map[i][j] == 1){
-                    text.printMap("" + travelled);
-                }else if(map[i][j] == 2){
-                    text.printPlayerOnMap("" + playerPos);
-                }else if(map[i][j] == 3){
-                    text.printMap("" + nextMap);
-                }else if(map[i][j] == 4){
-                    text.printMap("" + onNextMap);
-                }else if(map[i][j] == 5){
-                    text.printMap("" + killedEnemy);
+        if(mapName.equalsIgnoreCase("SILENT CAVERNS")){
+            System.out.print("\t   ");
+
+            for(i=0;i<row;i++){
+                for(j=0;j<col;j++){
+                    if(map[i][j] == 0){
+                        text.printMap("" + untravelled);
+                    }else if(map[i][j] == 1){
+                        text.printMap("" + travelled);
+                    }else if(map[i][j] == 2){
+                        text.printPlayerOnMap("" + playerPos);
+                    }else if(map[i][j] == 3){
+                        text.printExitMap("" + nextMap);
+                    }else if(map[i][j] == 4){
+                        text.printExitMap("" + onNextMap);
+                    }else if(map[i][j] == 5){
+                        text.printEnemyMap("" + killedEnemy);
+                    }
+
                 }
-
+                System.out.println();
+                System.out.print("\t   ");
             }
-            System.out.println();
+        } else {
             System.out.print("\t\t\t");
+
+            for(i=0;i<row;i++){
+                for(j=0;j<col;j++){
+                    if(map[i][j] == 0){
+                        text.printMap("" + untravelled);
+                    }else if(map[i][j] == 1){
+                        text.printMap("" + travelled);
+                    }else if(map[i][j] == 2){
+                        text.printPlayerOnMap("" + playerPos);
+                    }else if(map[i][j] == 3){
+                        text.printExitMap("" + nextMap);
+                    }else if(map[i][j] == 4){
+                        text.printExitMap("" + onNextMap);
+                    }else if(map[i][j] == 5){
+                        text.printEnemyMap("" + killedEnemy);
+                    }
+
+                }
+                System.out.println();
+                System.out.print("\t\t\t");
+            }
         }
     }
 
@@ -168,7 +194,7 @@ public abstract class Map {
     }
 
     public Monster MonsterSpawn(int map){
-        text.redText("\t\t > \t\tMONSTER FOUND! \t\t<");
+        text.redText("\t> \t\tMONSTER FOUND! \t\t<");
         System.out.println();
         System.out.println();
         Random rd = new Random();

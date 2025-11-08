@@ -52,6 +52,7 @@ public class MapCharacter {
 
     public void displayDirections(){
         text.printSystemMessage("Which way are you moving?");
+        System.out.println();
         text.printSystemMessage("[ 1 ] \t---> \tNorth");
         text.printSystemMessage("[ 2 ] \t---> \tSouth");
         text.printSystemMessage("[ 3 ] \t---> \tWest");
@@ -96,19 +97,18 @@ public class MapCharacter {
                     displayDirections();
                     text.printSystemInput("Select: ");
                     movement = sc.nextInt();
-                    System.out.println();
-                    text.lineBreak();;
+                    text.shortbreak();;
                     if(movement <= 0 || movement > 4){
                         mapNar.displayMapConfused(player);
-                        text.lineBreak();
+                        text.shortbreak();
                     }
                     else{
                         isEnabled = false;
                     }
                 }catch(Exception e){
-                    text.lineBreak();
+                    text.shortbreak();
                     mapNar.displayMapConfused(player);
-                    text.lineBreak();
+                    text.shortbreak();
                     sc.next();
                 }
             }
@@ -163,11 +163,11 @@ public class MapCharacter {
             switch(map.getIndex(getRow(),getCol())){
                 case 0:
                     mapNar.displayEmptySpot(player);
-                    text.lineBreak();
+                    text.shortbreak();
                     break;
                 case 1:
                     mapNar.displayEnemyEncounter(player);
-                    text.lineBreak();
+                    text.shortbreak();
                     enemy = map.MonsterSpawn(player.getMap());
                     combDisplay.enemyStatsSummary(enemy);
 
@@ -176,51 +176,82 @@ public class MapCharacter {
                     break;
                 case 2:
                     mapNar.displayEntrance(player);
-                    text.lineBreak();
+                    text.shortbreak();
                     break;
                 case 3:
                     mapNar.displayExit(player);
                     System.out.println();
-                    text.printSystemInput("Enter? [ Y / N ]: ");
-                    char tempOp = sc.next().charAt(0);
-                    java.lang.Character.toUpperCase(tempOp);
-                    if(tempOp == 'Y'){
-                        if(player.getMap() == 1){
-                            text.printSystemMessage("Player level: " + player.getLevel());
 
-                            if(player.getLevel() < 3){
-                                text.printSystemMessage("You are not strong enough! You need to level up!");
+                    char tempOp = 'N';
+                    boolean valid = false;
+
+                    while (true) {
+                        text.printSystemInput("Explore? [ Y / N ] :   ");
+                        String input = sc.next().trim().toUpperCase();
+                        tempOp = input.charAt(0);
+
+                        if (tempOp == 'Y') {
+                            if (player.getMap() == 1) {
+                                text.printSystemMessage("Player level: " + player.getLevel());
+                                if (player.getLevel() < 3) {
+                                    text.printSystemMessage("You are not strong enough! You need to level up!");
+                                    break;
+                                }
+                                else {
+                                    text.printGameAnnouncement("\tTravelling towards the next map!");
+                                    player.setMap(player.getMap() + 1);
+                                    isExploring = false;
+                                    return;
+                                }
+                            } else if (player.getMap() == 2) {
+                                if (player.getLevel() < 5) {
+                                    text.printSystemMessage("You are not strong enough! You need to level up!");
+                                    break;
+                                }
+                                else {
+                                    text.printGameAnnouncement("\tTravelling towards the next map!");
+                                    player.setMap(player.getMap() + 1);
+                                    isExploring = false;
+                                    return;
+                                }
                             }
-                            else{
-                                text.printSystemMessage("Travelling towards the next map!");
-                                player.setMap(player.getMap() + 1);
-                                return;
-                            }
+                        } else if (tempOp == 'N') {
+                            text.printSystemMessage("Travelling continues...");
+                            break;
+                        } else {
+                            System.out.println();
+                            text.printSystemError("--- Invalid Input --- ");
+                            System.out.println();
                         }
-                        else if (player.getMap() == 2){
-                            if(player.getLevel() < 5){
-                                text.printSystemMessage("You are not strong enough! You need to level up!");
-                            }
-                            else {
-                                text.printSystemMessage("Travelling towards the next map!");
-                                player.setMap(player.getMap() + 1);
-                                return;
-                            }
-                        }
-                        else{
-                            text.printSystemMessage("Travelling towards the next map!");
-                            isExploring = false;
-                            player.setMap(player.getMap() + 1);
-                            return;
-                        }
-                    }else if(tempOp == 'N'){
-                        text.printSystemMessage("Travelling continues...");
                     }
-                    text.lineBreak();
+
+                    /*
+                    while (!valid) {
+                        text.printSystemInput("Enter? [ Y / N ]: ");
+                        String input = sc.nextLine().trim();
+
+                        if (input.isEmpty() || input.length() != 1 || !java.lang.Character.isLetter(input.charAt(0))) {
+                            text.printSystemMessage("Invalid input! Please enter Y or N only.");
+                            System.out.println();
+                            continue;
+                        }
+
+                        tempOp = java.lang.Character.toUpperCase(input.charAt(0));
+
+                        if (tempOp != 'Y' && tempOp != 'N') {
+                            text.printSystemMessage("Invalid input! Please enter Y or N only.");
+                            System.out.println();
+                            continue;
+                        }
+
+                        valid = true;
+                    }*/
+
+
+
+                    text.shortbreak();
                     break;
-                default: break;
             }
-            System.out.println();
         }
     }
 }

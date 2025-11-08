@@ -18,60 +18,50 @@ public class ActiveSkill {
         isUsed = false;
     }
 
-    public void useSkill(Character player){
+    public void useSkill(Character player) {
+        text.playerText("--- " + player.name + " ---");
         System.out.println();
-        text.lineBreak();
-        text.printSystemMessage("--- " + player.name +" ---");
-        text.printSystemMessage("--- " + player.as.skillName + " ---");
+        text.playerText("\t" + player.as.skillName);
         text.printSystemMessage(player.as.skillDescription);
         System.out.println();
 
-        if(isUsed){
+        if (isUsed) {
             text.printSystemAnnouncement("You already used this skill!\n");
-
-        } else{
-            do{
-                text.printSystemInput("Activate Skill? [ Y / N ]: ");
-
-                try{
-                    char ans = sc.next().toUpperCase().charAt(0);
-                    if(ans == 'Y'){
-                        player.as.skillActive = true;
-                        isUsed = true;
-                    }else  if(ans == 'N'){
-                        player.as.skillActive = false;
-                    }else{
-                        System.out.println();
-                        text.printSystemError("--- Invalid Input --- ");
-                        System.out.println();
-                        continue;
-                    }
-
-                    text.lineBreak();
-                    break;
-                }catch(InputMismatchException e){
-                    System.out.println();
-                    text.printSystemError("--- Invalid Input --- ");
-                    System.out.println();
-                }
-
-            }while(true);
+            text.shortbreak();
+            return;
         }
 
+        while (true) {
+            text.printSystemInput("Activate Skill? [ Y / N ]:\t");
+            String input = sc.next().trim().toUpperCase();
 
+            if (input.equals("Y")) {
+                player.as.skillActive = true;
+                isUsed = true;
+                break;
+            } else if (input.equals("N")) {
+                player.as.skillActive = false;
+                break;
+            } else {
+                System.out.println();
+                text.printSystemError("--- Invalid Input --- ");
+                System.out.println();
+            }
+        }
+        text.shortbreak();
     }
 
     //SONARA'S ACTIVE SKILL
     public int skillEffect(Character player, int damage) {
         if(!player.as.skillActive) return damage;
 
-        text.lineBreak();
-        text.printSystemMessage("Skill Activated: " + player.as.skillName);
-        text.printSystemMessage("Current Damage: " + damage);
-        text.printSystemMessage("Unique Skill: Add +1 to Final Damage.");
+        text.shortbreak();
+        text.printStats("Skill Activated", player.as.skillName, "\t\t");
+        text.printStats("Current Damage", String.valueOf(damage), "\t\t");
+        text.printStats("Unique Skill", "Add +1 to Final Damage", "\t\t\t");
         damage += 1;
-        text.printSystemMessage("New Damage: " + damage);
-        text.lineBreak();
+        text.printStats("New Damage", String.valueOf(damage), "\t\t\t");
+        text.shortbreak();
         player.as.skillActive = false;
         return damage;
     }
@@ -80,10 +70,10 @@ public class ActiveSkill {
     public void skillEffectAurelius(Character player) {
         if(!player.as.skillActive) return;
 
-        text.lineBreak();
-        text.printSystemMessage("Skill Activated: " + player.as.skillName);
-        text.printSystemMessage("Unique Skill: Preserve current notes damage for the next turn.");
-        text.lineBreak();
+        text.shortbreak();
+        text.printStats("Skill Activated", player.as.skillName, "\t\t");
+        text.printStats("Unique Skill", "Preserve Current Notes Damage for the Next Turn", "\t\t\t");
+        text.shortbreak();
         player.as.skillActive = false;
         player.as.isUsed = true;
     }
@@ -92,10 +82,10 @@ public class ActiveSkill {
     public boolean skillEffect(Character player) {
         if(!player.as.skillActive) return false;
 
-        text.lineBreak();
-        text.printSystemMessage("Skill Activated: " + player.as.skillName);
-        text.printSystemMessage("Unique Skill: Reroll Note Damage.");
-        text.lineBreak();
+        text.shortbreak();
+        text.printStats("Skill Activated", player.as.skillName, "\t\t");
+        text.printStats("Unique Skill", "Reroll Note Damage", "\t\t\t");
+        text.shortbreak();
         player.as.skillActive = false;
         return true;
     }

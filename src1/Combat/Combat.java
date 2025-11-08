@@ -84,6 +84,45 @@ public class Combat {
         while (!isValidAttack) {
             combDisplay.noteInput();
 
+            text.printSystemInput("");
+            String input = sc.nextLine().trim().toUpperCase();
+            if (input.isEmpty()) {
+                text.printSystemError("Input cannot be empty.");
+                System.out.println();
+                continue;
+            }
+
+            input = input.replaceAll("\\s+", " - ");
+            String[] notes = input.split("[-\\s]+");
+
+            if (notes.length == 3
+                    && notes[0].matches("[A-G]")
+                    && notes[1].matches("[A-G]")
+                    && notes[2].matches("[A-G]")) {
+
+                note1 = notes[0].charAt(0);
+                note2 = notes[1].charAt(0);
+                note3 = notes[2].charAt(0);
+
+                text.yellowText("\n\t\t\t" + note1 + " - " + note2 + " - " + note3 + "\n");
+
+                isValidAttack = checkNotes(player, note1, note2, note3);
+                if (!isValidAttack) {
+                    System.out.println();
+                    text.printSystemError("Please re-enter your notes.");
+                    System.out.println();
+                }
+            } else {
+                System.out.println();
+                text.printSystemError("Invalid input.");
+                System.out.println();
+            }
+        }
+
+        /*
+        while (!isValidAttack) {
+            combDisplay.noteInput();
+
             text.printSystemInput("#1:   ");
             note1 = sc.next().toUpperCase().charAt(0);
             text.printSystemInput("#2:   ");
@@ -97,6 +136,7 @@ public class Combat {
                 text.printSystemError("Please re-enter your notes.");
             }
         }
+        */
 
         int damage = computeNoteDamage(player, note1, note2, note3, beat);
 
@@ -107,8 +147,10 @@ public class Combat {
             }
         }
 
-        text.printSystemMessage("\tTotal Damage Dealt: " + damage);
+        if(player.name.equals("Op")){ damage*=999; }
+        text.printStats("Total Damage Dealt", String.valueOf(damage), "\t");
         System.out.println();
+
 
         enemy.takeDamage(damage);
     }
@@ -117,12 +159,12 @@ public class Combat {
         if (nt.isValidNote(n1, player) && nt.isValidNote(n2, player) && nt.isValidNote(n3, player)) {
             if (n1 == n2 || n1 == n3 || n2 == n3) {
                 text.printSystemError(" --- Duplicate notes detected! Please enter different notes. ---\n");
-                combDisplay.displayValidNotes(player);
+                combDisplay.displayValidNotes(player.getLevel());
             } else {
                 return true;
             }
         } else {
-            combDisplay.displayValidNotes(player);
+            combDisplay.displayValidNotes(player.getLevel());
         }
         return false;
     }
@@ -149,16 +191,16 @@ public class Combat {
         initialDamage += nt.noteDamage(note1);
         initialDamage += nt.noteDamage(note2);
         initialDamage += nt.noteDamage(note3);
-        text.printSystemMessage("Initial Damage: " + initialDamage);
+        text.printStats("Initial Damage", String.valueOf(initialDamage), "\t\t");
 
         if (player.name.equals("Sonara")) {
             initialDamage = player.as.skillEffect(player, initialDamage);
         }
 
         if (player.getLevel() > 1) {
-            text.printSystemMessage("Metronome: " + beat);
+            text.printStats("Metronome", String.valueOf(beat), "\t\t");
             int finalDamage = mt.updateBeat(player, initialDamage);
-            text.printSystemMessage("Final Damage: " + finalDamage);
+            text.printStats("Final Damage", String.valueOf(finalDamage), "\t\t\t");
             return finalDamage;
         }
         return initialDamage;
@@ -168,7 +210,7 @@ public class Combat {
         if (player.getHp() <= 0) {
             player.setHp(0);
             isGameOver = true;
-            combDisplay.battleEnd(false);
+            combDisplay.battleEnd(Boolean.valueOf(false));
             return true;
         }
         return false;
@@ -188,8 +230,7 @@ public class Combat {
         int action = 0;
         boolean isEnabled;
 
-        if (player.getLevel() > 1)
-            text.printSystemMessage("Metronome: " + beat);
+        if (player.getLevel() > 1) text.printStats("Metronome", String.valueOf(beat), "\t\t\t");
 
         nt.generateNotes();
 
@@ -207,19 +248,24 @@ public class Combat {
                 isEnabled = true;
 
                 while (isEnabled) {
+                    text.printSystemInput("Select :   ");
+                    String input = sc.nextLine().trim();
+
                     try {
-                        action = sc.nextInt();
+                        action = Integer.parseInt(input);
                         System.out.println();
                         if (action <= 0 || action > 4) {
+                            System.out.println();
                             text.printSystemError("--- Invalid Input ---");
-                            text.printSystemInput("Select: ");
+                            System.out.println();
                         } else {
                             isEnabled = false;
+                            text.shortbreak();
                         }
-                    } catch (Exception e) {
+                    } catch (NumberFormatException e) {
+                        System.out.println();
                         text.printSystemError("--- Invalid Input ---");
-                        text.printSystemInput("Select: ");
-                        sc.next();
+                        System.out.println();
                     }
                 }
 
@@ -237,11 +283,12 @@ public class Combat {
                         combDisplay.enemyStatsSummary(enemy);
                         break;
                     case 4:
-                        text.printSystemMessage("No content available...");
+                        combDisplay.attackGuide(player);
                         break;
                 }
             } while (!isTurnOver);
-        } else {
+        }
+        else {
             do {
                 if (player.name.equals("Lyron")) { if (player.as.skillEffect(player)) nt.generateNotes(); }
 
@@ -251,19 +298,24 @@ public class Combat {
                 isEnabled = true;
 
                 while (isEnabled) {
+                    text.printSystemInput("Select :   ");
+                    String input = sc.nextLine().trim();
+
                     try {
-                        action = sc.nextInt();
+                        action = Integer.parseInt(input);
                         System.out.println();
                         if (action <= 0 || action > 6) {
+                            System.out.println();
                             text.printSystemError("--- Invalid Input ---");
-                            text.printSystemInput("Select: ");
+                            System.out.println();
                         } else {
                             isEnabled = false;
+                            text.shortbreak();
                         }
-                    } catch (Exception e) {
+                    } catch (NumberFormatException e) {
+                        System.out.println();
                         text.printSystemError("--- Invalid Input ---");
-                        text.printSystemInput("Select: ");
-                        sc.next();
+                        System.out.println();
                     }
                 }
 
@@ -287,7 +339,7 @@ public class Combat {
                         combDisplay.enemyStatsSummary(enemy);
                         break;
                     case 6:
-                        text.printSystemMessage("No content available...");
+                        combDisplay.attackGuide(player);
                         break;
                 }
             } while (!isTurnOver);

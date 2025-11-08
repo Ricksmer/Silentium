@@ -9,7 +9,7 @@ public class Op extends Character{
     };
 
     public Op(){
-        name = "Sonara";
+        name = "Op";
         instrument = "Tester Instrument";
         ps.skillName = "Tester Passive Skill Name";
         ps.skillDescription = "Tester Passive Skill Description";

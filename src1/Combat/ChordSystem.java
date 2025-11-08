@@ -2,6 +2,7 @@ package Combat;
 
 import Display.GamePrint;
 import Player.Character;
+import Display.TextDisplay;
 
 public class ChordSystem {
     private boolean cMajor = false;
@@ -11,6 +12,8 @@ public class ChordSystem {
     private boolean gMajor = false;
     private boolean aMinor = false;
     private boolean bDim = false;
+
+    TextDisplay text = new TextDisplay();
 
     public void ChordSystem() {
         resetChords();
@@ -77,54 +80,60 @@ public class ChordSystem {
 
         if(player.name.equals("Aurelius")) player.ps.skillEffect(player);
         System.out.println();
-        System.out.println("===================================================");
+        text.printSystemAnnouncement("\t\t===================================================");
         System.out.println();
 
         switch (chord) {
             case "CMAJOR":
                 player.heal((int)(player.getMaxHp() * 0.2));
-                System.out.println("\tChord Activated: C Major! Healed 20% HP.");
+                System.out.print("\t\t  ");
+                text.printStats("Chord Activated", "C Major! Healed 20% HP", "\t");
                 break;
             case "DMINOR":
                 player.setDamageBuff(1.2);
-                System.out.println("\tChord Activated: D Minor! +20% Damage Buff.");
+                System.out.print("\t\t  ");
+                text.printStats("Chord Activated", "D Minor! +20% Damage Buff.", "\t");
                 break;
             case "EMINOR":
                 player.heal((int)(player.getMaxHp() * 0.1));
                 player.setDamageBuff(1.1);
-                System.out.println("\tChord Activated: E Minor! Heal 10% HP & +10% Damage Buff.");
-                break;
+                System.out.print("\t\t  ");
+                text.printStats("Chord Activated", "E Minor! Heal 10% HP & +10% Damage Buff.", "\t");break;
             case "FMAJOR":
                 player.addShield(25);
-                System.out.println("\tChord Activated: F Major! +25 Shield Points.");
+                System.out.print("\t\t  ");
+                text.printStats("Chord Activated", "F Major! +25 Shield Points.", "\t");
                 break;
             case "GMAJOR":
                 player.heal((int)(player.getMaxHp() * 0.15));
                 player.addShield(15);
-                System.out.println("\tChord Activated: G Major! Heal 15% HP & +15 Shield Points.");
+                System.out.print("\t\t  ");
+                text.printStats("Chord Activated", "G Major! Heal 15% HP & +15 Shield Points.", "\t");
                 break;
             case "AMINOR":
                 player.addShield(35);
-                System.out.println("\tChord Activated: A Minor! +35 Shield Points.");
+                System.out.print("\t\t  ");
+                text.printStats("Chord Activated", "A Minor! +35 Shield Points.", "\t");
                 break;
             case "BDIM":
                 bonusDamage = 1.3;
                 player.setHp(player.getHp() - (int)(player.getMaxHp() * 0.1));
-                System.out.println("\tChord Activated: B Dim! +30% Damage but lose 10% HP.");
+                System.out.print("\t\t  ");
+                text.printStats("Chord Activated", "B Dim! +30% Damage but lose 10% HP.", "\t");
 
                 if (player.canIgnoreBDiminished()) {
-                    System.out.println("\tResolved Dissonance prevented HP loss from B Dim!");
+                    text.printGameAnnouncement("\tResolved Dissonance prevented HP loss from B Dim!");
                     player.setIgnoreBDiminished(false); // consume the effect
                 } else {
                     int hpLoss = (int)(player.getMaxHp() * 0.1);
                     player.setHp(player.getHp() - hpLoss);
-                    System.out.println("\tYou lost " + hpLoss + " HP due to B Dim chord!");
+                    text.printGameAnnouncement("\tYou lost " + hpLoss + " HP due to B Dim chord!");
                 }
                 break;
         }
 
         System.out.println();
-        System.out.println("===================================================");
+        text.printGameAnnouncement("\t\t\t===================================================");
         System.out.println();
         return (int) (damage * bonusDamage);
     }
