@@ -219,6 +219,7 @@ public class MapCharacter {
                             } else if(player.getMap() == 3){
                                 dialogue.bossPreBattleDialogue();
                                 combat.battle(player,syozan);
+                                dialogue.bossPostBattleDialogue();
                                 dialogue.finalVictory(player);
                                 isExploring = false;
                                 break;

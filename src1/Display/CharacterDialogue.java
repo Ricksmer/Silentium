@@ -16,8 +16,8 @@ public interface CharacterDialogue {
     void victoryDialogue(Character character);
 
     // --- Final Boss Maestro Syozan Dialogue ---
-    void bossPreBattleDialogue(Monster boss);
-    void bossPostBattleDialogue(Monster boss);
+    void bossPreBattleDialogue();
+    void bossPostBattleDialogue();
 
 
     // --- Final Victory ---
