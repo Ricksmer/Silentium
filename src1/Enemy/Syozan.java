@@ -13,6 +13,8 @@ public class Syozan extends Monster {
         sk3Name = "Ebon Symphony of Consuming Night";
         sk3Damage = rd.nextInt(40, 150 + 1);
 
-        monsterDescription = "Maestro Syozan";
+        monsterDescription = "The architect of the Eternal Silence.\n" +
+                "Maestro Syozan is not a beast, but a shattered, celestial musician who wields fragmented, complex noise as a weapon. \n" +
+                "Her objective is the absolute, permanent stillness of the world, and his attacks are symphonies of pure despair designed to test the limits of the child's music and will.";
     }
 }

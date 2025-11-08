@@ -13,6 +13,7 @@ public class Abarquez extends Monster {
         sk3Name = "Hammer Strike";
         sk3Damage = rd.nextInt(30, 65 + 1);
 
-        monsterDescription = "Abarquez the Abyss Guardian";
+        monsterDescription = "The silent sentinel of the abyss, Abarquez is a mountainous figure wielding immense, crushing power.\n" +
+                "It guards the final path, maintaining its defenses while methodically destroying any child that dares to approach the Maestro.";
     }
 }

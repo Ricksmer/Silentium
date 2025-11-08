@@ -13,6 +13,6 @@ public class Andrewellers extends Monster{
         sk3Name = "Shatter Cry";
         sk3Damage = rd.nextInt(15, 25 + 1);
 
-        monsterDescription = "Andrewellers";
+        monsterDescription = "Specters of silent malice, the Andrewellers are humanoid shadows whose presence radiates subtle, persistent dread.";
     }
 }
