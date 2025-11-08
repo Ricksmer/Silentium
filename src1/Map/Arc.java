@@ -26,7 +26,6 @@ public class Arc {
 
     public void startArc3(){
         map = new AbyssOfDissonance();
-        map.setMap();
         mapChar.explore(map,player);
     }
 }

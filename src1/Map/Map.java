@@ -211,7 +211,9 @@ public abstract class Map {
             if(op == 1) return new Aryzachnid();
             if(op == 2) return new Chimericks();
         }
-        return new Abarquez();
+        else if(map==3){
+            return new Abarquez();
+        }
+        return null;
     }
-
 }

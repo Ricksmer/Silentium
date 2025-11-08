@@ -62,6 +62,7 @@ public class GameMenu {
                     arcManager.startArc1();
                     arcManager.startArc2();
                     arcManager.startArc3();
+
                     break;
                 case 2: //StoryLine
                     DisplayStory displayStory = new DisplayStory();
