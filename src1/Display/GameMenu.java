@@ -64,7 +64,8 @@ public class GameMenu {
                     arcManager.startArc3();
                     break;
                 case 2: //StoryLine
-                    System.out.println("Require: ... Please implement\n-Sangasina");
+                    DisplayStory displayStory = new DisplayStory();
+                    displayStory.displayFullLore();
                     break;
                 case 3: //Credits
                     System.out.println(credits());

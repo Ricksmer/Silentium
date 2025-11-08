@@ -1,8 +1,8 @@
 package Display;
 
-
+import java.util.Scanner;
 public class DisplayStory {
-
+    private final Scanner sc = new Scanner(System.in);
     // Assuming TextDisplay is available in the Display package
     // and provides methods like printSystemMessage, printNarration, etc.
     private final TextDisplay text = new TextDisplay();
@@ -15,8 +15,8 @@ public class DisplayStory {
         text.printSystemMessage("--- SILENTIUM: COMPLETE GAME LORE DOCUMENTATION ---");
         text.lineBreak();
 
-        displayWorldSettings();
-        displayPlotSummary();
+        displayWorldSettings();             pause();
+        displayPlotSummary();               pause();
         displayCharacterBiographies();
 
         text.printSystemMessage("--- DOCUMENTATION END ---");
@@ -104,5 +104,10 @@ public class DisplayStory {
                 "Introduction: After witnessing his family's murder, he violently struck the Harp in desperate fear, banishing the monster and gaining a tool for vengeance.\n" +
                 "Ending: Ends his quest for vengeance, transforms into a **Custodian of Memory**, using his Harp to heal others' guilt and fear.");
         text.lineBreak();
+    }
+
+    private void pause() {
+        text.printSystemInput("Press [ENTER] to continue...");
+        sc.nextLine();
     }
 }
