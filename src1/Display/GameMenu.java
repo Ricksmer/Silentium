@@ -19,13 +19,13 @@ public class GameMenu {
 
     public void start(){
         boolean isRunning = true;
-        displayMenu();
 
         Scanner sc = new Scanner(System.in);
         boolean isEnabled;
         int option = 0;
 
         while(isRunning) {
+            displayMenu();
             isEnabled = true;
             while(isEnabled){
                 try{
@@ -153,7 +153,7 @@ public class GameMenu {
                 case 3:
                     return lyron;
                 case 0:
-
+                    //implement display character stats
                     return op;
                 default:
                     break;
