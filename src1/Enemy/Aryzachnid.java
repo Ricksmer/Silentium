@@ -13,6 +13,6 @@ public class Aryzachnid extends Monster{
         sk3Name = "Wrap-up";
         sk3Damage = rd.nextInt(30, 50 + 1);
 
-        monsterDescription = "Aryzachnid";
+        monsterDescription = "A grotesque horror woven from deep, creeping apprehension, the Aryzachnid embodies the fear of being trapped and consumed. ";
     }
 }
