@@ -23,9 +23,9 @@ public class Inventory {
         battleCount++;
         double dropChance;
 
-        if (battleCount <= 2) dropChance = 0.50;
-        else if (battleCount <= 4) dropChance = 0.60;
-        else dropChance = 0.75;
+        if (battleCount <= 3) dropChance = 0.40;
+        else if (battleCount <= 5) dropChance = 0.50;
+        else dropChance = 0.60;
 
         double roll = rd.nextDouble();
 

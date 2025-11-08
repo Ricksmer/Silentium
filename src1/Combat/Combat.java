@@ -45,7 +45,7 @@ public class Combat {
             if (isGameOver) {
                 text.printSystemMessage("--- You defeated " + enemy.name + "! ---\n");
                 dialogue.victoryDialogue(player);
-                inventory.tryDrop();
+//                inventory.tryDrop();
 
                 player.levelUp(player);
                 break;
