@@ -23,8 +23,8 @@ public class TextDisplay{
         System.out.println(BLUE + "\t[" + player.name + "]: " + RESET + "\t" + dialogue);
     }
 
-    public void printDialogue(Monster enemy,String dialogue) {
-        System.out.println(RED + "\t[" + enemy.name+ "]: " + RESET + "\t" + dialogue);
+    public void printDialogue(String dialogue) {
+        System.out.println(RED + "\t[ MAESTRO SYOZAN ]: " + RESET + "\t" + dialogue);
     }
 
     public void printSystemMessage(String message) {

@@ -14,6 +14,7 @@ public class MapCharacter {
     CombatDisplay combDisplay = new CombatDisplay();
     TextDisplay text = new TextDisplay();
     Syozan syozan = new Syozan();
+    Dialogue dialogue = new Dialogue();
     private int mapIdNum;
     private int row;
     private int col;
@@ -216,8 +217,11 @@ public class MapCharacter {
                                     return;
                                 }
                             } else if(player.getMap() == 3){
-                                text.printDialogue(syozan,"Hello");
+                                dialogue.bossPreBattleDialogue();
                                 combat.battle(player,syozan);
+                                dialogue.finalVictory(player);
+                                isExploring = false;
+                                break;
                                 //eNDINGS ETC..
                             }
                         } else if (tempOp == 'N') {

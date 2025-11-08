@@ -23,11 +23,6 @@ public interface CharacterDialogue {
     // --- Final Victory ---
     void finalVictory(Character character);
 
-    // --- Item Drops ---
-    void itemDrop(Character character /*, Item item*/);
-
-
-
 
     /*
     // --- Randomized Post-Combat Dialogue (New) ---

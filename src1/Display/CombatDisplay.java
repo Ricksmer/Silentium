@@ -109,6 +109,7 @@ public class CombatDisplay implements CombatPrint, InputPrint{
         text.printStats("Description", enemy.monsterDescription, "\t\t");
         System.out.println();
         if(enemy.name.equals("Aryzachnid") || enemy.name.equals("Chimericks")){ text.enemyText("======================================================"); }
+        else if(enemy.name.equals("Abarquez the Abyss Guardian")){ text.enemyText("=============================================================="); }
         else{ text.enemyText("=========================================================="); }
         System.out.println();
 

@@ -1,8 +1,10 @@
 package Combat;
 
+import java.awt.*;
 import java.util.Scanner;
 import java.util.Random;
 
+import Display.Dialogue;
 import Display.TextDisplay;
 import Inventory.Inventory;
 import Player.Character;
@@ -17,6 +19,7 @@ public class Combat {
     Random rd = new Random();
     Scanner sc = new Scanner(System.in);
     ChordSystem chordSystem = new ChordSystem();
+    Dialogue dialogue = new Dialogue();
     public static final Inventory inventory = new Inventory();
 
     private boolean isGameOver;
@@ -41,7 +44,7 @@ public class Combat {
             isGameOver = isEnemyDefeated(enemy);
             if (isGameOver) {
                 text.printSystemMessage("--- You defeated " + enemy.name + "! ---\n");
-
+                dialogue.victoryDialogue(player);
                 inventory.tryDrop();
 
                 player.levelUp(player);
@@ -56,7 +59,7 @@ public class Combat {
                 isGameOver = isEnemyDefeated(enemy);
                 if (isGameOver) {
                     text.printSystemMessage("--- You defeated " + enemy.name + "! ---\n");
-
+                    dialogue.victoryDialogue(player);
                     inventory.tryDrop();
 
                     player.levelUp(player);
