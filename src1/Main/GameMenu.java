@@ -125,6 +125,7 @@ public class GameMenu {
                 """;
 
         text.yellowTextV2(credits);
+        task.load(5);
 
     }
 
