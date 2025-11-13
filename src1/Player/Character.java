@@ -119,6 +119,7 @@ public abstract class Character {
                 text.shortbreak();
             }
         }
+        text.pause();
     }
 
     public void activateTemporaryBuff(double buffMultiplier, int turns) {
