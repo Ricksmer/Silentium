@@ -1,12 +1,12 @@
 package Combat;
 
-import java.awt.*;
 import java.util.Scanner;
 import java.util.Random;
 
 import Display.Dialogue;
 import Display.TextDisplay;
 import Inventory.Inventory;
+import Main.Task;
 import Player.Character;
 import Enemy.Monster;
 import Display.CombatDisplay;
@@ -20,6 +20,7 @@ public class Combat {
     Scanner sc = new Scanner(System.in);
     ChordSystem chordSystem = new ChordSystem();
     Dialogue dialogue = new Dialogue();
+    Task task = new Task();
     public static final Inventory inventory = new Inventory();
 
     private boolean isGameOver;
@@ -51,7 +52,7 @@ public class Combat {
                 break;
             }
 
-            text.pause();
+            task.delay(5);
 
             // Enemy Attack
             if (player.name.equals("Sonara")) {
@@ -77,7 +78,7 @@ public class Combat {
             if (isGameOver) break;
 
             player.updateTurnEffects();
-            text.pause();
+            task.delay(5);
         }
     }
 

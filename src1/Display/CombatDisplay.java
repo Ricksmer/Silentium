@@ -6,9 +6,12 @@ import Player.Sonara;
 import Player.Aurelius;
 import Player.Lyron;
 import Combat.ChordSystem;
+import Main.Task;
 
 public class CombatDisplay implements CombatPrint, InputPrint{
     TextDisplay text = new TextDisplay();
+    AsciiArt art = new AsciiArt();
+    Task task = new Task();
 
 
     @Override
@@ -66,6 +69,7 @@ public class CombatDisplay implements CombatPrint, InputPrint{
 
     public void characterDisplay(Character player){
         playerStatsSummary(player);
+        task.delay(1);
         text.printStats("Passive Skill", player.ps.skillName, "\t\t");
         text.yellowText("\t\t\t\t\t\t\t > " + player.ps.skillDescription);
         text.printStats("Active Skill", player.as.skillName, "\t\t");
@@ -73,12 +77,16 @@ public class CombatDisplay implements CombatPrint, InputPrint{
         System.out.println();
     }
 
-    public void displayStats(Character player, Monster enemy){
-        text.shortbreak();
-        playerStatsSummary(player);
-        text.shortbreak();
-        enemyStatsSummary(enemy);
-        text.shortbreak();
+    public void displayStats(Character player){
+        text.playerText("\t\t\t\t\t\t\t\t\t\t\t\t===== " + player.name + " =====");
+        if(player.name.equals("Sonara")) art.sonaraAscii();
+        if(player.name.equals("Aurelius")) art.aureliusAscii();
+        if(player.name.equals("Lyron")) art.lyronAscii();
+
+        task.delay(1);
+        characterDisplay(player);
+        text.lineBreak();
+        task.delay(3);
     }
 
 
@@ -91,7 +99,7 @@ public class CombatDisplay implements CombatPrint, InputPrint{
         text.printStats("Shield", String.valueOf(player.getShield()), String.valueOf(player.getMaxShield()),  "\t\t\t");
         System.out.println();
         if(player.name.equals("Aurelius")){
-            text.playerText("=======================================================");
+            text.playerText("======================================================");
         }else{
             text.playerText("==================================================");
         }
@@ -120,17 +128,17 @@ public class CombatDisplay implements CombatPrint, InputPrint{
         System.out.println();
         text.printSystemMessage("NOTE \t\t\tDAMAGE RANGE");
         System.out.println();
-        text.printSystemMessage("[ A ] --->  \t { 1 - 10 } ");
-        text.printSystemMessage("[ B ] --->  \t { 5 - 13 } ");
-        text.printSystemMessage("[ C ] --->  \t { 9 - 16 } ");
+        text.printSystemMessage("[ A ] \t--->  \t { 1 - 10 } ");
+        text.printSystemMessage("[ B ] \t--->  \t { 5 - 13 } ");
+        text.printSystemMessage("[ C ] \t--->  \t { 9 - 16 } ");
         if(level >= 2){
-            text.printSystemMessage("[ D ] --->  \t{ 12 - 18 }");
-            text.printSystemMessage("[ E ] --->  \t{ 16 - 21 }");
+            text.printSystemMessage("[ D ] \t--->  \t{ 12 - 18 }");
+            text.printSystemMessage("[ E ] \t--->  \t{ 16 - 21 }");
         }
 
         if(level >= 3){
-            text.printSystemMessage("[ F ] --->  \t{ 19 - 23 }");
-            text.printSystemMessage("[ G ] --->  \t{ 21 - 24 }");
+            text.printSystemMessage("[ F ] \t--->  \t{ 19 - 23 }");
+            text.printSystemMessage("[ G ] \t--->  \t{ 21 - 24 }");
         }
         text.shortbreak();
     }
@@ -170,7 +178,7 @@ public class CombatDisplay implements CombatPrint, InputPrint{
         text.printSystemMessage(" > Note System < ");
         text.yellowText("\tEach note corresponds to a specific damage range.");
         System.out.println();
-        displayValidNotes(5);
+        displayValidNotes(player.getLevel());
         text.printSystemMessage(" > Metronome System <");
         if(player.getLevel() < 2){
             text.redText("\tLocked! Reach Level 2 to unlock the Metronome System.");
