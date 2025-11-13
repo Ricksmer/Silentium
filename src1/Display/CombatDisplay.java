@@ -7,11 +7,13 @@ import Player.Aurelius;
 import Player.Lyron;
 import Combat.ChordSystem;
 import Main.Task;
+import Display.DisplayStory;
 
 public class CombatDisplay implements CombatPrint, InputPrint{
     TextDisplay text = new TextDisplay();
     AsciiArt art = new AsciiArt();
     Task task = new Task();
+    DisplayStory displayStory = new DisplayStory();
 
 
     @Override
@@ -85,8 +87,15 @@ public class CombatDisplay implements CombatPrint, InputPrint{
 
         task.delay(1);
         characterDisplay(player);
+        task.delay(1);
+        text.shortbreak();
+
+        if(player.name.equals("Sonara")) displayStory.displayCharacterSonara();
+        if(player.name.equals("Aurelius")) displayStory.displayCharacterAurelius();
+        if(player.name.equals("Lyron")) displayStory.displayCharacterLyron();
         text.lineBreak();
-        task.delay(3);
+
+        task.load(3);
     }
 
 

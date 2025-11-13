@@ -92,7 +92,7 @@ public class AsciiArt {
                                   .+%+.   .=#:            -%@@@@@@@@@@@@@@@@@@@@@@@@-  :: -*:                    
                                 =%+.    .#=                 :%@@@@@@@@@@@@@@@@@@@@@%. .*    =:                   
 """;
-        System.out.println(art);
+        text.blueText(art);
     }
 
     public void lyronAscii() {
@@ -132,7 +132,7 @@ public class AsciiArt {
                                            ..:=#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%##*+:    ..-=*#%%@@@@@@@@@@@@@@@@
                                   .....:=#@@@@@@@@@@@@@@@@@@@@@@@@#-....                                .........
   """;
-        System.out.println(art);
+        text.greenText(art);
     }
 
     public void sonaraAscii() {
@@ -173,7 +173,7 @@ public class AsciiArt {
                                                  *#        .%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
                                                  ++        .%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
                  """;
-        System.out.println(art);
+        text.redText(art);
     }
 }
 

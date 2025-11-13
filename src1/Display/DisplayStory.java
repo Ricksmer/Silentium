@@ -26,7 +26,7 @@ public class DisplayStory {
         text.lineBreak();
         text.printSystemAnnouncement("\t\t\t\t\t\t\t\t\t\t\t\t\t\t--- DOCUMENTATION END ---");
         text.lineBreak();
-        task.load(5);
+        task.load(3);
     }
 
     /**
@@ -85,28 +85,35 @@ public class DisplayStory {
         text.printSystemMessage("III. CHARACTER BIOGRAPHIES & ENDINGS");
         text.shortbreak();
 
-        // --- SONARA ---
+        displayCharacterSonara();
+        displayCharacterAurelius();
+        displayCharacterLyron();
+    }
+
+
+    public void displayCharacterSonara(){
         text.blueText("\t\tSONARA (The Fury) - Banjo “The Scourge of Echoes”");
         text.printNarration("Background: Lived in a comforting delusion that her family was still alive, unaware the surrounding silence was hiding the truth of their violent loss.\n" +
                 "\t\tPersonality: Defined by a newfound, unyielding intensity and deep, barely contained grief. Her music is the raw, twangy sound of rebellion, demanding retribution.\n" +
                 "\t\tIntroduction: The bell shattered her delusion, forcing her to grab the hidden Banjo. Her final vow: \"I will use the sound to destroy the silence... until my family is finally, truly avenged.\"\n" +
                 "\t\tEnding: Finds true peace, replacing vengeance with a lifelong dedication to advocating harmony and justice through music.");
         text.shortbreak();
+    }
 
-        // --- AURELIUS ---
+    public void displayCharacterAurelius() {
         text.blueText("\t\tAURELIUS (The Shield) - Flute “The Whispering Bulwark”");
         text.printNarration("Background: Grew up in a cruel, privileged family, secretly harboring guilt and using a hidden Flute to process the empathy he felt for the suffering world.\n" +
                 "\t\tPersonality: Fundamentally empathetic and driven by a strong moral duty. Prefers to observe and protect. His music is light, airy, and protective.\n" +
                 "\t\tIntroduction: The bell galvanized his shame into purpose, prompting him to flee and use his Flute's sound to create a protective barrier. His resolve: \"My silence was shame. My sound will be shelter.\"\n" +
                 "\t\tEnding: Becomes the Moral Compass of the new era, ensuring the noise-filled future is built on justice and shared community.");
         text.shortbreak();
+    }
 
-        // --- LYRON ---
+    public void displayCharacterLyron() {
         text.blueText("\t\tLYRON (The Resolve) - Harp “The Shattered Harmony”");
         text.printNarration("Background: Deemed the weakest in his family, he felt crippling shame, but held onto a sliver of hope represented by his mother's untouched Harp.\n" +
                 "\t\tPersonality: Riddled with guilt and paralyzed by fear, he pushes forward as a reluctant avenger. His commitment provides the fragile resolve he needs.\n" +
                 "\t\tIntroduction: After witnessing his family's murder, he violently struck the Harp in desperate fear, banishing the monster and gaining a tool for vengeance.\n" +
                 "\t\tEnding: Ends his quest for vengeance, transforms into a Custodian of Memory, using his Harp to heal others' guilt and fear.");
+        }
     }
-
-}

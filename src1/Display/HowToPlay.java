@@ -25,7 +25,7 @@ public class HowToPlay {
         text.lineBreak();
         text.printSystemAnnouncement("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t--- END ---");
         text.lineBreak();
-        task.load(5);
+        task.load(3);
     }
 
     private void introduction() {
