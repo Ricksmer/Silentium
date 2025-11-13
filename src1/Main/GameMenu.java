@@ -104,7 +104,43 @@ public class GameMenu {
     }
 
     public void credits(){
-        String credits = """
+
+        text.lineBreak();
+        text.printSystemAnnouncement("\t\t\t\t\t\t\t\t\t\t=====   CREDITS   =====");
+        text.lineBreak();
+
+        text.yellowText("\t\tSilentium is a project developed by the \"Team Balanghoy\" Group that is composed of 2nd year BSIT students from\n" +
+                "\t\tCIT-U (Cebu Institute of Technology University).\n" +
+                "\t\tThis project serves as the final output for CSIT227 – Object-Oriented Programming 1,\n" +
+                "\t\tunder the guidance of Sir Kenn Migan Vincent Gumonan.");
+        task.load(2);
+
+        text.shortbreak();
+
+        text.blueText("\t\tMEMBERS: ");
+        text.printNarration("Project Manager \t Ricksmer Cabatingan\n" +
+                "\t\tProject Manager \t Andrew Sangasina\n" +
+                "\t\t         Member \t Yohann Abarquez\n" +
+                "\t\t         Member \t Ryza Janell Mutya\n" +
+                "\t\t         Member \t Precious Ann Tolentino\n");
+
+        text.blueText("\t\tINSTRUCTOR / ADVISER:");
+        text.printNarration("Sir Kenn Migan Vincent Gumonan\n");
+        text.blueText("\t\tSPECIAL THANKS TO:");
+        text.printNarration("CIT-U College of Computer Studies\n" +
+                "\t\tCSIT227 Classmates\n" +
+                "\t\tFriends & Family for continuous support\n");
+        text.blueText("\t\tTOOLS & TECHNOLOGIES:");
+        text.printNarration("Java (OOP)\n" +
+                "\t\tIntelliJ IDEA / VS Code\n" +
+                "\t\tGitHub for version control\n");
+        text.blueText("\t\tVERSION:");
+        text.printNarration("Silentium v1.0 (Final Build)\n");
+        text.blueText("\t\tCOPYRIGHT:");
+        text.printNarration("© 2025 Team Balanghoy. All Rights Reserved.\n");
+
+        task.load(5);
+        /*String credits = """
                                            =====   CREDITS   ===== 
                                                    
                        Silentium is a project developed by the "Team Balanghoy" Group that
@@ -124,8 +160,7 @@ public class GameMenu {
                                                                            
                 """;
 
-        text.yellowTextV2(credits);
-        task.load(5);
+        text.yellowTextV2(credits); */
 
     }
 
