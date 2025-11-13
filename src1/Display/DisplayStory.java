@@ -1,11 +1,14 @@
 package Display;
 
 import java.util.Scanner;
+import Main.Task;
+
 public class DisplayStory {
     private final Scanner sc = new Scanner(System.in);
     // Assuming TextDisplay is available in the Display package
     // and provides methods like printSystemMessage, printNarration, etc.
     private final TextDisplay text = new TextDisplay();
+    Task task = new Task();
 
     /**
      * Prints the entire game lore by calling the section methods.
@@ -13,6 +16,7 @@ public class DisplayStory {
     public void displayFullLore() {
         text.lineBreak();
         text.printGameAnnouncement("\t\t\t\t\t\t\t\t\t\t\t--- SILENTIUM: COMPLETE GAME LORE DOCUMENTATION ---");
+        task.load(1);
         text.lineBreak();
 
         displayWorldSettings();             text.pause();
@@ -22,6 +26,7 @@ public class DisplayStory {
         text.lineBreak();
         text.printSystemAnnouncement("\t\t\t\t\t\t\t\t\t\t\t\t\t\t--- DOCUMENTATION END ---");
         text.lineBreak();
+        task.load(5);
     }
 
     /**

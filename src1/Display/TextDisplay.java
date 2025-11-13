@@ -75,13 +75,16 @@ public class TextDisplay{
 
     public void greenText(String string) { System.out.println(GREEN + string + RESET); }
     public void blueText(String string) { System.out.println(BLUE + string + RESET); }
+    public void blueTextV2(String string) { System.out.print(BLUE + string + RESET); }
     public void redText(String string) { System.out.println(RED + string + RESET); }
+    public void redTextV2(String string) { System.out.print(RED + string + RESET); }
     public void yellowText(String string) { System.out.println(YELLOW + string + RESET); }
+    public void yellowTextV2(String string) { System.out.print(YELLOW + string + RESET); }
 
     public void playerText(String string) { System.out.println(BLUE + "\t" + string + RESET); }
     public void enemyText(String string) { System.out.println(RED + "\t" + string + RESET); }
     public void lineBreak() {
-        System.out.println(GREEN + "\n\t------------------------------------------------------------------------------------------------------------------------------------------------------\n");
+        System.out.println(GREEN + "\n\t------------------------------------------------------------------------------------------------------------------------------------------------------\n" + RESET);
     }
     public void shortbreak(){
         yellowText("\n\t================================================================\n");
@@ -127,7 +130,7 @@ public class TextDisplay{
 
     public void pause() {
         greenText("\n\t================================================================\n");
-        printSystemInput("\t\tPress [ENTER] to continue...");
+        blueTextV2("\t\tPress [ENTER] to continue...");
         sc.nextLine();
         greenText("\n\t================================================================\n");
     }

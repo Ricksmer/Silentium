@@ -1,5 +1,6 @@
-package Display;
+package Main;
 
+import Main.Task;
 import Map.Arc;
 import Player.Character;
 import Player.*;
@@ -14,10 +15,14 @@ public class GameMenu {
     Character player;
     CombatDisplay combDisplay = new CombatDisplay();
     MapCharacter mapChar = new MapCharacter();
+    DisplayStory displayStory = new DisplayStory();
+    HowToPlay howToPlay = new HowToPlay();
+    Task task = new Task();
 
     Arc arcManager = null;
 
     public void start(){
+        task.load(2);
         boolean isRunning = true;
 
         Scanner sc = new Scanner(System.in);
@@ -39,6 +44,7 @@ public class GameMenu {
                     }
                     else{
                         isEnabled = false;
+                        task.load(1);
                         text.shortbreak();
                     }
                 }catch(InputMismatchException e){
@@ -50,10 +56,10 @@ public class GameMenu {
                     sc.next();
                 }
             }
-
             switch (option) {
                 case 1: // PLAY
                     player = CharacterSelect();
+                    if(player == null) break;
                     combDisplay.characterDisplay(player);
 
                     arcManager = new Arc(mapChar,player); // Arc Instantiation - Sangasina
@@ -65,19 +71,19 @@ public class GameMenu {
 
                     break;
                 case 2: //StoryLine
-                    DisplayStory displayStory = new DisplayStory();
                     displayStory.displayFullLore();
                     break;
                 case 3: //Credits
-                    System.out.println(credits());
+                    credits();
                     break;
                 case 4: //How to Play
-                    HowToPlay howToPlay = new HowToPlay();
                     howToPlay.displayHowToPlay();
                     break;
                 case 5: // Exit
-                    System.out.println("Require: Exit Function... Please implement\n-Sangasina");
+                    text.redTextV2("\t\t\t\t\tExiting Silentium");
+                    task.load(3);
                     isRunning = false;
+                    text.shortbreak();
                     break;
             }
         }
@@ -97,15 +103,29 @@ public class GameMenu {
         text.printSystemInput("Select :   ");
     }
 
-    public String credits(){
-        return "\n\n=========================================CREDITS=========================================\n"
-                + "Silentium is a project developed by the \"Team Balanghoy\" Group that is composed\n"
-                + "of 2nd year BSIT students from CIT-U (Cebu Institute of Technology University).\n"
-                + "Silentium serves as a final submission for the final project assigned by \n"
-                + "Kenn Migan Vincent Gumonan under the subject code CSIT227 titled \n\"Object Oriented Programming 1\"...\n\n" + "Members:\n"
-                + "Ricksmer Cabatingan - Project Manager\n" + "Andrew Sangasina - Project Manager\n"+ "Yohan Abarquez - Member\n"
-                + "Ryza Janell Mutya - Memeber\n"+ "Precious Ann Tolentino - Member"
-                + "\n=========================================================================================\n\n";
+    public void credits(){
+        String credits = """
+                                           =====   CREDITS   ===== 
+                                                   
+                       Silentium is a project developed by the "Team Balanghoy" Group that
+                    is composed of 2nd year BSIT students from CIT-U (Cebu Institute of
+                    Technology University). Silentium serves as a final submission for the 
+                    final project assigned by Kenn Migan Vincent Gumonan under the subject
+                     code CSIT227 titled "Object Oriented Programming 1"...
+                                    
+                                             > Project Managers <
+                                             Cabatingan, Ricksmer
+                                              Sangasina, Andrew
+                                               
+                                              > Co-Developers <
+                                               Abarquez, Yohan
+                                              Mutya, Ryza Janell
+                                            Tolentino, Precious Ann   
+                                                                           
+                """;
+
+        text.yellowTextV2(credits);
+
     }
 
     public Character CharacterSelect(){
@@ -134,6 +154,7 @@ public class GameMenu {
                     }
                     else {
                         isEnabled = false;
+                        task.load(1);
                         text.shortbreak();
                     }
                 }
@@ -156,8 +177,10 @@ public class GameMenu {
                 case 3:
                     return lyron;
                 case 0:
-                    //implement display character stats
-                    return op;
+                    combDisplay.displayStats(sonara);
+                    combDisplay.displayStats(aurelius);
+                    combDisplay.displayStats(lyron);
+                    return null;
                 default:
                     break;
             }

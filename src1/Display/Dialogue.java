@@ -2,7 +2,6 @@ package Display;
 
 import java.util.Random;
 import Player.Character;
-import Enemy.Monster;
 
 public class Dialogue implements CharacterDialogue {
     private final Random random = new Random();
@@ -160,16 +159,20 @@ public class Dialogue implements CharacterDialogue {
     // --- Final Boss Maestro Syozan Dialogue (Formatted for readability) ---
 
     public void bossPreBattleDialogue() {
+        text.lineBreak();
         text.printNarration("MAESTRO SYOZAN appears, radiating a crushing, absolute silence.");
+        System.out.println();
         text.printDialogue("Ah, another one. A child of the silence, yet obsessed with the deafening clang of sound. Did you truly believe your little noise could lead you here? How pathetic.\n" +
-                "You found my work—the eternal silence—and instead of realizing its perfection, you declared it a disease.\n" +
-                "You confuse chaos for life, and order for cruelty.");
+                "\t\t\t\t\t\t\tYou found my work—the eternal silence—and instead of realizing its perfection, you declared it a disease.\n" +
+                "\t\t\t\t\t\t\tYou confuse chaos for life, and order for cruelty.");
     }
 
     public void bossPostBattleDialogue() {
+        text.lineBreak();
         text.printDialogue("No... you fool! You have ruined the perfection! You confuse this chaos for life, and order for cruelty!\n" +
-                "I imposed this silence out of pity, stopping the world from screaming itself into oblivion, gifting humanity absolute peace from the sheer, agonizing volume of its own sorrow.\n" +
-                "You think this noise is freedom? It is the sound of inevitable pain and hatred, magnified a thousand times! You will live to regret this freedom, child; you will beg for the quiet I gifted you.");
+                "\t\t\t\t\t\t\tI imposed this silence out of pity, stopping the world from screaming itself into oblivion, gifting humanity absolute peace from the sheer, agonizing volume of its own sorrow.\n" +
+                "\t\t\t\t\t\t\tYou think this noise is freedom? It is the sound of inevitable pain and hatred, magnified a thousand times! You will live to regret this freedom, child; you will beg for the quiet I gifted you.");
+        System.out.println();
         text.printNarration("Maestro Syozan dissipates into silence as the world rushes with sound.");
     }
 
@@ -178,18 +181,30 @@ public class Dialogue implements CharacterDialogue {
 
     public void finalVictory(Character character) {
         if (character.name.equals("Sonara")) {
+            text.lineBreak();
             text.printSystemMessage("VICTORY! THE SILENCE IS SHATTERED!");
             text.printNarration("Sonara won. The shattering sound of her Banjo ended Syozan's stillness. The deafening rage in her heart was finally replaced by clean, profound peace, and the world was free.");
+            System.out.println();
             text.printDialogue(character, "It’s over. The deafening silence is gone, and so is the rage. I gave them back the world, not just my anger; I am finally free.");
+            text.pause();
+            text.lineBreak();
         } else if (character.name.equals("Aurelius")) {
+            text.lineBreak();
             text.printSystemMessage("VICTORY! CONVICTION RESTORED!");
             text.printNarration("Aurelius won. Syozan dissolved beneath his soaring conviction. The crushing shame of his past lifted, leaving him resolute and ready to lead the world into its noisy, just future.");
+            System.out.println();
             text.printDialogue(character, "The silence is shattered, and the world breathes. The battle is over, and my shame is finally lifted. I will listen to the sounds of freedom, and I will lead the rebuilding.");
+            text.pause();
+            text.lineBreak();
 
         } else if (character.name.equals("Lyron")) {
+            text.lineBreak();
             text.printSystemMessage("VICTORY! UNBURDENED GRIEF!");
             text.printNarration("Lyron won. The Maestro's defeat immediately banished his fear. The cold resolve of vengeance gave way to unburdened grief, marking him as a survivor finally at peace with his bravery.");
+            System.out.println();
             text.printDialogue(character, "It’s finished. They are avenged. The fear that drove me is gone; I will live for them, never forgetting the bravery I found.");
+            text.pause();
+            text.lineBreak();
         }
     }
 }
