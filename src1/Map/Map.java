@@ -138,7 +138,31 @@ public abstract class Map {
                 System.out.println();
                 System.out.print("\t   ");
             }
-        } else {
+        } else if(mapName.equalsIgnoreCase("Abyss of Dissonance")) {
+            System.out.print("\t\t\t\t\t  ");
+
+            for (i = 0; i < row; i++) {
+                for (j = 0; j < col; j++) {
+                    if (map[i][j] == 0) {
+                        text.printMap("" + untravelled);
+                    } else if (map[i][j] == 1) {
+                        text.printMap("" + travelled);
+                    } else if (map[i][j] == 2) {
+                        text.printPlayerOnMap("" + playerPos);
+                    } else if (map[i][j] == 3) {
+                        text.printExitMap("" + nextMap);
+                    } else if (map[i][j] == 4) {
+                        text.printExitMap("" + onNextMap);
+                    } else if (map[i][j] == 5) {
+                        text.printEnemyMap("" + killedEnemy);
+                    }
+
+                }
+                System.out.println();
+                System.out.print("\t\t\t\t\t  ");
+            }
+        }
+        else {
             System.out.print("\t\t\t");
 
             for(i=0;i<row;i++){

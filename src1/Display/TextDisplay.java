@@ -11,6 +11,11 @@ public class TextDisplay{
     private static final String GREEN = "\u001B[32m";    // System Messages (Success/Info)
     private static final String RED = "\u001B[31m";      // Maestro Dialogue
     private static final String WHITE = "\u001B[37m";      // Maestro Dialogue
+    private static final String VIOLET  = "\u001B[35m"; // Purple/Magenta tone
+    private static final String CYAN    = "\u001B[36m";
+    private static final String MAGENTA = "\u001B[95m"; // Bright Magenta
+    private static final String ORANGE  = "\u001B[38;5;208m"; // 256-color Orange
+    private static final String PINK    = "\u001B[38;5;205m"; // 256-color Pink
 
     Scanner sc = new Scanner(System.in);
 
@@ -24,7 +29,7 @@ public class TextDisplay{
     }
 
     public void printDialogue(String dialogue) {
-        System.out.println(RED + "\t[ MAESTRO SYOZAN ]: " + RESET + "\t" + dialogue);
+        System.out.println(RED + "\t[ MAESTRO SYOZAN ]: " + VIOLET + "\t" + dialogue);
     }
 
     public void printSystemMessage(String message) {
@@ -75,6 +80,10 @@ public class TextDisplay{
 
     public void greenText(String string) { System.out.println(GREEN + string + RESET); }
     public void blueText(String string) { System.out.println(BLUE + string + RESET); }
+    public void magentaText(String string) { System.out.println(MAGENTA + string + RESET); }
+    public void cyanText(String string) { System.out.println(CYAN + string + RESET); }
+    public void orangeText(String string) { System.out.println(ORANGE + string + RESET); }
+    public void pinkText(String string) { System.out.println(PINK + string + RESET); }
     public void blueTextV2(String string) { System.out.print(BLUE + string + RESET); }
     public void redText(String string) { System.out.println(RED + string + RESET); }
     public void redTextV2(String string) { System.out.print(RED + string + RESET); }

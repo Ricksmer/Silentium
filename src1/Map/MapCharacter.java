@@ -5,6 +5,7 @@ import Display.*;
 import Enemy.Monster;
 import Enemy.Syozan;
 import Player.Character;
+import Main.Task;
 
 import java.util.Scanner;
 
@@ -15,6 +16,7 @@ public class MapCharacter {
     TextDisplay text = new TextDisplay();
     Syozan syozan = new Syozan();
     Dialogue dialogue = new Dialogue();
+    Task task = new Task();
     private int mapIdNum;
     private int row;
     private int col;
@@ -55,10 +57,10 @@ public class MapCharacter {
     public void displayDirections(){
         text.printSystemMessage("Which way are you moving?");
         System.out.println();
-        text.printSystemMessage("[ 1 ] \t---> \tNorth");
-        text.printSystemMessage("[ 2 ] \t---> \tSouth");
-        text.printSystemMessage("[ 3 ] \t---> \tWest");
-        text.printSystemMessage("[ 4 ] \t---> \tEast");
+        text.printSystemMessage("[ 1 ] \t---> \tNorth \t[ ↑ ]");
+        text.printSystemMessage("[ 2 ] \t---> \tSouth \t[ ↓ ]");
+        text.printSystemMessage("[ 3 ] \t---> \tWest \t[ ← ]");
+        text.printSystemMessage("[ 4 ] \t---> \tEast \t[ → ]");
         System.out.println();
     }
 
@@ -77,6 +79,7 @@ public class MapCharacter {
             mapNar.mapIntroduction(3);
         };
 
+        task.delay(2);
         mapDisp.initDisplayMap(map);
 
 
@@ -97,7 +100,7 @@ public class MapCharacter {
             while(isEnabled){
                 try{
                     displayDirections();
-                    text.printSystemInput("Select: ");
+                    text.printSystemInput("Select:   ");
                     movement = sc.nextInt();
                     text.shortbreak();;
                     if(movement <= 0 || movement > 4){
@@ -106,6 +109,7 @@ public class MapCharacter {
                     }
                     else{
                         isEnabled = false;
+                        task.load(1);
                     }
                 }catch(Exception e){
                     text.shortbreak();
@@ -218,6 +222,7 @@ public class MapCharacter {
                                 }
                             } else if(player.getMap() == 3){
                                 dialogue.bossPreBattleDialogue();
+                                text.shortbreak();
                                 combat.battle(player,syozan);
                                 dialogue.bossPostBattleDialogue();
                                 dialogue.finalVictory(player);

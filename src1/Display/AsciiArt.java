@@ -58,6 +58,9 @@ public class AsciiArt {
 
     public void aureliusAscii() {
         String art = """                                                     
+                                                                 === AURELIUS ===
+                                                                 
+                                                                         
                                                                                                               
                                                                                   .=#%%%*.                       
                                                                      .:=++++=::---=-=-:::=*:      .-             
@@ -92,11 +95,14 @@ public class AsciiArt {
                                   .+%+.   .=#:            -%@@@@@@@@@@@@@@@@@@@@@@@@-  :: -*:                    
                                 =%+.    .#=                 :%@@@@@@@@@@@@@@@@@@@@@%. .*    =:                   
 """;
-        text.blueText(art);
+        text.cyanText(art);
     }
 
     public void lyronAscii() {
         String art = """                           
+                                                                === LYRON ===
+                                                                
+                                                                
                                                           
                                                           .+%@@@@@@@@@%##%%%@@@@@%#-++.                         
                                                      .-::#%%@@@@@@@@@@@@@##@@@@@@@@@@@%@%*-:.                    
@@ -132,11 +138,14 @@ public class AsciiArt {
                                            ..:=#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%##*+:    ..-=*#%%@@@@@@@@@@@@@@@@
                                   .....:=#@@@@@@@@@@@@@@@@@@@@@@@@#-....                                .........
   """;
-        text.greenText(art);
+        text.orangeText(art);
     }
 
     public void sonaraAscii() {
         String art = """                                                                                                                                                                                     
+                                                                         === SONARA ===
+                                                                         
+                                                                         
                                                                          
                                                                          ..-*%%@@@%%%###%+-.                               
                                                                       .=:%@@@+%@@@@@@@@#*@*=%:                             
@@ -173,7 +182,7 @@ public class AsciiArt {
                                                  *#        .%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
                                                  ++        .%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
                  """;
-        text.redText(art);
+        text.pinkText(art);
     }
 }
 

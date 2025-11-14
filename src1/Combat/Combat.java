@@ -38,6 +38,13 @@ public class Combat {
 
         while (!isGameOver) {
             beat = mt.getBeat();
+            if(player.getMap() == 1){
+                text.printSystemMessage("\t--- Ruined Town Of Echoes ---");
+            } else if(player.getMap() == 2){
+                text.printSystemMessage("\t--- Silent Caverns ---");
+            }else if(player.getMap() == 3){
+                text.printSystemMessage("\t--- Abyss of Dissonance ---");
+            }
 
             turnAction(player, enemy, beat);
 
@@ -52,7 +59,7 @@ public class Combat {
                 break;
             }
 
-            task.delay(5);
+            task.delay(2);
 
             // Enemy Attack
             if (player.name.equals("Sonara")) {
@@ -78,7 +85,7 @@ public class Combat {
             if (isGameOver) break;
 
             player.updateTurnEffects();
-            task.delay(5);
+            task.delay(2);
         }
     }
 
@@ -188,7 +195,8 @@ public class Combat {
             damage = enemy.sk3Damage;
         }
 
-        text.printSystemMessage("\tMonster attacks Player and deals " + damage + " damage!");
+        System.out.println();
+        text.redText("\t\tMonster attacks Player and deals " + damage + " damage!");
         System.out.println();
         return damage;
     }
@@ -205,7 +213,7 @@ public class Combat {
         }
 
         if (player.getLevel() > 1) {
-            text.printStats("Metronome", String.valueOf(beat), "\t\t");
+            text.printStats("Metronome", String.valueOf(beat), "\t\t\t");
             int finalDamage = mt.updateBeat(player, initialDamage);
             text.printStats("Final Damage", String.valueOf(finalDamage), "\t\t\t");
             return finalDamage;
@@ -237,8 +245,6 @@ public class Combat {
         int action = 0;
         boolean isEnabled;
 
-        if (player.getLevel() > 1) text.printStats("Metronome", String.valueOf(beat), "\t\t\t");
-
         nt.generateNotes();
 
         if (player.getLevel() < 3) {
@@ -249,8 +255,10 @@ public class Combat {
                     player.as.skillEffectAurelius(player);
                 }
 
+                if (player.getLevel() > 1) text.printStats("Metronome", String.valueOf(beat), "\t\t\t");
                 nt.damagePerNote(player);
                 isTurnOver = false;
+                task.delay(1);
                 combDisplay.turnAction(player);
                 isEnabled = true;
 
@@ -279,6 +287,7 @@ public class Combat {
                 switch (action) {
                     case 1:
                         playerAttack(player, enemy, beat);
+                        task.delay(1);
                         combDisplay.enemyStatsSummary(enemy);
                         isTurnOver = true;
                         break;
@@ -293,6 +302,8 @@ public class Combat {
                         combDisplay.attackGuide(player);
                         break;
                 }
+
+                task.load(2);
             } while (!isTurnOver);
         }
         else {
@@ -301,6 +312,7 @@ public class Combat {
 
                 nt.damagePerNote(player);
                 isTurnOver = false;
+                task.delay(1);
                 combDisplay.turnAction(player);
                 isEnabled = true;
 
@@ -329,6 +341,7 @@ public class Combat {
                 switch (action) {
                     case 1:
                         playerAttack(player, enemy, beat);
+                        task.delay(1);
                         combDisplay.enemyStatsSummary(enemy);
                         isTurnOver = true;
                         break;
@@ -349,6 +362,7 @@ public class Combat {
                         combDisplay.attackGuide(player);
                         break;
                 }
+                task.load(2);
             } while (!isTurnOver);
         }
     }

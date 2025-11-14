@@ -71,6 +71,7 @@ public class Note{
     }
 
     public void damagePerNote(Character player){
+        text.shortbreak();
         text.printSystemMessage("--- Notes ---");
         System.out.println();
         text.printSystemMessage("\tA --> \t" + A);

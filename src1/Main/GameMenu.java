@@ -59,7 +59,6 @@ public class GameMenu {
             switch (option) {
                 case 1: // PLAY
                     player = CharacterSelect();
-                    if(player == null) break;
                     combDisplay.characterDisplay(player);
 
                     arcManager = new Arc(mapChar,player); // Arc Instantiation - Sangasina
@@ -94,11 +93,11 @@ public class GameMenu {
         text.shortbreak();
         text.printSystemMessage("--- Main Menu ---");
         System.out.println();
-        text.printSystemMessage("[ 1 ] --->  Start Game");
-        text.printSystemMessage("[ 2 ] --->  Story");
-        text.printSystemMessage("[ 3 ] --->  Credits");
-        text.printSystemMessage("[ 4 ] --->  How To Play");
-        text.printSystemMessage("[ 5 ] --->  Exit");
+        text.printSystemMessage("[ 1 ] \t--->  \tStart Game");
+        text.printSystemMessage("[ 2 ] \t--->  \tStory");
+        text.printSystemMessage("[ 3 ] \t--->  \tCredits");
+        text.printSystemMessage("[ 4 ] \t--->  \tHow To Play");
+        text.printSystemMessage("[ 5 ] \t--->  \tExit");
         System.out.println();
         text.printSystemInput("Select :   ");
     }
@@ -118,26 +117,26 @@ public class GameMenu {
         text.shortbreak();
 
         text.blueText("\t\tMEMBERS: ");
-        text.printNarration("Project Manager \t Ricksmer Cabatingan\n" +
+        text.yellowText("\t\tProject Manager \t Ricksmer Cabatingan\n" +
                 "\t\tProject Manager \t Andrew Sangasina\n" +
                 "\t\t         Member \t Yohann Abarquez\n" +
                 "\t\t         Member \t Ryza Janell Mutya\n" +
                 "\t\t         Member \t Precious Ann Tolentino\n");
 
         text.blueText("\t\tINSTRUCTOR / ADVISER:");
-        text.printNarration("Sir Kenn Migan Vincent Gumonan\n");
+        text.yellowText("\t\tSir Kenn Migan Vincent Gumonan\n");
         text.blueText("\t\tSPECIAL THANKS TO:");
-        text.printNarration("CIT-U College of Computer Studies\n" +
+        text.yellowText("\t\tCIT-U College of Computer Studies\n" +
                 "\t\tCSIT227 Classmates\n" +
                 "\t\tFriends & Family for continuous support\n");
         text.blueText("\t\tTOOLS & TECHNOLOGIES:");
-        text.printNarration("Java (OOP)\n" +
+        text.yellowText("\t\tJava (OOP)\n" +
                 "\t\tIntelliJ IDEA / VS Code\n" +
                 "\t\tGitHub for version control\n");
         text.blueText("\t\tVERSION:");
-        text.printNarration("Silentium v1.0 (Final Build)\n");
+        text.yellowText("\t\tSilentium v1.0 (Final Build)\n");
         text.blueText("\t\tCOPYRIGHT:");
-        text.printNarration("© 2025 Team Balanghoy. All Rights Reserved.\n");
+        text.yellowText("\t\t© 2025 Team Balanghoy. All Rights Reserved.\n");
 
         task.load(5);
         /*String credits = """
@@ -213,10 +212,12 @@ public class GameMenu {
                 case 3:
                     return lyron;
                 case 0:
-                    combDisplay.displayStats(sonara);
-                    combDisplay.displayStats(aurelius);
-                    combDisplay.displayStats(lyron);
-                    return null;
+                    //combDisplay.displayStats(sonara);
+                    //combDisplay.displayStats(aurelius);
+                    //combDisplay.displayStats(lyron);
+                    //text.shortbreak();
+                    return op;
+                    //continue;
                 default:
                     break;
             }

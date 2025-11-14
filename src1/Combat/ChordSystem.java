@@ -5,17 +5,17 @@ import Player.Character;
 import Display.TextDisplay;
 
 public class ChordSystem {
-    private boolean cMajor = false;
-    private boolean dMinor = false;
-    private boolean eMinor = false;
-    private boolean fMajor = false;
-    private boolean gMajor = false;
-    private boolean aMinor = false;
-    private boolean bDim = false;
+    private boolean cMajor;
+    private boolean dMinor;
+    private boolean eMinor;
+    private boolean fMajor;
+    private boolean gMajor;
+    private boolean aMinor;
+    private boolean bDim;
 
     TextDisplay text = new TextDisplay();
 
-    public void ChordSystem() {
+    public ChordSystem() {
         resetChords();
     }
 
@@ -80,7 +80,7 @@ public class ChordSystem {
 
         if(player.name.equals("Aurelius")) player.ps.skillEffect(player);
         System.out.println();
-        text.printSystemAnnouncement("\t\t===================================================");
+        text.printSystemAnnouncement("=============================================================");
         System.out.println();
 
         switch (chord) {
@@ -117,7 +117,6 @@ public class ChordSystem {
                 break;
             case "BDIM":
                 bonusDamage = 1.3;
-                player.setHp(player.getHp() - (int)(player.getMaxHp() * 0.1));
                 System.out.print("\t\t  ");
                 text.printStats("Chord Activated", "B Dim! +30% Damage but lose 10% HP.", "\t");
 
@@ -133,13 +132,13 @@ public class ChordSystem {
         }
 
         System.out.println();
-        text.printGameAnnouncement("\t\t\t===================================================");
+        text.printGameAnnouncement("\t=============================================================");
         System.out.println();
         return (int) (damage * bonusDamage);
     }
 
     public boolean isChordUsed(char chord){
-        switch (chord) {
+        switch (java.lang.Character.toUpperCase(chord)) {
             case 'C':
                 return cMajor;
             case 'D':

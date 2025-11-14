@@ -80,7 +80,6 @@ public class CombatDisplay implements CombatPrint, InputPrint{
     }
 
     public void displayStats(Character player){
-        text.playerText("\t\t\t\t\t\t\t\t\t\t\t\t===== " + player.name + " =====");
         if(player.name.equals("Sonara")) art.sonaraAscii();
         if(player.name.equals("Aurelius")) art.aureliusAscii();
         if(player.name.equals("Lyron")) art.lyronAscii();
@@ -95,7 +94,7 @@ public class CombatDisplay implements CombatPrint, InputPrint{
         if(player.name.equals("Lyron")) displayStory.displayCharacterLyron();
         text.lineBreak();
 
-        task.load(3);
+        task.load(2);
     }
 
 
@@ -171,23 +170,26 @@ public class CombatDisplay implements CombatPrint, InputPrint{
         text.shortbreak();
         text.printSystemMessage("--- CHORD CHART --- ");
         System.out.println();
-        text.yellowText("\t[ C Major ] ---> \t Notes: C, E, G \t Effect: Heals 20% HP");
-        text.yellowText("\t[ D Minor ] ---> \t Notes: D, F, A \t Effect: +20% Damage Buff");
-        text.yellowText("\t[ E Minor ] ---> \t Notes: E, G, B \t Effect: Heals 10% HP & +10% Damage Buff");
-        text.yellowText("\t[ F Major ] ---> \t Notes: F, A, C \t Effect: +25 Shield Points");
-        text.yellowText("\t[ G Major ] ---> \t Notes: G, B, D \t Effect: Heals 15% HP & +15 Shield Points");
-        text.yellowText("\t[ A Minor ] ---> \t Notes: A, C, E \t Effect: +35 Shield Points");
-        text.yellowText("\t[ B Dim   ] ---> \t Notes: B, D, F \t Effect: +30% Damage but lose 10% HP");
+        text.yellowText("\t[ C Major ] \t---> \t Notes: C, E, G \t Effect: Heals 20% HP");
+        text.yellowText("\t[ D Minor ] \t---> \t Notes: D, F, A \t Effect: +20% Damage Buff");
+        text.yellowText("\t[ E Minor ] \t---> \t Notes: E, G, B \t Effect: Heals 10% HP & +10% Damage Buff");
+        text.yellowText("\t[ F Major ] \t---> \t Notes: F, A, C \t Effect: +25 Shield Points");
+        text.yellowText("\t[ G Major ] \t---> \t Notes: G, B, D \t Effect: Heals 15% HP & +15 Shield Points");
+        text.yellowText("\t[ A Minor ] \t---> \t Notes: A, C, E \t Effect: +35 Shield Points");
+        text.yellowText("\t[ B Dim   ] \t---> \t Notes: B, D, F \t Effect: +30% Damage but lose 10% HP");
         text.shortbreak();
     }
 
     public void attackGuide(Character player){
         text.printSystemMessage("--- Attack Guide ---");
         System.out.println();
+        task.load(3);
         text.printSystemMessage(" > Note System < ");
         text.yellowText("\tEach note corresponds to a specific damage range.");
         System.out.println();
         displayValidNotes(player.getLevel());
+
+        task.delay(1);
         text.printSystemMessage(" > Metronome System <");
         if(player.getLevel() < 2){
             text.redText("\tLocked! Reach Level 2 to unlock the Metronome System.");
@@ -198,6 +200,7 @@ public class CombatDisplay implements CombatPrint, InputPrint{
             text.yellowText("\tEach time your attack syncs with the metronome, the metronome beat increases by 1, up to a maximum of 4.");
         }
 
+        task.delay(1);
         text.shortbreak();
         text.printSystemMessage(" > Chord System <");
         if(player.getLevel() < 3){
@@ -210,6 +213,7 @@ public class CombatDisplay implements CombatPrint, InputPrint{
             displayChord();
         }
 
+        task.delay(1);
         text.printSystemMessage(" > Passive Skill < ");
         if(player.name.equals("Sonara")){
             text.playerText("--- Sonara's Passive Skill ---");
@@ -223,6 +227,7 @@ public class CombatDisplay implements CombatPrint, InputPrint{
         text.playerText(player.ps.skillDescription);
         text.shortbreak();
 
+        task.delay(1);
         text.printSystemMessage(" > Active Skill < ");
         if(player.name.equals("Sonara")){
             text.playerText("--- Sonara's Active Skill ---");
