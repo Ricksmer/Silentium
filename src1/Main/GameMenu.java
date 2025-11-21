@@ -180,7 +180,7 @@ public class GameMenu {
             while(isEnabled){
                 try{
                     charSelect = sc.nextInt();
-                    if(charSelect < 0 || charSelect > 3){
+                    if(charSelect < 0 || charSelect > 4){
                         System.out.println();
                         text.printSystemError(" --- Invalid Input ---");
                         System.out.println();
@@ -212,18 +212,19 @@ public class GameMenu {
                 case 3:
                     return lyron;
                 case 0:
-                    //combDisplay.displayStats(sonara);
-                    //combDisplay.displayStats(aurelius);
-                    //combDisplay.displayStats(lyron);
-                    //text.shortbreak();
+                    combDisplay.displayStats(sonara);
+                    combDisplay.displayStats(aurelius);
+                    combDisplay.displayStats(lyron);
+                    text.shortbreak();
+                    continue;
+                case 4:
                     return op;
-                    //continue;
                 default:
                     break;
             }
 
 
-        }while(charSelect <= 0 || charSelect > 3);
+        }while(charSelect <= 0 || charSelect > 4);
 
         return null;
     }

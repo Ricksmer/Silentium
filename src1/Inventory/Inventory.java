@@ -8,28 +8,44 @@ import Player.Character;
 
 public class Inventory {
     private ArrayList<Item> items = new ArrayList<>();
+    private static final int maxSize = 10;
     private Random rd = new Random();
     private Scanner sc = new Scanner(System.in);
     TextDisplay text = new TextDisplay();
 
     private int battleCount = 0; // for loot progression
+    private int countItems = 0;
+
+    private int getMaxSize(){
+        return  maxSize;
+    }
+
+    public boolean isFull(){
+        return items.size() == maxSize;
+    }
 
     public void addItem(Item item) {
-        items.add(item);
-        text.printSystemAnnouncement("Item obtained: " + item.getName() + " - " + item.getDescription() + "\n");
+        if(!isFull()) {
+            items.add(item);
+            text.printSystemAnnouncement("Item obtained: " + item.getName() + " - " + item.getDescription() + "\n");
+            countItems++;
+        }else{
+            text.printSystemAnnouncement("Inventory Full!");
+        }
     }
 
     public void tryDrop() {
         battleCount++;
         double dropChance;
 
-        if (battleCount <= 3) dropChance = 0.40;
-        else if (battleCount <= 5) dropChance = 0.50;
-        else dropChance = 0.60;
+        if (battleCount <= 3) dropChance = 0.5;
+        else if (battleCount <= 5) dropChance = 0.5;
+        else dropChance = 0.6;
 
         double roll = rd.nextDouble();
 
-        if (roll < dropChance) randomDrop();
+        if (roll < dropChance)
+            randomDrop();
         else text.printSystemMessage("No items dropped this time...\n");
     }
 
