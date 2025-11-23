@@ -14,7 +14,7 @@ public class Op extends Character{
         ps.skillName = "Tester Passive Skill Name";
         ps.skillDescription = "Tester Passive Skill Description";
         as.skillName = "Tester Active Skill Name";
-        as.skillDescription = " Tester Active Skill Description";
+        as.skillDescription = "Tester Active Skill Description";
         setMaxHp(999999);
         setHp(getMaxHp());
         setMaxShield(999999);
