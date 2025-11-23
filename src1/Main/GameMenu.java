@@ -59,14 +59,18 @@ public class GameMenu {
             switch (option) {
                 case 1: // PLAY
                     player = CharacterSelect();
+                    displayStory.displayOpeningSequence(player);
                     combDisplay.characterDisplay(player);
 
                     arcManager = new Arc(mapChar,player); // Arc Instantiation - Sangasina
 
                     //ARC SEQUENCE
                     arcManager.startArc1();
+                    displayStory.displayArcTransition(2);
                     arcManager.startArc2();
+                    displayStory.displayArcTransition(3);
                     arcManager.startArc3();
+                    displayStory.displayEndingSequence(player);
 
                     break;
                 case 2: //StoryLine

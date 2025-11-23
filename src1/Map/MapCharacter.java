@@ -223,11 +223,10 @@ public class MapCharacter {
                                     return;
                                 }
                             } else if(player.getMap() == 3){
-                                dialogue.bossPreBattleDialogue();
-                                text.shortbreak();
+                                dispStory.displayPreBossTransition();
                                 combat.battle(player,syozan);
-                                dialogue.bossPostBattleDialogue();
-                                dialogue.finalVictory(player);
+                                dispStory.displayPostBossTransition();
+
                                 task.delay(2);
                                 dispStory.displayEndingSequence(player);
                                 new GameMenu().credits();

@@ -29,6 +29,23 @@ public class DisplayStory {
     }
 
     /**
+     * Prints the opening sequence of the game.
+     */
+    public void displayOpeningSequence(Character player) {
+        text.lineBreak();
+        text.printNarration("\tIn a world plunged into eternal silence—no voices, no songs, not even the whisper of wind—humanity drifts in a bleak, lifeless existence.");
+        task.delay(2);
+        text.printNarration("\tUntil a mysterious bell rings across the land, awakening shadowy monsters born from the fear of this silence.");
+        task.delay(2);
+        text.printNarration("\tYou are " + player.name + ", one of the Children of Silence, born in this quiet age and wielding a unique instrument: " + player.instrument + ".");
+        task.delay(2);
+        text.printNarration("\tMusic is your weapon and your hope. Only by playing can you weaken the encroaching shadows and restore sound to the world.");
+        task.delay(2);
+        text.printNarration("\tWill you bring back the world’s lost voice, or will darkness claim the last note?");
+        task.delay(2);
+    }
+
+    /**
      * Prints the setting and environment details.
      */
     public void displayWorldSettings() {
@@ -132,6 +149,63 @@ public class DisplayStory {
             text.printNarration("Lyron lays down vengeance and accepts his past. He becomes a Custodian of Memory, \n" +
                     "\t\tplaying soft, comforting harp pieces that help others heal from guilt and fear.");
         }
+    }
+
+    /**
+     * Displays the story transition between different game arcs based on the next map.
+     * @param nextMap The integer representing the upcoming map/arc.
+     */
+    public void displayArcTransition(int nextMap) {
+        text.lineBreak();
+        text.printGameAnnouncement("\t\t\t\t\t\t\t\t\t\t\t--- A NEW PATH REVEALS ITSELF ---");
+        task.delay(2);
+        text.lineBreak();
+
+        switch (nextMap) {
+            case 2: // Transition to Silent Caverns
+                text.printNarration("\tHaving cleared the Ruined Town of its most menacing shadows, you discover a hidden stairway beneath the rubble.");
+                task.delay(2);
+                text.printNarration("\tIt descends into the earth, leading to the Silent Caverns—a place where the silence is not just an absence of sound, but a predator.");
+                break;
+            case 3: // Transition to Abyss of Dissonance
+                text.printNarration("\tThe oppressive silence of the caverns finally gives way to a gaping chasm—the Abyss of Dissonance.");
+                task.delay(2);
+                text.printNarration("\tHere, at the edge of the world, sound is devoured instantly. Each note you play will be an act of pure defiance.");
+                break;
+        }
+        task.delay(2);
+    }
+
+    /**
+     * Displays the story sequence just before the final boss encounter.
+     */
+    public void displayPreBossTransition() {
+        text.lineBreak();
+        text.printGameAnnouncement("\t\t\t\t\t\t\t\t\t\t\t--- THE MAESTRO AWAITS ---");
+        task.delay(2);
+        text.lineBreak();
+        text.printNarration("\tYou've reached the heart of the Abyss, a throne room of absolute nothingness.");
+        task.delay(2);
+        text.printNarration("\tBefore you sits Maestro Syozan, the architect of the Eternal Silence, cloaked in shadow and dissonance.");
+        task.delay(2);
+        text.printNarration("\tThis is the final performance. Your music must be the dawn that breaks this endless night.");
+        task.delay(2);
+    }
+
+    /**
+     * Displays the story sequence after the final boss is defeated.
+     */
+    public void displayPostBossTransition() {
+        text.lineBreak();
+        text.printGameAnnouncement("\t\t\t\t\t\t\t\t\t\t\t--- THE SILENCE IS BROKEN ---");
+        task.delay(2);
+        text.lineBreak();
+        text.printNarration("\tWith the final note, Maestro Syozan's shadowy form dissolves into nothingness, his grip on the world shattered.");
+        task.delay(2);
+        text.printNarration("\tA gentle hum fills the void, growing into a chorus of sound. The whisper of wind, the rustle of leaves, the distant echo of a forgotten song...");
+        task.delay(2);
+        text.printNarration("\tSound has returned. The world can finally breathe again.");
+        task.delay(2);
     }
 
     public void displayEnd(){
