@@ -285,7 +285,7 @@ public class Combat {
                     try {
                         action = Integer.parseInt(input);
                         System.out.println();
-                        if (action <= 0 || action > 7) {
+                        if (action <= 0 || action > 4) {
                             System.out.println();
                             text.printSystemError("--- Invalid Input ---");
                             System.out.println();
