@@ -2,11 +2,10 @@ package Display;
 
 import java.util.Scanner;
 import Main.Task;
+import Player.Character; // added import for the project's Character class
 
 public class DisplayStory {
     private final Scanner sc = new Scanner(System.in);
-    // Assuming TextDisplay is available in the Display package
-    // and provides methods like printSystemMessage, printNarration, etc.
     private final TextDisplay text = new TextDisplay();
     Task task = new Task();
 
@@ -115,5 +114,30 @@ public class DisplayStory {
                 "\t\tPersonality: Riddled with guilt and paralyzed by fear, he pushes forward as a reluctant avenger. His commitment provides the fragile resolve he needs.\n" +
                 "\t\tIntroduction: After witnessing his family's murder, he violently struck the Harp in desperate fear, banishing the monster and gaining a tool for vengeance.\n" +
                 "\t\tEnding: Ends his quest for vengeance, transforms into a Custodian of Memory, using his Harp to heal others' guilt and fear.");
+    }
+
+    public void displayEndingSequence(Character player) {
+        System.out.println();
+        if (player.name.equals("Sonara")) {
+            text.blueText("\t\tSONARA");
+            text.printNarration("After the final symphony, Sonara's rage softens. Vengeance gives way to purpose.\n" +
+                    "\t\tShe becomes a traveling musician and an advocate for healing, using rhythm to mend the \n" +
+                    "\t\tscars left by silence.");
+        } else if (player.name.equals("Aurelius")) {
+            text.blueText("\t\tAURELIUS");
+            text.printNarration("Aurelius rises as the moral compass of the new era. He uses his flute not only to protect,\n" +
+                    "\t\tbut to guide communities toward justice and shared harmony, rebuilding trust through gentle melodies.");
+        } else if (player.name.equals("Lyron")) {
+            text.blueText("\t\tLYRON");
+            text.printNarration("Lyron lays down vengeance and accepts his past. He becomes a Custodian of Memory, \n" +
+                    "\t\tplaying soft, comforting harp pieces that help others heal from guilt and fear.");
         }
     }
+
+    public void displayEnd(){
+        text.printGameAnnouncement("\t\t\t\t\t\t\t\t\t\t\t--- END OF SILENTIUM ---)");
+        text.lineBreak();
+        new AsciiArt().endASCII();
+    }
+
+}

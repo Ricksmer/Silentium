@@ -255,7 +255,7 @@ public class Combat {
                     player.as.skillEffectAurelius(player);
                 }
 
-                if (player.getLevel() > 1) text.printStats("Metronome", String.valueOf(beat), "\t\t\t");
+                if (player.getLevel() > 1) text.printStats("Metronome", String.valueOf(beat), "\t\t\t\t\t");
                 nt.damagePerNote(player);
                 isTurnOver = false;
                 task.delay(1);

@@ -4,6 +4,7 @@ import Combat.Combat;
 import Display.*;
 import Enemy.Monster;
 import Enemy.Syozan;
+import Main.GameMenu;
 import Player.Character;
 import Main.Task;
 
@@ -11,6 +12,7 @@ import java.util.Scanner;
 
 public class MapCharacter {
     MapDisplay mapNar =  new MapDisplay();
+    DisplayStory dispStory = new DisplayStory();
     Combat combat = new Combat();
     CombatDisplay combDisplay = new CombatDisplay();
     TextDisplay text = new TextDisplay();
@@ -226,9 +228,12 @@ public class MapCharacter {
                                 combat.battle(player,syozan);
                                 dialogue.bossPostBattleDialogue();
                                 dialogue.finalVictory(player);
+                                task.delay(2);
+                                dispStory.displayEndingSequence(player);
+                                new GameMenu().credits();
+                                dispStory.displayEnd();
                                 isExploring = false;
-                                break;
-                                //eNDINGS ETC..
+                                return;
                             }
                         } else if (tempOp == 'N') {
                             text.printSystemMessage("Travelling continues...");
@@ -239,30 +244,6 @@ public class MapCharacter {
                             System.out.println();
                         }
                     }
-
-                    /*
-                    while (!valid) {
-                        text.printSystemInput("Enter? [ Y / N ]: ");
-                        String input = sc.nextLine().trim();
-
-                        if (input.isEmpty() || input.length() != 1 || !java.lang.Character.isLetter(input.charAt(0))) {
-                            text.printSystemMessage("Invalid input! Please enter Y or N only.");
-                            System.out.println();
-                            continue;
-                        }
-
-                        tempOp = java.lang.Character.toUpperCase(input.charAt(0));
-
-                        if (tempOp != 'Y' && tempOp != 'N') {
-                            text.printSystemMessage("Invalid input! Please enter Y or N only.");
-                            System.out.println();
-                            continue;
-                        }
-
-                        valid = true;
-                    }*/
-
-
 
                     text.shortbreak();
                     break;

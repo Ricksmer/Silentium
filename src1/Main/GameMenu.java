@@ -206,10 +206,13 @@ public class GameMenu {
 
             switch (charSelect){
                 case 1:
+                    combDisplay.displayStats(sonara);
                     return sonara;
                 case 2:
+                    combDisplay.displayStats(aurelius);
                     return aurelius;
                 case 3:
+                    combDisplay.displayStats(lyron);
                     return lyron;
                 case 0:
                     combDisplay.displayStats(sonara);
