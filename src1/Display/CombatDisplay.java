@@ -83,6 +83,7 @@ public class CombatDisplay implements CombatPrint, InputPrint{
         if(player.name.equals("Sonara")) art.sonaraAscii();
         if(player.name.equals("Aurelius")) art.aureliusAscii();
         if(player.name.equals("Lyron")) art.lyronAscii();
+        if(player.name.equals("Op")) art.khaiASCII();
 
         task.delay(1);
         characterDisplay(player);

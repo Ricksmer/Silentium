@@ -221,6 +221,7 @@ public class GameMenu {
                     text.shortbreak();
                     continue;
                 case 4:
+                    combDisplay.displayStats(op);
                     return op;
                 default:
                     break;
