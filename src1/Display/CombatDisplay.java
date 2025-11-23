@@ -9,6 +9,8 @@ import Combat.ChordSystem;
 import Main.Task;
 import Display.DisplayStory;
 
+import java.sql.SQLOutput;
+
 public class CombatDisplay implements CombatPrint, InputPrint{
     TextDisplay text = new TextDisplay();
     AsciiArt art = new AsciiArt();
@@ -56,6 +58,7 @@ public class CombatDisplay implements CombatPrint, InputPrint{
             text.printSystemMessage("[ 2 ] ---> \t Skill");
             text.printSystemMessage("[ 3 ] ---> \t Display Stats");
             text.printSystemMessage("[ 4 ] ---> \t Attack Guide");
+
             System.out.println();
         }else{
             text.printSystemMessage("--- Choose an action ---\n");
@@ -65,6 +68,9 @@ public class CombatDisplay implements CombatPrint, InputPrint{
             text.printSystemMessage("[ 4 ] ---> \t Chord Chart");
             text.printSystemMessage("[ 5 ] ---> \t Display Stats");
             text.printSystemMessage("[ 6 ] ---> \t Attack Guide");
+
+            text.printSystemMessage("[ 7 ] ---> \t Kill Yourself");
+
             System.out.println();
         }
     }
@@ -240,5 +246,32 @@ public class CombatDisplay implements CombatPrint, InputPrint{
         text.playerText(player.as.skillName);
         text.playerText(player.as.skillDescription);
         text.shortbreak();
+    }
+
+    public void displayDefeat(){
+        text.blueText("\tDon't give up yet...");
+        text.greenText("\tPress enter to continue.");
+        System.out.print("\t");
+        task.delay(2);
+    }
+
+    public void replayText(){
+        text.redTextV2("\tDA ");
+        task.delay(1);
+
+        text.redTextV2("CAPO ");
+        task.delay(1);
+
+        text.redTextV2("AL ");
+        task.delay(1);
+
+        text.redTextV2("FINE \n");
+        System.out.print("\t");
+        task.delay(2);
+
+        text.yellowText("\n\tRepeat from the beginning.");
+        System.out.print("\t");
+        task.delay(1);
+        System.out.println("\n\n\n\n\n");
     }
 }
