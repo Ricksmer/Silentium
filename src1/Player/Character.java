@@ -100,7 +100,8 @@ public abstract class Character {
             } else{
                 text.printSystemAnnouncement("Victory Bonus: Checking for item drop...");
                 Combat.inventory.tryDrop();
-                text.shortbreak();
+//              text.shortbreak();
+                text.pause();
                 Combat.inventory.showInventory();
                 text.shortbreak();
             }
@@ -112,11 +113,12 @@ public abstract class Character {
                 maxHp += 50;
                 text.printSystemMessage("Player leveled up!");
             } else{
+                text.pause();
                 text.printSystemAnnouncement("Victory Bonus: Checking for item drop...");
                 Combat.inventory.tryDrop();
-                text.shortbreak();
+//                text.shortbreak();
                 Combat.inventory.showInventory();
-                text.shortbreak();
+//                text.shortbreak();
             }
         }
         text.pause();
