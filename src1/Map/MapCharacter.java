@@ -38,6 +38,7 @@ public class MapCharacter {
         return col;
     }
 
+
     //Character Movements
     public void up(){
         row -= 1;

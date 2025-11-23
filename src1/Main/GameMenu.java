@@ -72,6 +72,7 @@ public class GameMenu {
                     arcManager.startArc3();
                     displayStory.displayEndingSequence(player);
 
+
                     break;
                 case 2: //StoryLine
                     displayStory.displayFullLore();

@@ -161,6 +161,7 @@ public class DisplayStory {
         task.delay(2);
         text.lineBreak();
 
+
         switch (nextMap) {
             case 2: // Transition to Silent Caverns
                 text.printNarration("\tHaving cleared the Ruined Town of its most menacing shadows, you discover a hidden stairway beneath the rubble.");
