@@ -54,7 +54,10 @@ public class Combat {
             if (isGameOver) {
                 text.printSystemMessage("--- You defeated " + enemy.name + "! ---\n");
                 dialogue.victoryDialogue(player);
-//                inventory.tryDrop();
+
+                if (enemy.name.equals("Abarquez the Abyss Guardian")) {
+                    inventory.guaranteedDrop();
+                }
 
                 player.levelUp(player);
                 break;
@@ -69,7 +72,12 @@ public class Combat {
                 if (isGameOver) {
                     text.printSystemMessage("--- You defeated " + enemy.name + "! ---\n");
                     dialogue.victoryDialogue(player);
-                    inventory.tryDrop();
+
+                    if (enemy.name.equals("Abarquez the Abyss Guardian")) {
+                        inventory.guaranteedDrop();
+                    } else {
+                        inventory.tryDrop();
+                    }
 
                     player.levelUp(player);
                     break;

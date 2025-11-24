@@ -97,11 +97,10 @@ public abstract class Character {
                 if(level==3) dialogue.secondLevelUp(player);
                 maxHp += 50;
                 text.printSystemMessage("Player leveled up!");
-            } else{
-                text.printSystemAnnouncement("Victory Bonus: Checking for item drop...");
+            } else {
+                text.pause();
                 Combat.inventory.tryDrop();
 //              text.shortbreak();
-                text.pause();
                 Combat.inventory.showInventory();
                 text.shortbreak();
             }
@@ -114,7 +113,6 @@ public abstract class Character {
                 text.printSystemMessage("Player leveled up!");
             } else{
                 text.pause();
-                text.printSystemAnnouncement("Victory Bonus: Checking for item drop...");
                 Combat.inventory.tryDrop();
 //                text.shortbreak();
                 Combat.inventory.showInventory();
