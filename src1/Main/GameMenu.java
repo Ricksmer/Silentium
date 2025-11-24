@@ -136,7 +136,7 @@ public class GameMenu {
                 "\t\tFriends & Family for continuous support\n");
         text.blueText("\t\tTOOLS & TECHNOLOGIES:");
         text.yellowText("\t\tJava (OOP)\n" +
-                "\t\tIntelliJ IDEA / VS Code\n" +
+                "\t\tIntelliJ IDEA 2025.2.2\n" +
                 "\t\tGitHub for version control\n");
         text.blueText("\t\tVERSION:");
         text.yellowText("\t\tSilentium v1.0 (Final Build)\n");
