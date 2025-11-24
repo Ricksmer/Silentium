@@ -65,7 +65,7 @@ public class Combat {
 
             task.delay(2);
 
-            // Enemy Attackk
+            // Enemy Attack
             if (player.name.equals("Sonara")) {
                 damage = player.ps.skillEffect(enemy);
                 isGameOver = isEnemyDefeated(enemy);
