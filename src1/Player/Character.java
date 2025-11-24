@@ -114,9 +114,9 @@ public abstract class Character {
             } else{
                 text.pause();
                 Combat.inventory.tryDrop();
-//                text.shortbreak();
+//              text.shortbreak();
                 Combat.inventory.showInventory();
-//                text.shortbreak();
+//              text.shortbreak();
             }
         }
         text.pause();
