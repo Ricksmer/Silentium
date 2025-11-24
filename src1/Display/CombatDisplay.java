@@ -193,6 +193,10 @@ public class CombatDisplay implements CombatPrint, InputPrint{
         text.printSystemMessage(" > Note System < ");
         text.yellowText("\tEach note corresponds to a specific damage range.");
         System.out.println();
+        text.printSystemMessage(" > Sample Note Input < \n");
+        text.printSystemMessage("--- ENTER NOTES ---");
+        text.yellowText("\t\t\t\tC A B");
+        System.out.println();
         displayValidNotes(player.getLevel());
 
         task.delay(1);

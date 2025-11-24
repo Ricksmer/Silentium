@@ -41,7 +41,7 @@ public class DisplayStory {
         task.delay(2);
         text.printNarration("\tMusic is your weapon and your hope. Only by playing can you weaken the encroaching shadows and restore sound to the world.");
         task.delay(2);
-        text.printNarration("\tWill you bring back the world’s lost voice, or will darkness claim the last note?");
+        text.printNarration("\tWill you bring back the world’s lost voice, or will darkness claim the last note?\n");
         task.delay(2);
     }
 
