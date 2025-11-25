@@ -14,7 +14,7 @@ public class PassiveSkill {
     //SONARA SKILL EFFECT
     public int skillEffect(Monster enemy){
         int damage = (combat.enemyAttack(enemy));;
-        int thorn = (int) (damage * 0.25);
+        int thorn = (int) (damage * 0.15);
 
         text.redText("\t\tThe enemy damaged itself from Sonara's Body of Thorns and received " + thorn + " damage!\n");
 
