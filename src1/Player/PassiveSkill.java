@@ -25,13 +25,19 @@ public class PassiveSkill {
 
     //AURELIUS SKILL EFFECT
     public void skillEffect(Character player){
-        player.heal((int)(player.getMaxHp() * 0.08));
+        int healAmount = (int)(player.getHp() * 0.05);
+        int before = player.getHp();
+        player.heal(healAmount);
+        int after = player.getHp();
+        int actualHeal = after - before;
+
+        text.printSystemMessage("Aurelius's gains " + actualHeal + " health from his Melodic Remedy!\n");
     }
 
 
     //LYRON SKILL EFFECT
     public int skillEffect(Character player, int damage){
-        text.printSystemMessage("Lyron's Passive Skill activates! He gains Shield equal to 25% of the damage dealt!");
+        text.printSystemMessage("The winner takes it all activates! Lyron gains shield equal to 25% of the damage dealt!");
         text.printSystemMessage("\n\n === " + damage + " SHIELD:  " + (damage * 0.25) + " === \n\n");
 
         player.addShield((int)(damage * 0.25));

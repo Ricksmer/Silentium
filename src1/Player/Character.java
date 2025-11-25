@@ -1,7 +1,6 @@
 package Player;
 
 import Display.*;
-import Inventory.Inventory;
 import Combat.Combat;
 
 import java.text.DecimalFormat;
@@ -85,8 +84,9 @@ public abstract class Character {
         }
     }
 
-    public void heal(int amount) {
+    public int heal(int amount) {
         setHp(Math.min(getHp() + amount, maxHp));
+        return (int)amount;
     }
 
     public void levelUp(Character player){
