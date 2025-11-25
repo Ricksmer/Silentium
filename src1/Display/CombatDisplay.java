@@ -170,6 +170,8 @@ public class CombatDisplay implements CombatPrint, InputPrint{
         text.printSystemMessage("[ A Minor ] ---> \t" + (chord.isChordUsed('a') ? "USED" : "AVAILABLE"));
         text.printSystemMessage("[ B Dim   ] ---> \t" + (chord.isChordUsed('b') ? "USED" : "AVAILABLE"));
         text.shortbreak();
+
+        displayChord();
     }
 
     public void displayChord(){
