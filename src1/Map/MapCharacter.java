@@ -208,6 +208,7 @@ public class MapCharacter {
                                     text.printGameAnnouncement("\tTravelling towards the next map!");
                                     player.setMap(player.getMap() + 1);
                                     isExploring = false;
+
                                 }
                             } else if (player.getMap() == 2) {
                                 if (player.getLevel() < 5) {
