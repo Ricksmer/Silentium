@@ -70,8 +70,10 @@ public class Note{
         G = rd.nextInt(rangeG) + minG;
     }
 
-    public void damagePerNote(Character player){
+    public void damagePerNote(Character player, int beat){
         text.shortbreak();
+        if (player.getLevel() > 1) text.printStats("Metronome", String.valueOf(beat), "\t\t");
+        System.out.println();
         text.printSystemMessage("--- Notes ---");
         System.out.println();
         text.printSystemMessage("\tA --> \t" + A);

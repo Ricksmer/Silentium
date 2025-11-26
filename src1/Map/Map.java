@@ -226,7 +226,6 @@ public abstract class Map {
 
         if(map == 1){
             op = rd.nextInt(1, 2 + 1);
-
             if(op == 1) return new FleshFeeders();
             if(op == 2) return new Andrewellers();
         }else if(map == 2){

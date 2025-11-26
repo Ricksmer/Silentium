@@ -25,17 +25,21 @@ public class Combat {
 
     private boolean isGameOver;
 
-    public void battle(Character player, Monster enemy) {
+    public boolean battle(Character player, Monster enemy) {
         combDisplay.battleStart();
+        mt.reset();
+        player.as.resetSkill();
+        chordSystem.resetChords();
         int beat;
         int enemyHP = enemy.getMaxHp();
-        mt.reset();
         int damage;
+        boolean isWon = false;
+
         isGameOver = false;
         player.setHp(player.getMaxHp());
         player.setShield(player.getMaxShield());
         player.resetTemporaryEffects();
-        player.as.resetSkill();
+        player.setDamageBuff(1.0);
 
         while (!isGameOver) {
             beat = mt.getBeat();
@@ -46,13 +50,14 @@ public class Combat {
             }else if(player.getMap() == 3){
                 text.printSystemMessage("\t--- Abyss of Dissonance ---");
             }
-
+            task.delay(2);
             turnAction(player, enemy, beat);
 
             // Game Check - enemy defeated?
             isGameOver = isEnemyDefeated(enemy);
             if (isGameOver) {
                 text.printSystemMessage("--- You defeated " + enemy.name + "! ---\n");
+                player.defeatedMonster();
                 dialogue.victoryDialogue(player);
 
                 if (enemy.name.equals("Abarquez the Abyss Guardian")) {
@@ -60,6 +65,7 @@ public class Combat {
                 }
 
                 player.levelUp(player);
+                isWon = true;
                 break;
             }
 
@@ -91,26 +97,13 @@ public class Combat {
 
             // Game Check - player defeated?
             isGameOver = isPlayerDefeated(player);
-            if (isGameOver && player.getHp() > 0)
-                break;
-            else if(isGameOver && player.getHp() <= 0){
-                combDisplay.displayDefeat();
-                sc.nextLine();
-
-                player.setHp(player.getMaxHp());
-                player.setShield(player.getMaxShield());
-                player.resetTemporaryEffects();
-                player.as.resetSkill();
-                enemy.setHp(enemyHP);
-                mt.reset();
-
-                combDisplay.replayText();
-
-                isGameOver = false;
+            if(isGameOver){
+                return false;
             }
             player.updateTurnEffects();
             task.delay(2);
         }
+        return isWon;
     }
 
     public void playerAttack(Character player, Monster enemy, int beat) {
@@ -157,25 +150,6 @@ public class Combat {
             }
         }
 
-        /*
-        while (!isValidAttack) {
-            combDisplay.noteInput();
-
-            text.printSystemInput("#1:   ");
-            note1 = sc.next().toUpperCase().charAt(0);
-            text.printSystemInput("#2:   ");
-            note2 = sc.next().toUpperCase().charAt(0);
-            text.printSystemInput("#3:   ");
-            note3 = sc.next().toUpperCase().charAt(0);
-            System.out.println();
-
-            isValidAttack = checkNotes(player, note1, note2, note3);
-            if (!isValidAttack) {
-                text.printSystemError("Please re-enter your notes.");
-            }
-        }
-        */
-
         int damage = computeNoteDamage(player, note1, note2, note3, beat);
 
         if (player.getLevel() >= 3) {
@@ -186,6 +160,10 @@ public class Combat {
         }
 
         if(player.name.equals("Op")){ damage*=999; }
+        damage = (int)(damage * player.getDamageBuff());
+        if(player.getDamageBuff() > 1.0){
+            text.printStats("Damage Buff", String.format("%d%%", (int)((player.getDamageBuff()) - 1) * 100), "\t");
+        }
         text.printStats("Total Damage Dealt", String.valueOf(damage), "\t");
         System.out.println();
 
@@ -237,7 +215,7 @@ public class Combat {
         }
 
         if (player.getLevel() > 1) {
-            text.printStats("Metronome", String.valueOf(beat), "\t\t\t");
+            text.printStats("Metronome", String.valueOf(beat), "\t\t\t\t");
             int finalDamage = mt.updateBeat(player, initialDamage);
             text.printStats("Final Damage", String.valueOf(finalDamage), "\t\t\t");
             return finalDamage;
@@ -248,7 +226,6 @@ public class Combat {
     public boolean isPlayerDefeated(Character player) {
         if (player.getHp() <= 0) {
             player.setHp(0);
-            isGameOver = true;
             combDisplay.battleEnd(Boolean.valueOf(false));
             return true;
         }
@@ -258,7 +235,6 @@ public class Combat {
     public boolean isEnemyDefeated(Monster enemy) {
         if (enemy.getHp() <= 0) {
             enemy.setHp(0);
-            isGameOver = true;
             return true;
         }
         return false;
@@ -279,8 +255,7 @@ public class Combat {
                     player.as.skillEffectAurelius(player);
                 }
 
-                if (player.getLevel() > 1) text.printStats("Metronome", String.valueOf(beat), "\t\t\t\t\t");
-                nt.damagePerNote(player);
+                nt.damagePerNote(player, beat);
                 isTurnOver = false;
                 task.delay(1);
                 combDisplay.turnAction(player);
@@ -293,7 +268,7 @@ public class Combat {
                     try {
                         action = Integer.parseInt(input);
                         System.out.println();
-                        if (action <= 0 || action > 4) {
+                        if (action <= 0 || action > 5) {
                             System.out.println();
                             text.printSystemError("--- Invalid Input ---");
                             System.out.println();
@@ -325,6 +300,11 @@ public class Combat {
                     case 4:
                         combDisplay.attackGuide(player);
                         break;
+                    case 5:
+                        text.printSystemError("DIED");
+                        player.setHp(0);
+                        isTurnOver = true;
+                        break;
                 }
 
                 task.load(2);
@@ -334,7 +314,7 @@ public class Combat {
             do {
                 if (player.name.equals("Lyron")) { if (player.as.skillEffect(player)) nt.generateNotes(); }
 
-                nt.damagePerNote(player);
+                nt.damagePerNote(player, beat);
                 isTurnOver = false;
                 task.delay(1);
                 combDisplay.turnAction(player);
@@ -386,15 +366,7 @@ public class Combat {
                         combDisplay.attackGuide(player);
                         break;
                     case 7:
-                        System.out.print("\tThe blood feels warm pouring down your throat");
-                        task.delay(1);
-                        System.out.print(".");
-                        task.delay(1);
-                        System.out.print(".");
-                        task.delay(1);
-                        System.out.print(".");
-                        task.delay(1);
-                        System.out.println();
+                        text.printSystemError("DIED");
                         player.setHp(0);
                         isTurnOver = true;
                         break;

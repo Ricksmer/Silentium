@@ -65,13 +65,32 @@ public class GameMenu {
                     arcManager = new Arc(mapChar,player); // Arc Instantiation - Sangasina
 
                     //ARC SEQUENCE
-                    arcManager.startArc1();
+                    boolean completeMap;
+                    completeMap = arcManager.startArc1();
+                    if(!completeMap){
+                        text.printSystemError("\t\t G A M E     O V E R ! ! !");
+                        task.load(3);
+                        text.lineBreak();
+                        break;
+                    }
                     displayStory.displayArcTransition(2);
-                    arcManager.startArc2();
-                    displayStory.displayArcTransition(3);
-                    arcManager.startArc3();
-                    displayStory.displayEndingSequence(player);
+                    completeMap = arcManager.startArc2();
+                    if(!completeMap){
+                        text.printSystemError("\t\t G A M E     O V E R ! ! !");
+                        task.load(3);
+                        text.lineBreak();
+                        break;
+                    }
 
+                    displayStory.displayArcTransition(3);
+                    completeMap = arcManager.startArc3();
+                    if(!completeMap){
+                        text.printSystemError("\t\t G A M E     O V E R ! ! !");
+                        task.load(3);
+                        text.lineBreak();
+                        break;
+                    }
+                    displayStory.displayEndingSequence(player);
 
                     break;
                 case 2: //StoryLine

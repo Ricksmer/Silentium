@@ -22,7 +22,7 @@ public abstract class Character {
     private double damageBuff = 1.0;
     private int monstersDefeated = 0;
     private int map;
-
+    private int lives = 3;
     public Dialogue narrative = new Dialogue();
 
     private int buffTurnsRemaining = 0;
@@ -40,6 +40,9 @@ public abstract class Character {
     public int getLevel() { return level; }
     public void setLevel(int level) { this.level = level; }
 
+    public int getMonstersDefeated() { return monstersDefeated; }
+    public void defeatedMonster() { this.monstersDefeated++; };
+
     public int getMap() { return map; }
     public void setMap(int map) {
         if(this.map < 3){
@@ -55,6 +58,10 @@ public abstract class Character {
 
     public double getDamageBuff() { return damageBuff; }
     public void setDamageBuff(double buff) { this.damageBuff = buff; }
+
+    public int getLives() { return lives; }
+    public void setLives(int lives) { this.lives = lives; }
+    public void playerDied() { this.lives--; }
 
     public void displayName() {
         System.out.println("Name: " + name);

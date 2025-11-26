@@ -17,9 +17,7 @@ public class MapCharacter {
     CombatDisplay combDisplay = new CombatDisplay();
     TextDisplay text = new TextDisplay();
     Syozan syozan = new Syozan();
-    Dialogue dialogue = new Dialogue();
     Task task = new Task();
-    private int mapIdNum;
     private int row;
     private int col;
 
@@ -53,10 +51,6 @@ public class MapCharacter {
         col += 1;
     }
 
-    public void showPosition(){
-        System.out.println("Character is at index [" + row + "] [" + col + "]");
-    }
-
     public void displayDirections(){
         text.printSystemMessage("Which way are you moving?");
         System.out.println();
@@ -67,7 +61,7 @@ public class MapCharacter {
         System.out.println();
     }
 
-    public void explore(Map map, Character player){
+    public boolean explore(Map map, Character player){
         Map mapDisp = null;
         if(player.getMap() == 1){
             mapDisp = new TownOfEchoes();
@@ -80,7 +74,7 @@ public class MapCharacter {
         else{
             mapDisp = new AbyssOfDissonance();
             mapNar.mapIntroduction(3);
-        };
+        }
 
         task.delay(2);
         mapDisp.initDisplayMap(map);
@@ -105,7 +99,7 @@ public class MapCharacter {
                     displayDirections();
                     text.printSystemInput("Select:   ");
                     movement = sc.nextInt();
-                    text.shortbreak();;
+                    text.shortbreak();
                     if(movement <= 0 || movement > 4){
                         mapNar.displayMapConfused(player);
                         text.shortbreak();
@@ -178,9 +172,15 @@ public class MapCharacter {
                     mapNar.displayEnemyEncounter(player);
                     text.shortbreak();
                     enemy = map.MonsterSpawn(player.getMap());
+                    if(player.getMonstersDefeated() == 0) {
+                        enemy.setMaxHp((int) (enemy.getMaxHp() * 0.4));
+                        enemy.setHp(enemy.getMaxHp());
+                    }
                     combDisplay.enemyStatsSummary(enemy);
 
-                    combat.battle(player, enemy);
+                    boolean isWon = combat.battle(player, enemy);
+                    if(!isWon) return true;
+
                     map.setMapPos(row,col, 4);
                     break;
                 case 2:
@@ -192,8 +192,6 @@ public class MapCharacter {
                     System.out.println();
 
                     char tempOp = 'N';
-                    boolean valid = false;
-
                     while (true) {
                         text.printSystemInput("Explore? [ Y / N ] :   ");
                         String input = sc.next().trim().toUpperCase();
@@ -210,7 +208,6 @@ public class MapCharacter {
                                     text.printGameAnnouncement("\tTravelling towards the next map!");
                                     player.setMap(player.getMap() + 1);
                                     isExploring = false;
-                                    return;
                                 }
                             } else if (player.getMap() == 2) {
                                 if (player.getLevel() < 5) {
@@ -221,19 +218,23 @@ public class MapCharacter {
                                     text.printGameAnnouncement("\tTravelling towards the next map!");
                                     player.setMap(player.getMap() + 1);
                                     isExploring = false;
-                                    return;
                                 }
                             } else if(player.getMap() == 3){
                                 dispStory.displayPreBossTransition();
-                                combat.battle(player,syozan);
-                                dispStory.displayPostBossTransition();
+                                isWon = combat.battle(player,syozan);
+                                if(isWon){
+                                    dispStory.displayPostBossTransition();
 
-                                task.delay(2);
-                                dispStory.displayEndingSequence(player);
-                                new GameMenu().credits();
-                                dispStory.displayEnd();
-                                isExploring = false;
-                                return;
+                                    task.delay(2);
+                                    dispStory.displayEndingSequence(player);
+                                    new GameMenu().credits();
+                                    dispStory.displayEnd();
+                                    isExploring = false;
+                                }else{
+                                    isExploring = false;
+                                    return true;
+                                }
+                                return false;
                             }
                         } else if (tempOp == 'N') {
                             text.printSystemMessage("Travelling continues...");
@@ -249,5 +250,6 @@ public class MapCharacter {
                     break;
             }
         }
+        return true;
     }
 }
