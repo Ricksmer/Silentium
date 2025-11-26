@@ -76,7 +76,11 @@ public class Inventory {
         showInventory();
     }
 
-
+    public void resetInventory(){
+        items.clear();
+        countItems = 0;
+        battleCount = 0;
+    }
 
     public boolean isEmpty() {
         return items.isEmpty();

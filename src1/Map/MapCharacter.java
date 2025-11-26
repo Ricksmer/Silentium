@@ -7,6 +7,7 @@ import Enemy.Syozan;
 import Main.GameMenu;
 import Player.Character;
 import Main.Task;
+import Inventory.Inventory;
 
 import java.util.Scanner;
 
@@ -18,6 +19,7 @@ public class MapCharacter {
     TextDisplay text = new TextDisplay();
     Syozan syozan = new Syozan();
     Task task = new Task();
+    Inventory inventory = new Inventory();
     private int row;
     private int col;
 
@@ -232,6 +234,9 @@ public class MapCharacter {
                                     new GameMenu().credits();
                                     dispStory.displayEnd();
                                     isExploring = false;
+
+                                    player.getInventory().resetInventory();
+
                                 }else{
                                     isExploring = false;
                                     return true;

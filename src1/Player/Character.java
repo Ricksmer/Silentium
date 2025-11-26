@@ -2,6 +2,7 @@ package Player;
 
 import Display.*;
 import Combat.Combat;
+import Inventory.Inventory;
 
 import java.text.DecimalFormat;
 
@@ -63,6 +64,11 @@ public abstract class Character {
     public int getLives() { return lives; }
     public void setLives(int lives) { this.lives = lives; }
     public void playerDied() { this.lives--; }
+
+    private Inventory inventory = new Inventory();
+    public Inventory getInventory() {
+        return inventory;
+    }
 
     public void displayName() {
         System.out.println("Name: " + name);
