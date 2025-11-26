@@ -37,8 +37,8 @@ public class PassiveSkill {
 
     //LYRON SKILL EFFECT
     public int skillEffect(Character player, int damage){
-        text.printSystemMessage("The winner takes it all activates! Lyron gains shield equal to 25% of the damage dealt!");
-        text.printSystemMessage("\n\n === " + damage + " SHIELD:  " + (damage * 0.25) + " === \n\n");
+        text.printSystemMessage("The winner takes it all activates! Lyron gains shield equal to 25% of the damage dealt!\n");
+        text.printSystemMessage("=== " + damage + " SHIELD:  " + (damage * 0.25) + " === \n\n");
 
         player.addShield((int)(damage * 0.25));
         return (int) (damage * 0.75);
