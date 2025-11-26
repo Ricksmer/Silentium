@@ -28,10 +28,6 @@ public class Metronome {
 
             text.printSystemMessage("Beat Sync! Metronome increased to " + beat + "!");
 
-            // LYRON PASSIVE
-            if (player.name.equals("Lyron")) {
-                totalNoteDamage = player.ps.skillEffect(player, totalNoteDamage);
-            }
         } else {
             beat--;
             if (beat < 1) beat = 1;

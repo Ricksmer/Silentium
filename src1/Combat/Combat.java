@@ -160,6 +160,12 @@ public class Combat {
         }
 
         if(player.name.equals("Op")){ damage*=999; }
+
+        // LYRON PASSIVE
+        if (player.name.equals("Lyron")) {
+            damage = player.ps.skillEffect(player, damage);
+        }
+
         damage = (int)(damage * player.getDamageBuff());
         if(player.getDamageBuff() > 1.0){
             text.printStats("Damage Buff", String.format("%d%%", (int)((player.getDamageBuff()) - 1) * 100), "\t");
