@@ -11,7 +11,7 @@ public class Syozan extends Monster {
         sk2Name = "Dirge of the Shattered Moon";
         sk2Damage = rd.nextInt(30, 100 + 1);
         sk3Name = "Ebon Symphony of Consuming Night";
-        sk3Damage = rd.nextInt(40, 150 + 1);
+        sk3Damage = rd.nextInt(40, 125 + 1);
 
         monsterDescription = "The architect of the Eternal Silence.\n" +
                 "\t\tMaestro Syozan is not a beast, but a shattered, celestial musician who wields fragmented, complex noise as a weapon.\n" +
