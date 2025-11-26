@@ -69,6 +69,15 @@ public class Inventory {
         showInventory();
     }
 
+    public void doubleGuaranteedDrop() {
+        text.pause();
+        randomDrop();
+        randomDrop();
+        showInventory();
+    }
+
+
+
     public boolean isEmpty() {
         return items.isEmpty();
     }

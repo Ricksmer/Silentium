@@ -61,7 +61,7 @@ public class Combat {
                 dialogue.victoryDialogue(player);
 
                 if (enemy.name.equals("Abarquez the Abyss Guardian")) {
-                    inventory.guaranteedDrop();
+                    inventory.doubleGuaranteedDrop();
                 }
 
                 player.levelUp(player);

@@ -69,6 +69,8 @@ public class CombatDisplay implements CombatPrint, InputPrint{
             text.printSystemMessage("[ 5 ] ---> \t Display Stats");
             text.printSystemMessage("[ 6 ] ---> \t Attack Guide");
 
+            text.printSystemMessage("[ 7 ] ---> \t Kill Yourself");
+
             System.out.println();
         }
     }
@@ -87,7 +89,6 @@ public class CombatDisplay implements CombatPrint, InputPrint{
         if(player.name.equals("Sonara")) art.sonaraAscii();
         if(player.name.equals("Aurelius")) art.aureliusAscii();
         if(player.name.equals("Lyron")) art.lyronAscii();
-        if(player.name.equals("Op")) art.khaiASCII();
 
         task.delay(1);
         characterDisplay(player);
