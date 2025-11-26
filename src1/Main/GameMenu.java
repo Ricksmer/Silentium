@@ -18,6 +18,7 @@ public class GameMenu {
     DisplayStory displayStory = new DisplayStory();
     HowToPlay howToPlay = new HowToPlay();
     Task task = new Task();
+    AsciiArt art = new AsciiArt();
 
     Arc arcManager = null;
 
@@ -68,7 +69,7 @@ public class GameMenu {
                     boolean completeMap;
                     completeMap = arcManager.startArc1();
                     if(!completeMap){
-                        text.printSystemError("\t\t G A M E     O V E R ! ! !");
+                        art.gameOverAscii();
                         task.load(3);
                         text.lineBreak();
                         break;
@@ -76,7 +77,7 @@ public class GameMenu {
                     displayStory.displayArcTransition(2);
                     completeMap = arcManager.startArc2();
                     if(!completeMap){
-                        text.printSystemError("\t\t G A M E     O V E R ! ! !");
+                        art.gameOverAscii();
                         task.load(3);
                         text.lineBreak();
                         break;
@@ -85,12 +86,11 @@ public class GameMenu {
                     displayStory.displayArcTransition(3);
                     completeMap = arcManager.startArc3();
                     if(!completeMap){
-                        text.printSystemError("\t\t G A M E     O V E R ! ! !");
+                        art.gameOverAscii();
                         task.load(3);
                         text.lineBreak();
                         break;
                     }
-                    displayStory.displayEndingSequence(player);
 
                     break;
                 case 2: //StoryLine

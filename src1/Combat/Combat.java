@@ -3,6 +3,7 @@ package Combat;
 import java.util.Scanner;
 import java.util.Random;
 
+import Display.AsciiArt;
 import Display.Dialogue;
 import Display.TextDisplay;
 import Inventory.Inventory;
@@ -21,6 +22,7 @@ public class Combat {
     ChordSystem chordSystem = new ChordSystem();
     Dialogue dialogue = new Dialogue();
     Task task = new Task();
+    AsciiArt art = new AsciiArt();
     public static final Inventory inventory = new Inventory();
 
     private boolean isGameOver;
@@ -76,7 +78,12 @@ public class Combat {
                 damage = player.ps.skillEffect(enemy);
                 isGameOver = isEnemyDefeated(enemy);
                 if (isGameOver) {
-                    text.printSystemMessage("--- You defeated " + enemy.name + "! ---\n");
+                    if(enemy.name.equalsIgnoreCase("Maestro Syozan")){
+                        art.gameOverAscii();
+                    }
+                    else{
+                        text.printSystemMessage("--- You defeated " + enemy.name + "! ---\n");
+                    }
                     dialogue.victoryDialogue(player);
 
                     if (enemy.name.equals("Abarquez the Abyss Guardian")) {
