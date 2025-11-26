@@ -41,6 +41,7 @@ public abstract class Character {
     public void setLevel(int level) { this.level = level; }
 
     public int getMonstersDefeated() { return monstersDefeated; }
+    // Increments the count of defeated monsters.
     public void defeatedMonster() { this.monstersDefeated++; };
 
     public int getMap() { return map; }

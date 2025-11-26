@@ -31,6 +31,9 @@ public class Arc {
                 player.playerDied();
                 if(player.getLives() > 0) text.printSystemAnnouncement("Resetting Last Arc...\n\t\tLives left: " + player.getLives());
                 else break;
+            }else if(!playerDied){
+                text.printSystemAnnouncement("Congratulations! You have completed the First Arc!");
+                break;
             }
 
         }
