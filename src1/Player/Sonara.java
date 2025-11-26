@@ -13,7 +13,7 @@ public class Sonara extends Character{
         name = "Sonara";
         instrument = "The Scrouge of Echoes";
         ps.skillName = "Body of Thorns";
-        ps.skillDescription = "Upon receiving damage, The enemy receives 25% of shared true damage from the enemy’s inflicted damage.";
+        ps.skillDescription = "Upon receiving damage, The enemy receives 15% of shared true damage from the enemy’s inflicted damage.";
         as.skillName = "Melodic Impromptu";
         as.skillDescription = "Sonara can add one (1) point to the initial damage.";
         setMaxHp(150);

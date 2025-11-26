@@ -2,6 +2,7 @@ package Main;
 
 import Display.*;
 
+
 public class Task {
     public void load(int seconds) {
         int milliseconds = seconds * 1000;

@@ -1,7 +1,6 @@
 package Player;
 
 import Display.*;
-import Inventory.Inventory;
 import Combat.Combat;
 
 import java.text.DecimalFormat;
@@ -85,8 +84,9 @@ public abstract class Character {
         }
     }
 
-    public void heal(int amount) {
+    public int heal(int amount) {
         setHp(Math.min(getHp() + amount, maxHp));
+        return (int)amount;
     }
 
     public void levelUp(Character player){
@@ -97,10 +97,10 @@ public abstract class Character {
                 if(level==3) dialogue.secondLevelUp(player);
                 maxHp += 50;
                 text.printSystemMessage("Player leveled up!");
-            } else{
-                text.printSystemAnnouncement("Victory Bonus: Checking for item drop...");
+            } else {
+                text.pause();
                 Combat.inventory.tryDrop();
-                text.shortbreak();
+//              text.shortbreak();
                 Combat.inventory.showInventory();
                 text.shortbreak();
             }
@@ -112,11 +112,11 @@ public abstract class Character {
                 maxHp += 50;
                 text.printSystemMessage("Player leveled up!");
             } else{
-                text.printSystemAnnouncement("Victory Bonus: Checking for item drop...");
+                text.pause();
                 Combat.inventory.tryDrop();
-                text.shortbreak();
+//               text.shortbreak();
                 Combat.inventory.showInventory();
-                text.shortbreak();
+//               text.shortbreak();
             }
         }
         text.pause();

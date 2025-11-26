@@ -59,14 +59,19 @@ public class GameMenu {
             switch (option) {
                 case 1: // PLAY
                     player = CharacterSelect();
+                    displayStory.displayOpeningSequence(player);
                     combDisplay.characterDisplay(player);
 
                     arcManager = new Arc(mapChar,player); // Arc Instantiation - Sangasina
 
                     //ARC SEQUENCE
                     arcManager.startArc1();
+                    displayStory.displayArcTransition(2);
                     arcManager.startArc2();
+                    displayStory.displayArcTransition(3);
                     arcManager.startArc3();
+                    displayStory.displayEndingSequence(player);
+
 
                     break;
                 case 2: //StoryLine
@@ -131,7 +136,7 @@ public class GameMenu {
                 "\t\tFriends & Family for continuous support\n");
         text.blueText("\t\tTOOLS & TECHNOLOGIES:");
         text.yellowText("\t\tJava (OOP)\n" +
-                "\t\tIntelliJ IDEA / VS Code\n" +
+                "\t\tIntelliJ IDEA 2025.2.2\n" +
                 "\t\tGitHub for version control\n");
         text.blueText("\t\tVERSION:");
         text.yellowText("\t\tSilentium v1.0 (Final Build)\n");

@@ -28,6 +28,7 @@ public class Combat {
     public void battle(Character player, Monster enemy) {
         combDisplay.battleStart();
         int beat;
+        int enemyHP = enemy.getMaxHp();
         mt.reset();
         int damage;
         isGameOver = false;
@@ -53,7 +54,10 @@ public class Combat {
             if (isGameOver) {
                 text.printSystemMessage("--- You defeated " + enemy.name + "! ---\n");
                 dialogue.victoryDialogue(player);
-//                inventory.tryDrop();
+
+                if (enemy.name.equals("Abarquez the Abyss Guardian")) {
+                    inventory.guaranteedDrop();
+                }
 
                 player.levelUp(player);
                 break;
@@ -68,7 +72,12 @@ public class Combat {
                 if (isGameOver) {
                     text.printSystemMessage("--- You defeated " + enemy.name + "! ---\n");
                     dialogue.victoryDialogue(player);
-                    inventory.tryDrop();
+
+                    if (enemy.name.equals("Abarquez the Abyss Guardian")) {
+                        inventory.guaranteedDrop();
+                    } else {
+                        inventory.tryDrop();
+                    }
 
                     player.levelUp(player);
                     break;
@@ -82,8 +91,23 @@ public class Combat {
 
             // Game Check - player defeated?
             isGameOver = isPlayerDefeated(player);
-            if (isGameOver) break;
+            if (isGameOver && player.getHp() > 0)
+                break;
+            else if(isGameOver && player.getHp() <= 0){
+                combDisplay.displayDefeat();
+                sc.nextLine();
 
+                player.setHp(player.getMaxHp());
+                player.setShield(player.getMaxShield());
+                player.resetTemporaryEffects();
+                player.as.resetSkill();
+                enemy.setHp(enemyHP);
+                mt.reset();
+
+                combDisplay.replayText();
+
+                isGameOver = false;
+            }
             player.updateTurnEffects();
             task.delay(2);
         }
@@ -323,7 +347,7 @@ public class Combat {
                     try {
                         action = Integer.parseInt(input);
                         System.out.println();
-                        if (action <= 0 || action > 6) {
+                        if (action <= 0 || action > 7){
                             System.out.println();
                             text.printSystemError("--- Invalid Input ---");
                             System.out.println();
@@ -360,6 +384,19 @@ public class Combat {
                         break;
                     case 6:
                         combDisplay.attackGuide(player);
+                        break;
+                    case 7:
+                        System.out.print("\tThe blood feels warm pouring down your throat");
+                        task.delay(1);
+                        System.out.print(".");
+                        task.delay(1);
+                        System.out.print(".");
+                        task.delay(1);
+                        System.out.print(".");
+                        task.delay(1);
+                        System.out.println();
+                        player.setHp(0);
+                        isTurnOver = true;
                         break;
                 }
                 task.load(2);

@@ -38,9 +38,9 @@ public class Inventory {
         battleCount++;
         double dropChance;
 
-        if (battleCount <= 3) dropChance = 0.5;
-        else if (battleCount <= 5) dropChance = 0.5;
-        else dropChance = 0.6;
+        if (battleCount <= 3) dropChance = 0.4;
+        else if (battleCount <= 5) dropChance = 0.7;
+        else dropChance = 0.99;
 
         double roll = rd.nextDouble();
 
@@ -61,6 +61,12 @@ public class Inventory {
             case 4 -> dropped = new Item("Major’s Blessing", "+1 free Major chord use.");
         }
         addItem(dropped);
+    }
+
+    public void guaranteedDrop() {
+        text.pause();
+        randomDrop();
+        showInventory();
     }
 
     public boolean isEmpty() {
