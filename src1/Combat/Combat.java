@@ -168,7 +168,7 @@ public class Combat {
 
         damage = (int)(damage * player.getDamageBuff());
         if(player.getDamageBuff() > 1.0){
-            text.printStats("Damage Buff", String.format("%d%%", (int)((player.getDamageBuff()) - 1) * 100), "\t");
+            text.printStats("Damage Buff", String.format("%d%%", (int)((player.getDamageBuff()) * 100) - 100), "\t");
         }
         text.printStats("Total Damage Dealt", String.valueOf(damage), "\t");
         System.out.println();
