@@ -69,7 +69,6 @@ public class CombatDisplay implements CombatPrint, InputPrint{
             text.printSystemMessage("[ 5 ] ---> \t Display Stats");
             text.printSystemMessage("[ 6 ] ---> \t Attack Guide");
 
-            text.printSystemMessage("[ 7 ] ---> \t Kill Yourself");
 
             System.out.println();
         }
