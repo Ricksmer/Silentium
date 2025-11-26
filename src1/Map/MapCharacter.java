@@ -208,7 +208,7 @@ public class MapCharacter {
                                     text.printGameAnnouncement("\tTravelling towards the next map!");
                                     player.setMap(player.getMap() + 1);
                                     isExploring = false;
-
+                                    return false;
                                 }
                             } else if (player.getMap() == 2) {
                                 if (player.getLevel() < 5) {
@@ -219,6 +219,7 @@ public class MapCharacter {
                                     text.printGameAnnouncement("\tTravelling towards the next map!");
                                     player.setMap(player.getMap() + 1);
                                     isExploring = false;
+                                    return false;
                                 }
                             } else if(player.getMap() == 3){
                                 dispStory.displayPreBossTransition();

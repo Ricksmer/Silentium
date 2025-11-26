@@ -16,6 +16,7 @@ public class Arc {
         this.mapChar = mapChar;
     }
 
+    // Starts the first arc of the game.
     public boolean startArc1(){
         map = new TownOfEchoes();
         map.setMap();
