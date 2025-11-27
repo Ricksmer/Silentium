@@ -22,6 +22,7 @@ public class Sonara extends Character{
         setMaxHp(150);
         setHp(getMaxHp());
         setMaxShield(35);
+        setShield(getMaxShield());
         setMap(1);
         setLevel(1);
 

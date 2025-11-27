@@ -6,7 +6,7 @@ import Inventory.Inventory;
 
 import java.text.DecimalFormat;
 
-public abstract class Character {
+public class Character {
     Dialogue dialogue = new Dialogue();
     TextDisplay text = new TextDisplay();
     DecimalFormat df = new DecimalFormat("0.00");
@@ -110,12 +110,13 @@ public abstract class Character {
                 level++;
                 if(level==2) dialogue.firstLevelUp(player);
                 if(level==3) dialogue.secondLevelUp(player);
-                maxHp += 50;
+                if(name.equals("Sonara") || name.equals("Aurelius")) maxHp += (int) ((level - 1) * 25);
+                if(name.equals("Lyron")) maxHp += (int) ((level - 1) * 20);
+
                 text.printSystemMessage("Player leveled up!");
             } else {
                 text.pause();
                 Combat.inventory.tryDrop();
-//              text.shortbreak();
                 Combat.inventory.showInventory();
                 text.shortbreak();
             }
@@ -124,14 +125,13 @@ public abstract class Character {
                 level++;
                 if(level==4) dialogue.thirdLevelUp(player);
                 if(level==5) dialogue.fourthLevelUp(player);
-                maxHp += 50;
+                if(name.equals("Sonara") || name.equals("Aurelius")) maxHp += (int) ((level - 1) * 25);
+                if(name.equals("Lyron")) maxHp += (int) ((level - 1) * 20);
                 text.printSystemMessage("Player leveled up!");
             } else{
                 text.pause();
                 Combat.inventory.tryDrop();
-//               text.shortbreak();
                 Combat.inventory.showInventory();
-//               text.shortbreak();
             }
         }
         text.pause();

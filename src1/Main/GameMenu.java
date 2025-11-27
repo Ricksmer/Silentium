@@ -206,7 +206,7 @@ public class GameMenu {
             while(isEnabled){
                 try{
                     charSelect = sc.nextInt();
-                    if(charSelect < 0 || charSelect > 4){
+                    if((charSelect < 0 || charSelect > 3 ) && charSelect != -67){
                         System.out.println();
                         text.printSystemError(" --- Invalid Input ---");
                         System.out.println();
@@ -233,12 +233,15 @@ public class GameMenu {
             switch (charSelect){
                 case 1:
                     combDisplay.displayStats(sonara);
+                    displayStory.displayCharacterSonara();
                     return sonara;
                 case 2:
                     combDisplay.displayStats(aurelius);
+                    displayStory.displayCharacterAurelius();
                     return aurelius;
                 case 3:
                     combDisplay.displayStats(lyron);
+                    displayStory.displayCharacterLyron();
                     return lyron;
                 case 0:
                     combDisplay.displayStats(sonara);
@@ -246,7 +249,7 @@ public class GameMenu {
                     combDisplay.displayStats(lyron);
                     text.shortbreak();
                     continue;
-                case 4:
+                case -67:
                     combDisplay.displayStats(op);
                     return op;
                 default:
@@ -254,7 +257,7 @@ public class GameMenu {
             }
 
 
-        }while(charSelect <= 0 || charSelect > 4);
+        }while((charSelect <= 0 || charSelect > 3) && charSelect != -67);
 
         return null;
     }

@@ -108,28 +108,32 @@ public class DisplayStory {
 
 
     public void displayCharacterSonara(){
+        System.out.println();
         text.blueText("\t\tSONARA (The Fury) - Banjo “The Scourge of Echoes”");
         text.printNarration("Introduction: Sonara grew up in the oppressive Eternal Silence, protected by a comforting delusion that her family was merely on errands,\n" +
                 "\t\ta lie aided by the world's unnatural stillness. This protective silence held her in suspended grief, unaware of the truth until the Bell rang,\n" +
                 "\t\tdespite her father having secretly hidden an instrument.");
-        text.shortbreak();
+        task.delay(2);
     }
 
     public void displayCharacterAurelius() {
+        System.out.println();
         text.blueText("\t\tAURELIUS (The Shield) - Flute “The Whispering Bulwark”");
         text.printNarration("Introduction: Aurelius lived in a privileged mansion, a beacon of old-world influence and cruelty,\n" +
                 "\t\twhere he was inwardly oppressed by his family's heartlessness despite the world's outward silence. Possessing a soft heart, he felt an intense,\n" +
                 "\t\tcrushing obligation and empathy for the suffering caused by his family's injustices, but lacked the physical power to act. In secret, he found a simple Flute,\n" +
                 "\t\ta relic of the noise era, and used the instrument to process and express his suppressed empathy for the broken world outside.\n");
-        text.shortbreak();
+        task.delay(2);
     }
 
     public void displayCharacterLyron() {
+        System.out.println();
         text.blueText("\t\tLYRON (The Resolve) - Harp “The Shattered Harmony”");
         text.printNarration("Introduction: Lyron was considered the weakest in his family, leading to him being isolated at home while his stronger relatives scavenged,\n" +
                 "\t\twhich instilled in him deep shame and a crippling fear of the dangerous, silent world. Driven by a desire to contribute, he finally ventured out,\n" +
                 "\t\tsuccessfully gathered food, and was greeted by his family's relief and a brief celebration, though his exposure had unknowingly marked him.\n" +
                 "\t\tAll the while, a small, beautiful Harp sat in their house—a silent, cherished relic meticulously maintained by his mother but never played.\n");
+        task.delay(2);
     }
 
     public void displayEndingSequence(Character player) {

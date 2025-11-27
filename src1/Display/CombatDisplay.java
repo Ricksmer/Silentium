@@ -93,10 +93,6 @@ public class CombatDisplay implements CombatPrint, InputPrint{
         characterDisplay(player);
         task.delay(1);
         text.shortbreak();
-
-        if(player.name.equals("Sonara")) displayStory.displayCharacterSonara();
-        if(player.name.equals("Aurelius")) displayStory.displayCharacterAurelius();
-        if(player.name.equals("Lyron")) displayStory.displayCharacterLyron();
         text.lineBreak();
 
         task.load(2);
