@@ -227,6 +227,7 @@ public class MapCharacter {
                             } else if(player.getMap() == 3){
                                 dispStory.displayPreBossTransition();
                                 dialogue.bossPreBattleDialogue();
+                                combDisplay.enemyStatsSummary(syozan);
                                 isWon = combat.battle(player,syozan);
                                 if(isWon){
                                     dialogue.bossPostBattleDialogue();
