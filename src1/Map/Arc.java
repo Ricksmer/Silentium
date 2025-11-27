@@ -2,6 +2,7 @@ package Map;
 
 
 import Display.TextDisplay;
+import Main.Task;
 import Player.Character;
 
 public class Arc {
@@ -10,6 +11,7 @@ public class Arc {
     MapCharacter mapChar = null;
     boolean playerDied;
     TextDisplay text = new TextDisplay();
+    Task task = new Task();
 
     public Arc(MapCharacter mapChar, Character player){
         this.player = player;
@@ -30,8 +32,10 @@ public class Arc {
             if(playerDied){
                 text.printSystemError("You have died!");
                 player.playerDied();
+                task.load(3);
                 if(player.getLives() > 0) text.printSystemAnnouncement("Resetting Last Arc...\n\t\tLives left: " + player.getLives());
                 else break;
+                task.delay(3);
             }else if(!playerDied){
                 text.printSystemAnnouncement("Congratulations! You have completed the First Arc!");
                 break;
@@ -54,8 +58,10 @@ public class Arc {
             if(playerDied){
                 text.printSystemError("You have died!");
                 player.playerDied();
+                task.load(3);
                 if(player.getLives() > 0) text.printSystemAnnouncement("Resetting Second Arc...\n\t\tLives left: " + player.getLives());
                 else break;
+                task.delay(3);
             }
         }
         return !playerDied;
@@ -73,8 +79,10 @@ public class Arc {
             if(playerDied){
                 text.printSystemError("You have died!");
                 player.playerDied();
+                task.load(3);
                 if(player.getLives() > 0) text.printSystemAnnouncement("Resetting Last Arc...\n\t\tLives left: " + player.getLives());
                 else break;
+                task.delay(3);
             }
         }
         return !playerDied;

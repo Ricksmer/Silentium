@@ -1,6 +1,5 @@
 package Combat;
 
-import Display.GamePrint;
 import Player.Character;
 import Display.TextDisplay;
 
@@ -90,13 +89,13 @@ public class ChordSystem {
                 text.printStats("Chord Activated", "C Major! Healed 20% HP", "\t");
                 break;
             case "DMINOR":
-                player.setDamageBuff(1.2);
+                player.setDamageBuff(player.getDamageBuff() + 0.2);
                 System.out.print("\t\t  ");
                 text.printStats("Chord Activated", "D Minor! +20% Damage Buff.", "\t");
                 break;
             case "EMINOR":
                 player.heal((int)(player.getMaxHp() * 0.1));
-                player.setDamageBuff(1.1);
+                player.setDamageBuff(player.getDamageBuff() + 0.1);
                 System.out.print("\t\t  ");
                 text.printStats("Chord Activated", "E Minor! Heal 10% HP & +10% Damage Buff.", "\t");break;
             case "FMAJOR":
@@ -116,7 +115,7 @@ public class ChordSystem {
                 text.printStats("Chord Activated", "A Minor! +35 Shield Points.", "\t");
                 break;
             case "BDIM":
-                bonusDamage = 1.3;
+                bonusDamage += 1.3;
                 System.out.print("\t\t  ");
                 text.printStats("Chord Activated", "B Dim! +30% Damage but lose 10% HP.", "\t");
 

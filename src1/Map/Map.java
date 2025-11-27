@@ -5,9 +5,8 @@ import Enemy.*;
 import java.util.Random;
 import Display.*;
 import Player.*;
-import org.w3c.dom.Text;
 
-public abstract class Map {
+public class Map {
     Random random = new Random();
     TextDisplay text = new TextDisplay();
     public String name;
@@ -22,8 +21,6 @@ public abstract class Map {
     private int j;
     private int[][] map;
     private boolean placingEnemies;
-
-
 
     public Map(int row, int col, int totalEnemies, String name){
         this.name = name;

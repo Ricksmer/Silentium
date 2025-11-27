@@ -35,13 +35,13 @@ public class DisplayStory {
         text.lineBreak();
         text.printNarration("\tIn a world plunged into eternal silence—no voices, no songs, not even the whisper of wind—humanity drifts in a bleak, lifeless existence.");
         task.delay(2);
-        text.printNarration("\tUntil a mysterious bell rings across the land, awakening shadowy monsters born from the fear of this silence.");
+        text.yellowText("\t\t\tUntil a mysterious bell rings across the land, awakening shadowy monsters born from the fear of this silence.");
         task.delay(2);
-        text.printNarration("\tYou are " + player.name + ", one of the Children of Silence, born in this quiet age and wielding a unique instrument: " + player.instrument + ".");
+        text.yellowText("\t\t\tYou are " + player.name + ", one of the Children of Silence, born in this quiet age and wielding a unique instrument: " + player.instrument + ".");
         task.delay(2);
-        text.printNarration("\tMusic is your weapon and your hope. Only by playing can you weaken the encroaching shadows and restore sound to the world.");
+        text.yellowText("\t\t\tMusic is your weapon and your hope. Only by playing can you weaken the encroaching shadows and restore sound to the world.");
         task.delay(2);
-        text.printNarration("\tWill you bring back the world’s lost voice, or will darkness claim the last note?\n");
+        text.yellowText("\t\t\tWill you bring back the world’s lost voice, or will darkness claim the last note?\n");
         task.delay(2);
     }
 
