@@ -23,6 +23,7 @@ public class GameMenu {
     Arc arcManager = null;
 
     public void start(){
+        art.displayTitle();
         task.load(2);
         boolean isRunning = true;
 
