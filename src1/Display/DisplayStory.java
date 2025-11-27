@@ -128,26 +128,27 @@ public class DisplayStory {
         text.blueText("\t\tLYRON (The Resolve) - Harp “The Shattered Harmony”");
         text.printNarration("Background: Deemed the weakest in his family, he felt crippling shame, but held onto a sliver of hope represented by his mother's untouched Harp.\n" +
                 "\t\tPersonality: Riddled with guilt and paralyzed by fear, he pushes forward as a reluctant avenger. His commitment provides the fragile resolve he needs.\n" +
-                "\t\tIntroduction: After witnessing his family's murder, he violently struck the Harp in desperate fear, banishing the monster and gaining a tool for vengeance.");
+                "\t\tIntroduction: After witnessing his family's murder, he instinctively struck the Harp in desperate fear, banishing the monster and gaining a tool for vengeance.");
         text.shortbreak();
     }
 
     public void displayCharacterSonara(){
         System.out.println();
         text.blueText("\t\tSONARA (The Fury) - Banjo “The Scourge of Echoes”");
-        text.printNarration("Introduction: Sonara grew up in the oppressive Eternal Silence, protected by a comforting delusion that her family was merely on errands,\n" +
-                "\t\ta lie aided by the world's unnatural stillness. This protective silence held her in suspended grief, unaware of the truth until the Bell rang,\n" +
-                "\t\tdespite her father having secretly hidden an instrument.");
+        text.printNarration("Introduction: Sonara lived in a quiet cottage on the edge of the village, clinging to the fragile illusion that her family was still beside her.\n" +
+                        "\t\tShe survived by holding onto that false peace, unaware of how deeply the truth had buried itself within her.\n" +
+                        "\t\tWhen the Bell chimed and monsters drifted through the village, her cottage was among the first they forced their way into.\n" +
+                        "\t\tPanicked and alone, Sonara grabbed the old keepsake her father had hidden away, unaware that this moment would reveal what it truly was.\n");
         task.delay(2);
     }
 
     public void displayCharacterAurelius() {
         System.out.println();
         text.blueText("\t\tAURELIUS (The Shield) - Flute “The Whispering Bulwark”");
-        text.printNarration("Introduction: Aurelius lived in a privileged mansion, a beacon of old-world influence and cruelty,\n" +
-                "\t\twhere he was inwardly oppressed by his family's heartlessness despite the world's outward silence. Possessing a soft heart, he felt an intense,\n" +
-                "\t\tcrushing obligation and empathy for the suffering caused by his family's injustices, but lacked the physical power to act. In secret, he found a simple Flute,\n" +
-                "\t\ta relic of the noise era, and used the instrument to process and express his suppressed empathy for the broken world outside.");
+        text.printNarration("Introduction: Aurelius lived in a crumbling mansion stained by the quiet wrongs of his family.\n" +
+                        "\t\tThough raised in their harsh legacy, he carried a gentle heart and held onto the old heirloom his father left him—a reminder that their lineage had once been kind.\n" +
+                        "\t\tWhen the Bell chimed and monsters wandered through the village, breaking into homes without pattern, their mansion was soon breached.\n" +
+                        "\t\tIn the chaos, Aurelius fled with the heirloom in hand, unaware that he was moments away from learning its true purpose.\n");
         task.delay(2);
     }
 
