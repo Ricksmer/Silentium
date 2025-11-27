@@ -170,6 +170,7 @@ public class Dialogue implements CharacterDialogue {
         text.printDialogue("Ah, another one. A child of the silence, yet obsessed with the deafening clang of sound. Did you truly believe\n" +
                 "\t\t\t\t\t\t\tyour little noise could lead you here? How pathetic. You found my work—the eternal silence —  and instead of\n" +
                 "\t\t\t\t\t\t\trealizing its perfection, you declared it a disease. You confuse chaos for life, and order for cruelty.");
+        text.lineBreak();
     }
 
     public void bossPostBattleDialogue() {

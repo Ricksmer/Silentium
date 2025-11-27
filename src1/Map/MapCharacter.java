@@ -8,9 +8,9 @@ import Main.GameMenu;
 import Player.Character;
 import Main.Task;
 import Inventory.Inventory;
+import Display.Dialogue;
 
 import java.util.Scanner;
-
 public class MapCharacter {
     MapDisplay mapNar =  new MapDisplay();
     DisplayStory dispStory = new DisplayStory();
@@ -20,6 +20,7 @@ public class MapCharacter {
     Syozan syozan = new Syozan();
     Task task = new Task();
     Inventory inventory = new Inventory();
+    Dialogue dialogue = new Dialogue();
     private int row;
     private int col;
 
@@ -225,8 +226,10 @@ public class MapCharacter {
                                 }
                             } else if(player.getMap() == 3){
                                 dispStory.displayPreBossTransition();
+                                dialogue.bossPreBattleDialogue();
                                 isWon = combat.battle(player,syozan);
                                 if(isWon){
+                                    dialogue.bossPostBattleDialogue();
                                     dispStory.displayPostBossTransition();
 
                                     task.delay(2);

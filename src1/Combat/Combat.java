@@ -58,6 +58,9 @@ public class Combat {
             // Game Check - enemy defeated?
             isGameOver = isEnemyDefeated(enemy);
             if (isGameOver) {
+                if(enemy.name.equalsIgnoreCase("Maestro Syozan")){
+                    art.bossWinAscii();
+                }
                 text.printSystemMessage("--- You defeated " + enemy.name + "! ---\n");
                 player.defeatedMonster();
                 dialogue.victoryDialogue(player);
