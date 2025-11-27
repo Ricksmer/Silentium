@@ -101,11 +101,36 @@ public class DisplayStory {
         text.printSystemMessage("III. CHARACTER BIOGRAPHIES & ENDINGS");
         text.shortbreak();
 
-        displayCharacterSonara();
-        displayCharacterAurelius();
-        displayCharacterLyron();
+        displaySonaraLore();
+        displayAureliusLore();
+        displayLyronLore();
     }
 
+    public void displaySonaraLore(){
+        text.blueText("\t\tSONARA (The Fury) - Banjo “The Scourge of Echoes”");
+        text.printNarration("Background: Lived in a comforting delusion that her family was still alive, unaware the surrounding silence was hiding the truth of their violent loss.\n" +
+                "\t\tPersonality: Defined by a newfound, unyielding intensity and deep, barely contained grief. Her music is the raw, twangy sound of rebellion, demanding retribution.\n" +
+                "\t\tIntroduction: The bell shattered her delusion, forcing her to grab the hidden Banjo.\n" +
+                "\t\tHer final vow: I will use the sound to destroy the silence... until my family is finally, truly avenged.");
+        text.shortbreak();
+    }
+
+    public void displayAureliusLore(){
+        text.blueText("\t\tAURELIUS (The Shield) - Flute “The Whispering Bulwark”");
+        text.printNarration("Background: Grew up in a cruel, privileged family, secretly harboring guilt and using a hidden Flute to process the empathy he felt for the suffering world.\n" +
+                "\t\tPersonality: Fundamentally empathetic and driven by a strong moral duty. Prefers to observe and protect. His music is light, airy, and protective.\n" +
+                "\t\tIntroduction: The bell galvanized his shame into purpose, prompting him to flee and use his Flute's sound to create a protective barrier.\n" +
+                "\t\tHis resolve: My silence was shame. My sound will be shelter.");
+        text.shortbreak();
+    }
+
+    public void displayLyronLore(){
+        text.blueText("\t\tLYRON (The Resolve) - Harp “The Shattered Harmony”");
+        text.printNarration("Background: Deemed the weakest in his family, he felt crippling shame, but held onto a sliver of hope represented by his mother's untouched Harp.\n" +
+                "\t\tPersonality: Riddled with guilt and paralyzed by fear, he pushes forward as a reluctant avenger. His commitment provides the fragile resolve he needs.\n" +
+                "\t\tIntroduction: After witnessing his family's murder, he violently struck the Harp in desperate fear, banishing the monster and gaining a tool for vengeance.");
+        text.shortbreak();
+    }
 
     public void displayCharacterSonara(){
         System.out.println();
@@ -122,7 +147,7 @@ public class DisplayStory {
         text.printNarration("Introduction: Aurelius lived in a privileged mansion, a beacon of old-world influence and cruelty,\n" +
                 "\t\twhere he was inwardly oppressed by his family's heartlessness despite the world's outward silence. Possessing a soft heart, he felt an intense,\n" +
                 "\t\tcrushing obligation and empathy for the suffering caused by his family's injustices, but lacked the physical power to act. In secret, he found a simple Flute,\n" +
-                "\t\ta relic of the noise era, and used the instrument to process and express his suppressed empathy for the broken world outside.\n");
+                "\t\ta relic of the noise era, and used the instrument to process and express his suppressed empathy for the broken world outside.");
         task.delay(2);
     }
 
@@ -132,7 +157,7 @@ public class DisplayStory {
         text.printNarration("Introduction: Lyron was considered the weakest in his family, leading to him being isolated at home while his stronger relatives scavenged,\n" +
                 "\t\twhich instilled in him deep shame and a crippling fear of the dangerous, silent world. Driven by a desire to contribute, he finally ventured out,\n" +
                 "\t\tsuccessfully gathered food, and was greeted by his family's relief and a brief celebration, though his exposure had unknowingly marked him.\n" +
-                "\t\tAll the while, a small, beautiful Harp sat in their house—a silent, cherished relic meticulously maintained by his mother but never played.\n");
+                "\t\tAll the while, a small, beautiful Harp sat in their house—a silent, cherished relic meticulously maintained by his mother but never played.");
         task.delay(2);
     }
 

@@ -29,8 +29,19 @@ public class Monster extends MonsterSkill{
         hp = hp - damage;
     }
 
-    public void testMonster(){
-        hp = 250;
-    }
+    @Override
+    public int attack(Monster enemy) {
+        int attack = rd.nextInt(1, 4);
+        int damage = 0;
 
+        if (attack == 1) {
+            damage = enemy.sk1Damage;
+        } else if (attack == 2) {
+            damage = enemy.sk2Damage;
+        } else if (attack == 3) {
+            damage = enemy.sk2Damage;
+        }
+
+        return damage;
+    }
 }

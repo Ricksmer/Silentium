@@ -9,7 +9,7 @@ public class Aryzachnid extends Monster{
         sk1Name = "Binding Webs";
         sk1Damage = rd.nextInt(20, 40 + 1);
         sk2Name = "Paralyzing Fangs";
-        sk2Damage = rd.nextInt(25, 45 + 1);
+        sk2Damage = rd.nextInt(25, 50 + 1);
         sk3Name = "Wrap-up";
         sk3Damage = rd.nextInt(50, 75 + 1);
 

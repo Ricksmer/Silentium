@@ -8,4 +8,6 @@ public abstract class MonsterSkill {
     public int sk1Damage;
     public int sk2Damage;
     public int sk3Damage;
+
+    public abstract int attack(Monster enemy);
 }

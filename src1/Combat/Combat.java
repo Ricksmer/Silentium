@@ -199,16 +199,9 @@ public class Combat {
     }
 
     public int enemyAttack(Monster enemy) {
-        int attack = rd.nextInt(1, 4);
         int damage = 0;
 
-        if (attack == 1) {
-            damage = enemy.sk1Damage;
-        } else if (attack == 2) {
-            damage = enemy.sk2Damage;
-        } else if (attack == 3) {
-            damage = enemy.sk3Damage;
-        }
+        damage = enemy.attack(enemy);
 
         System.out.println();
         text.redText("\t\tMonster attacks Player and deals " + damage + " damage!");
