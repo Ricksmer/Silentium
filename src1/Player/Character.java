@@ -13,6 +13,7 @@ public abstract class Character {
 
     public String name;
     public String instrument;
+    public String openingNarrative;
     public PassiveSkill ps = new PassiveSkill();
     public ActiveSkill as = new ActiveSkill();
     private int hp;

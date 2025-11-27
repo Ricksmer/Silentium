@@ -15,6 +15,7 @@ public class GameMenu {
     Character player;
     CombatDisplay combDisplay = new CombatDisplay();
     MapCharacter mapChar = new MapCharacter();
+    Dialogue dialogue = new Dialogue();
     DisplayStory displayStory = new DisplayStory();
     HowToPlay howToPlay = new HowToPlay();
     Task task = new Task();
@@ -61,7 +62,7 @@ public class GameMenu {
             switch (option) {
                 case 1: // PLAY
                     player = CharacterSelect();
-                    displayStory.displayOpeningSequence(player);
+                    dialogue.opening(player);
                     combDisplay.characterDisplay(player);
 
                     arcManager = new Arc(mapChar,player); // Arc Instantiation - Sangasina

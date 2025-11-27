@@ -17,6 +17,11 @@ public class Dialogue implements CharacterDialogue {
         return quotes;
     }
 
+    public void opening(Character character) {
+        text.lineBreak();
+        text.printNarration(character.openingNarrative);
+        text.pause();
+    }
 
     // --- Storyteller Implementation (Specific Story Sequences) ---
 

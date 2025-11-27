@@ -11,6 +11,9 @@ public class Aurelius extends Character{
     public Aurelius(){
         name = "Aurelius";
         instrument = "The Whispering Bulwark";
+        openingNarrative = "When the Bell chimed and shadows attacked the wealthy districts, Aurelius saw his family's cruelty made manifest and seized the opportunity to finally act,\n" +
+                "\t\tfleeing their compound with his Flute. Playing a bright, sustained note, he created a sound of temporary shelter that repelled a nearby Shadow,\n" +
+                "\t\tallowing a group of refugees to escape as he vowed to use his music as a shield against the crisis.";
         ps.skillName = "Melodic Remedy";
         ps.skillDescription = "Chords heals 5% of Aurelius’ health. After a chord, grants aurelius an extra turn but is limited to use one note.";
         as.skillName = "Conservation";
